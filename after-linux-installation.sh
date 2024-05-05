@@ -1,13 +1,17 @@
 #!/bin/bash
 
+# import os information location 
 source /etc/os-release
 
 echo "Welcome to my after linux gnome installation configurater script"
 sleep 1
-
+# creating packages array with user input
 read -a packages -p "What packages do you want to install?"
 
+# variable $ID comes from the os information import
+# check for linux distro
 if [[ $ID == "fedora" ]]; then
+    # loop through array
     for package in ${packages[@]}; do
         sudo dnf install $package
     done
@@ -77,30 +81,26 @@ if [[ $spiceup == "y" ]]; then
     cd ~
     rm ~/.nanorc
     touch .nanorc
-    echo -e "# Non-default settings\n
-        set atblanks        # wrap line at blanks.\n
-        set cutfromcursor   # CTRL+K cuts from cursor position to end of line.\n
-        set nohelp          # Disable the help information (CTRL+G to view the help screen).\n
-        set softwrap        # Enable softwrap of lines.\n
-        set tabsize 4       # Sets tab-to-spaces size to 4.\n
-        set tabstospaces    # Converts TAB key press to spaces.\n
-        include "/usr/share/nano/*.nanorc" # Enables the syntax highlighting.\n
-        set speller "aspell -x -c"         # Sets what spelling utility to use.\n
-        set constantshow    # Displays useful information e.g. line number and position in the bottom bar.\n
-        set linenumbers     # Lines are numbered.\n
-        set casesensitive   # Case insensitive search.\n
-        set historylog      # Save the last 100 history searches for later use.\n
-        set positionlog     # Saves the cursor position between editing sessions.\n
-        set zap             # Allows you to highlight text (CTRL+SHIFT+ARROW) and delete it with backspace.\n
-        set autoindent      # A new line will have the same number of leading spaces as the previous one.\n
-        set indicator       # Displays a scroll bar on the right that shows the position and size of the current view port.\n
-        set minibar         # Displays file name and other information in the bottom bar. Removes top bar.\n
-
-        # Shortcut key bindings
-        bind ^C copy main       # CTRC+C - Copy
-        bind ^V paste all       # CTRL+V - Past
-        bind ^F whereis all     # CTRL+F - Find
-        bind ^S savefile main   # CTRL+S - Save " >> ~/.nanorc
+    echo "set atblanks" >> ~/.nanorc       
+    echo "set cutfromcursor" >> ~/.nanorc   
+    echo "set nohelp" >> ~/.nanorc 
+    echo "set softwrap" >> ~/.nanorc
+    echo "set tabsize 4" >> ~/.nanorc 
+    echo "set tabstospaces" >> ~/.nanorc
+    echo "include '/usr/share/nano/*.nanorc'" >> ~/.nanorc 
+    echo "set constantshow" >> ~/.nanorc
+    echo "set linenumbers" >> ~/.nanorc
+    echo "set casesensitive" >> ~/.nanorc
+    echo "set historylog" >> ~/.nanorc
+    echo "set positionlog" >> ~/.nanorc     
+    echo "set zap" >> ~/.nanorc
+    echo "set autoindent" >> ~/.nanorc   
+    echo "set indicator" >> ~/.nanorc      
+    echo "set minibar" >> ~/.nanorc
+    echo "bind ^C copy main" >> ~/.nanorc
+    echo "bind ^V paste all" >> ~/.nanorc
+    echo "bind ^F whereis all" >> ~/.nanorc
+    echo "bind ^S savefile main" >> ~/.nanorc
 fi
 
 echo "Thank you for using my script! :)"
