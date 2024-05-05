@@ -10,31 +10,34 @@ read -a packages -p "What packages do you want to install?"
 
 # variable $ID comes from the os information import
 # check for linux distro
-if [[ $ID == "fedora" ]]; then
-    # loop through array
-    for package in ${packages[@]}; do
-        sudo dnf install $package
-    done
-elif [[ $ID == "arch" ]]; then
-    for package in ${packages[@]}; do
-        sudo pacman -S $package
-    done
-else 
-    for package in ${packages[@]}; do
-        sudo apt install $package
-    done
+if [[ ${#packages[@]} ]]; then
+    if [[ $ID == "fedora" ]]; then
+        # loop through array
+        for package in ${packages[@]}; do
+            sudo dnf install $package
+        done
+    elif [[ $ID == "arch" ]]; then
+        for package in ${packages[@]}; do
+            sudo pacman -S $package
+        done
+    else 
+        for package in ${packages[@]}; do
+            sudo apt install $package
+        done
+    fi
 fi
-
 echo "Do you have git installed? (y/n)"
 
 read git_installed
 
-if [[ $ID == "fedora" ]]; then
-    sudo dnf install git
-elif [[ $ID == "arch" ]]; then
-    sudo pacman -S git
-else 
-    sudo apt install git
+if [[ $git_installed == "n" ]]; then
+    if [[ $ID == "fedora" ]]; then
+        sudo dnf install git
+    elif [[ $ID == "arch" ]]; then
+        sudo pacman -S git
+    else 
+        sudo apt install git
+    fi
 fi
 sleep 1
 
@@ -46,10 +49,11 @@ if [[ $sshready == "y" ]]; then
     read -p "what is your email account?" email
     ssh-keygen -t ed25519 -C $email
     ssh-add ~/.ssh/id_ed25519
+    echo "Paste the following content in your ssh-key section in Github"
+    echo $(cat ~/.ssh/id_ed25519.pub)
 fi
 
-echo "Paste the following content in your ssh-key section in Github"
-echo $(cat ~/.ssh/id_ed25519.pub)
+
 
 echo "Do you want to install oh-my-zsh? (y/n)"
 read ohmyzsh
@@ -61,7 +65,6 @@ fi
 sleep 1
 
 echo "Do you want to install zsh-plugins (y/n)"
-
 read zshplugins
 
 if [[ $zshplugins == "y" ]]; then
@@ -74,7 +77,7 @@ fi
 
 sleep 1
 
-echo "Do you want to spice up nano? (y/n)
+echo "Do you want to spice up nano? (y/n)"
 read spiceup
 
 if [[ $spiceup == "y" ]]; then
@@ -87,7 +90,7 @@ if [[ $spiceup == "y" ]]; then
     echo "set softwrap" >> ~/.nanorc
     echo "set tabsize 4" >> ~/.nanorc 
     echo "set tabstospaces" >> ~/.nanorc
-    echo "include '/usr/share/nano/*.nanorc'" >> ~/.nanorc 
+    echo 'include "/usr/share/nano/*.nanorc"' >> ~/.nanorc 
     echo "set constantshow" >> ~/.nanorc
     echo "set linenumbers" >> ~/.nanorc
     echo "set casesensitive" >> ~/.nanorc
@@ -103,5 +106,5 @@ if [[ $spiceup == "y" ]]; then
     echo "bind ^S savefile main" >> ~/.nanorc
 fi
 
-echo "Thank you for using my script! :)"
+echo "Thank you for using my script!"
 sleep 1
