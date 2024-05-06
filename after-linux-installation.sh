@@ -9,8 +9,9 @@ sleep 1
 read -a packages -p "What packages do you want to install? (Press Enter for no installation)"
 
 # variable $ID comes from the os information import
-# check for linux distro
+# check if array is not empty
 if [[ ${#packages[@]} ]]; then
+    # check for linux distro
     if [[ $ID == "fedora" ]]; then
         # loop through array
         for package in ${packages[@]}; do
