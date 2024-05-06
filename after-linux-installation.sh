@@ -6,7 +6,7 @@ source /etc/os-release
 echo "Welcome to my after linux gnome installation configurator script"
 sleep 1
 # creating packages array with user input
-read -a packages -p "What packages do you want to install?"
+read -a packages -p "What packages do you want to install? (Press Enter for no installation)"
 
 # variable $ID comes from the os information import
 # check for linux distro
