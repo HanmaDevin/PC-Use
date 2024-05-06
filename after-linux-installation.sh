@@ -3,7 +3,7 @@
 # import os information location 
 source /etc/os-release
 
-echo "Welcome to my after linux gnome installation configurater script"
+echo "Welcome to my after linux gnome installation configurator script"
 sleep 1
 # creating packages array with user input
 read -a packages -p "What packages do you want to install?"
