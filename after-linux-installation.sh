@@ -81,7 +81,7 @@ echo "Do you want to install zsh-plugins (y/n)"
 read zshplugins
 
 if [[ $zshplugins == "y" ]]; then
-    if [[ -d "~/zsh-plugins"]]; then
+    if [[ -d "~/zsh-plugins" ]]; then
         rm -r ~/zsh-plugins
         mkdir -p ~/zsh-plugins
         git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/zsh-plugins 
