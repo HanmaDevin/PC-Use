@@ -81,11 +81,13 @@ echo "Do you want to install zsh-plugins (y/n)"
 read zshplugins
 
 if [[ $zshplugins == "y" ]]; then
-    mkdir ~/zsh-plugins
-    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/zsh-plugins 
-    echo "source ~/zsh-plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ~/.zshrc
-    git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/zsh-plugins
-    echo "source ~/zsh-plugins/zsh-autosuggestions/zsh-autosuggestions.zsh" >> ~/.zshrc
+    if [[ -d "~/zsh-plugins"]]; then
+        rm -r ~/zsh-plugins
+        mkdir -p ~/zsh-plugins
+        git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/zsh-plugins 
+        echo "source ~/zsh-plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ~/.zshrc
+        git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/zsh-plugins
+        echo "source ~/zsh-plugins/zsh-autosuggestions/zsh-autosuggestions.zsh" >> ~/.zshrc
 fi
 
 sleep 1
