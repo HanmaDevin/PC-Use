@@ -48,10 +48,13 @@ read sshready
 if [[ $sshready == "y" ]]; then
     echo "Do not change de default file location and name in the following!!!"
     read -p "what is your email account?" email
+    read -p "What is your user name?" user
     ssh-keygen -t ed25519 -C $email
     ssh-add ~/.ssh/id_ed25519
     echo "Paste the following content in your ssh-key section in Github"
     echo $(cat ~/.ssh/id_ed25519.pub)
+    git config --global user.name $user
+    git config --global user.email $email
 fi
 
 
@@ -60,7 +63,16 @@ echo "Do you want to install oh-my-zsh? (y/n)"
 read ohmyzsh
 
 if [[ $ohmyzsh == "y" ]]; then 
+    if [[ $ID == "fedora" ]]; then
+        sudo dnf install zsh
+    elif [[ $ID == "arch" ]]; then
+        sudo pacman -S zsh
+    else 
+        sudo apt install zsh
+    fi
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
+    echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >>~/.zshrc
 fi
 
 sleep 1
@@ -83,7 +95,9 @@ read spiceup
 
 if [[ $spiceup == "y" ]]; then
     cd ~
-    rm ~/.nanorc
+    if [[ -f "~/.nanorc" ]]; then 
+        rm ~/.nanorc
+    fi
     touch .nanorc
     echo "set atblanks" >> ~/.nanorc       
     echo "set cutfromcursor" >> ~/.nanorc   
