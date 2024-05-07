@@ -88,6 +88,7 @@ if [[ $zshplugins == "y" ]]; then
         echo "source ~/zsh-plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ~/.zshrc
         git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/zsh-plugins
         echo "source ~/zsh-plugins/zsh-autosuggestions/zsh-autosuggestions.zsh" >> ~/.zshrc
+    fi
 fi
 
 sleep 1
