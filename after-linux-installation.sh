@@ -127,5 +127,11 @@ if [[ $spiceup == "y" ]]; then
     echo "bind ^S savefile main" >> ~/.nanorc
 fi
 
+read -p "Do you want to install Vencord? (y/n)" vencord
+
+if [[ $vencord == "y" ]]; then
+    sh -c "$(curl -sS https://raw.githubusercontent.com/Vendicated/VencordInstaller/main/install.sh)"
+fi
+
 echo "Thank you for using my script!"
 sleep 1
