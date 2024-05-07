@@ -83,13 +83,15 @@ read zshplugins
 if [[ $zshplugins == "y" ]]; then
     if [[ -d "~/zsh-plugins" ]]; then
         rm -r ~/zsh-plugins
+    fi
         mkdir -p ~/zsh-plugins
         cd ~/zsh-plugins
         git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
-        echo "source ~/zsh-plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ~/.zshrc
+        sleep 1
         git clone https://github.com/zsh-users/zsh-autosuggestions.git
+        sleep 1
         echo "source ~/zsh-plugins/zsh-autosuggestions/zsh-autosuggestions.zsh" >> ~/.zshrc
-    fi
+        echo "source ~/zsh-plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ~/.zshrc
 fi
 
 sleep 1
