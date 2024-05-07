@@ -2,7 +2,7 @@
 
 FILE=~/.zshrc
 
-if [[ -f "$FILE" ]]; then
+if [[ -f $FILE ]]; then
     echo "# Alias" >> $FILE
     echo 'alias down="cd ~/Downloads"' >> $FILE
     echo 'alias py="/bin/python3"' >> $FILE
