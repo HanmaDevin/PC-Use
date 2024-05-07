@@ -2,14 +2,14 @@
 
 echo "This script will help you install texlive"
 sleep 1
-echo "Where do you want to download it? Enter a Directory"
-read dir
 
-mkdir $dir
-cd $dir
+cd ~
+mkdir texlive
+cd texlive
 
 wget https://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
 zcat < install-tl-unx.tar.gz | tar xf -
+rm install-tl-unx.tar.gz
 cd install-tl-*
 sudo perl ./install-tl --no-interaction
 
