@@ -84,8 +84,9 @@ if [[ $zshplugins == "y" ]]; then
     if [[ -d "~/zsh-plugins" ]]; then
         rm -r ~/zsh-plugins
     fi
-        mkdir -p ~/zsh-plugins
-        cd ~/zsh-plugins
+        cd ~
+        mkdir zsh-plugins
+        cd zsh-plugins
         git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
         sleep 1
         git clone https://github.com/zsh-users/zsh-autosuggestions.git
