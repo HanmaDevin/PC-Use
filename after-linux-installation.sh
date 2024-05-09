@@ -42,6 +42,14 @@ if [[ $git_installed == "n" ]]; then
 fi
 sleep 1
 
+read -p "Want to configure git? (y/n)" gitconfig
+
+if [[ $gitconfig == "y" ]]; then
+    read -p "What is your Github username?" username
+    git config --global user.name "$username"
+    read -p "What is your email?" useremail
+    git config --global user.email "$usermail"
+
 echo "Ready to add ssh-key? (y/n)"
 read sshready
 
@@ -53,8 +61,6 @@ if [[ $sshready == "y" ]]; then
     ssh-add ~/.ssh/id_ed25519
     echo "Paste the following content in your ssh-key section in Github"
     echo $(cat ~/.ssh/id_ed25519.pub)
-    git config --global user.name $user
-    git config --global user.email $email
 fi
 
 
