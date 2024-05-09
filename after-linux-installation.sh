@@ -111,7 +111,6 @@ if [[ $spiceup == "y" ]]; then
     echo "set softwrap" >> ~/.nanorc
     echo "set tabsize 4" >> ~/.nanorc 
     echo "set tabstospaces" >> ~/.nanorc
-    echo 'include "/usr/share/nano/*.nanorc"' >> ~/.nanorc 
     echo "set constantshow" >> ~/.nanorc
     echo "set linenumbers" >> ~/.nanorc
     echo "set casesensitive" >> ~/.nanorc
@@ -125,6 +124,13 @@ if [[ $spiceup == "y" ]]; then
     echo "bind ^V paste all" >> ~/.nanorc
     echo "bind ^F whereis all" >> ~/.nanorc
     echo "bind ^S savefile main" >> ~/.nanorc
+
+    cd ~
+    mkdir .nano
+    cd .nano
+    git clone https://github.com/scopatz/nanorc.git
+    rm ~/.nano/nanorc/nanorc.nanorc
+    echo 'include "~/.nano/nanorc/*.nanorc"' >> ~/.nanorc
 fi
 
 read -p "Do you want to install Vencord? (y/n)" vencord
