@@ -1,10 +1,10 @@
-#!/bin/bash
+#! /bin/bash
 
 # import os information location 
 source /etc/os-release
 
 echo "Welcome to my after linux gnome installation configurator script"
-sleep 1
+
 # creating packages array with user input
 read -a packages -p "What packages do you want to install? (Press Enter for no installation)"
 
@@ -27,9 +27,7 @@ if [[ ${#packages[@]} ]]; then
         done
     fi
 fi
-echo "Do you have git installed? (y/n)"
-
-read git_installed
+read -p "Do you have git installed? (y/n)" git_installed
 
 if [[ $git_installed == "n" ]]; then
     if [[ $ID == "fedora" ]]; then
@@ -40,7 +38,6 @@ if [[ $git_installed == "n" ]]; then
         sudo apt install git
     fi
 fi
-sleep 1
 
 read -p "Want to configure git? (y/n)" gitconfig
 
@@ -49,9 +46,9 @@ if [[ $gitconfig == "y" ]]; then
     git config --global user.name "$username"
     read -p "What is your email?" useremail
     git config --global user.email "$usermail"
+fi
 
-echo "Ready to add ssh-key? (y/n)"
-read sshready
+read -p "Ready to add ssh-key? (y/n)" sshready
 
 if [[ $sshready == "y" ]]; then
     echo "Do not change de default file location and name in the following!!!"
@@ -63,10 +60,7 @@ if [[ $sshready == "y" ]]; then
     echo $(cat ~/.ssh/id_ed25519.pub)
 fi
 
-
-
-echo "Do you want to install oh-my-zsh? (y/n)"
-read ohmyzsh
+read -p "Do you want to install oh-my-zsh? (y/n)" ohmyzsh
 
 if [[ $ohmyzsh == "y" ]]; then 
     if [[ $ID == "fedora" ]]; then
@@ -81,10 +75,7 @@ if [[ $ohmyzsh == "y" ]]; then
     echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >>~/.zshrc
 fi
 
-sleep 1
-
-echo "Do you want to install zsh-plugins (y/n)"
-read zshplugins
+read -p "Do you want to install zsh-plugins (y/n)" zshplugins
 
 if [[ $zshplugins == "y" ]]; then
     if [[ -d "~/zsh-plugins" ]]; then
@@ -101,12 +92,9 @@ if [[ $zshplugins == "y" ]]; then
         echo "source ~/zsh-plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ~/.zshrc
 fi
 
-sleep 1
+read -p "Do you want to spice up nano? (y/n)" nano
 
-echo "Do you want to spice up nano? (y/n)"
-read spiceup
-
-if [[ $spiceup == "y" ]]; then
+if [[ $nano == "y" ]]; then
     cd ~
     if [[ -f "~/.nanorc" ]]; then 
         rm ~/.nanorc
@@ -138,6 +126,27 @@ if [[ $spiceup == "y" ]]; then
     git clone https://github.com/scopatz/nanorc.git
     rm ~/.nano/nanorc/nanorc.nanorc
     echo 'include "~/.nano/nanorc/*.nanorc"' >> ~/.nanorc
+fi
+
+read -p "Do you want to spice up vim? (y/n)" vim
+
+if [[ $vim == "y" ]]; then
+	cd ~
+	mkdir -p ~/.vim/autoload/backup/colors/plugged
+	touch ~/.vimrc
+
+	echo -e '" Enable compatibility with vi which can cause unexpected issues\n set nocompatible' >> ~/.vimrc
+	echo -e '" Enable file type detection\n filetype on' >> ~/.vimrc
+	echo -e '" Enable plugins for file type\n filetype plugin on' >> ~/.vimrc
+	echo -e '" File type indentation\n filetype indent on' >> ~/.vimrc
+	echo -e '" Add line numbers\n set number' >> ~/.vimrc
+	echo -e '" Set tab width to 4\n set tabstop=4' >> ~/.vimrc
+	echo -e '" Ignore capital letters with search\n set ignorecase' >> ~/.vimrc
+    	echo -e '" Enable autocompletion\n set wildmenu' >> ~/.vimrc
+	echo -e '" Highlight search\n set hlsearch' >> ~/.vimrc
+	echo -e '" Allows to still search in upper case\n set smartcase' >> ~/.vimrc
+	echo -e '" Show current mode on last line\n set showmode' >> ~/.vimrc	
+
 fi
 
 read -p "Do you want to install Vencord? (y/n)" vencord
