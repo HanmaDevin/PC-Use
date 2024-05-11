@@ -128,26 +128,38 @@ if [[ $nano == "y" ]]; then
     echo 'include "~/.nano/nanorc/*.nanorc"' >> ~/.nanorc
 fi
 
-read -p "Do you want to spice up vim? (y/n)" vim
+read -p "Do you have vim installed? (y/n)" vim_installed
 
-if [[ $vim == "y" ]]; then
-	cd ~
-	mkdir -p ~/.vim/autoload/backup/colors/plugged
-	touch ~/.vimrc
+if [[ $vim_installed == "n" ]]; then
+    read -p "Do you want to spice up vim? (y/n)" vim
+    if [[ $ID == "fedora" ]]; then
+        sudo dnf install vim
+    elif [[ $ID == "arch" ]]; then
+        sudo pacman -S vim
+    else 
+        sudo apt install vim
+    fi
 
-	echo -e '" Enable compatibility with vi which can cause unexpected issues\n set nocompatible' >> ~/.vimrc
-	echo -e '" Enable file type detection\n filetype on' >> ~/.vimrc
-	echo -e '" Enable plugins for file type\n filetype plugin on' >> ~/.vimrc
-	echo -e '" File type indentation\n filetype indent on' >> ~/.vimrc
-	echo -e '" Add line numbers\n set number' >> ~/.vimrc
-	echo -e '" Set tab width to 4\n set tabstop=4' >> ~/.vimrc
-	echo -e '" Ignore capital letters with search\n set ignorecase' >> ~/.vimrc
-    	echo -e '" Enable autocompletion\n set wildmenu' >> ~/.vimrc
-	echo -e '" Highlight search\n set hlsearch' >> ~/.vimrc
-	echo -e '" Allows to still search in upper case\n set smartcase' >> ~/.vimrc
-	echo -e '" Show current mode on last line\n set showmode' >> ~/.vimrc	
+    if [[ $vim == "y" ]]; then
+        cd ~
+        mkdir -p ~/.vim/autoload/backup/colors/plugged
+        touch ~/.vimrc
 
+        echo -e '" Enable compatibility with vi which can cause unexpected issues\n set nocompatible' >> ~/.vimrc
+        echo -e '" Enable file type detection\n filetype on' >> ~/.vimrc
+        echo -e '" Enable plugins for file type\n filetype plugin on' >> ~/.vimrc
+        echo -e '" File type indentation\n filetype indent on' >> ~/.vimrc
+        echo -e '" Add line numbers\n set number' >> ~/.vimrc
+        echo -e '" Set tab width to 4\n set tabstop=4' >> ~/.vimrc
+        echo -e '" Ignore capital letters with search\n set ignorecase' >> ~/.vimrc
+            echo -e '" Enable autocompletion\n set wildmenu' >> ~/.vimrc
+        echo -e '" Highlight search\n set hlsearch' >> ~/.vimrc
+        echo -e '" Allows to still search in upper case\n set smartcase' >> ~/.vimrc
+        echo -e '" Show current mode on last line\n set showmode' >> ~/.vimrc	
+
+    fi
 fi
+
 
 read -p "Do you want to install Vencord? (y/n)" vencord
 
