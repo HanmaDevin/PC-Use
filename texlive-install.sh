@@ -1,7 +1,6 @@
 #! /bin/bash
 
 echo "This script will help you install texlive"
-sleep 1
 
 cd ~
 mkdir texlive
