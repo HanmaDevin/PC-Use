@@ -131,7 +131,7 @@ fi
 read -p "Do you have vim installed? (y/n)" vim_installed
 
 if [[ $vim_installed == "n" ]]; then
-    read -p "Do you want to spice up vim? (y/n)" vim
+    
     if [[ $ID == "fedora" ]]; then
         sudo dnf install vim
     elif [[ $ID == "arch" ]]; then
@@ -140,9 +140,11 @@ if [[ $vim_installed == "n" ]]; then
         sudo apt install vim
     fi
 
+    read -p "Do you want to spice up vim? (y/n)" vim
+
     if [[ $vim == "y" ]]; then
         cd ~
-        mkdir -p ~/.vim/autoload/backup/colors/plugged
+        mkdir -p ~/.vim/autoload
         touch ~/.vimrc
 
         echo -e '" Enable compatibility with vi which can cause unexpected issues\n set nocompatible' >> ~/.vimrc
@@ -152,14 +154,13 @@ if [[ $vim_installed == "n" ]]; then
         echo -e '" Add line numbers\n set number' >> ~/.vimrc
         echo -e '" Set tab width to 4\n set tabstop=4' >> ~/.vimrc
         echo -e '" Ignore capital letters with search\n set ignorecase' >> ~/.vimrc
-            echo -e '" Enable autocompletion\n set wildmenu' >> ~/.vimrc
+        echo -e '" Enable autocompletion\n set wildmenu' >> ~/.vimrc
         echo -e '" Highlight search\n set hlsearch' >> ~/.vimrc
         echo -e '" Allows to still search in upper case\n set smartcase' >> ~/.vimrc
         echo -e '" Show current mode on last line\n set showmode' >> ~/.vimrc	
 
     fi
 fi
-
 
 read -p "Do you want to install Vencord? (y/n)" vencord
 
