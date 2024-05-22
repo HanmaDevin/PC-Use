@@ -30,3 +30,4 @@ curl https://raw.githubusercontent.com/HanmaDevin/bashscripts/main/neovim_plugin
 curl https://raw.githubusercontent.com/HanmaDevin/bashscripts/main/neovim_plugins/neotree.lua
 curl https://raw.githubusercontent.com/HanmaDevin/bashscripts/main/neovim_plugins/telescope.lua
 curl https://raw.githubusercontent.com/HanmaDevin/bashscripts/main/neovim_plugins/treesitter.lua
+curl https://raw.githubusercontent.com/HanmaDevin/bashscripts/main/neovim_plugins/lualine.lua
