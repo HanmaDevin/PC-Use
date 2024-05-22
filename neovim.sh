@@ -23,6 +23,10 @@ curl https://raw.githubusercontent.com/HanmaDevin/bashscripts/main/init.lua
 
 echo "Creating seperate directory to store plugins"
 
-mkdir lua
-cd lua
-curl https://raw.githubusercontent.com/HanmaDevin/bashscripts/main/plugins.lua
+mkdir -p lua/plugins
+cd lua/plugins
+
+curl https://raw.githubusercontent.com/HanmaDevin/bashscripts/main/catppuccin.lua
+curl https://raw.githubusercontent.com/HanmaDevin/bashscripts/main/neotree.lua
+curl https://raw.githubusercontent.com/HanmaDevin/bashscripts/main/telescope.lua
+curl https://raw.githubusercontent.com/HanmaDevin/bashscripts/main/treesitter.lua
