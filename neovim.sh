@@ -19,7 +19,7 @@ echo "Creating neovim configuration folder and fetching my init.lua file"
 
 mkdir -p ~/.config/nvim
 cd ~/.config/nvim
-curl https://raw.githubusercontent.com/HanmaDevin/bashscripts/main/init.lua
+curl -O https://raw.githubusercontent.com/HanmaDevin/bashscripts/main/init.lua
 
 echo "Creating seperate directory to store plugins"
 
