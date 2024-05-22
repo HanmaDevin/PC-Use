@@ -26,7 +26,7 @@ echo "Creating seperate directory to store plugins"
 mkdir -p lua/plugins
 cd lua/plugins
 
-curl https://raw.githubusercontent.com/HanmaDevin/bashscripts/main/catppuccin.lua
-curl https://raw.githubusercontent.com/HanmaDevin/bashscripts/main/neotree.lua
-curl https://raw.githubusercontent.com/HanmaDevin/bashscripts/main/telescope.lua
-curl https://raw.githubusercontent.com/HanmaDevin/bashscripts/main/treesitter.lua
+curl https://raw.githubusercontent.com/HanmaDevin/bashscripts/main/neovim_plugins/catppuccin.lua
+curl https://raw.githubusercontent.com/HanmaDevin/bashscripts/main/neovim_plugins/neotree.lua
+curl https://raw.githubusercontent.com/HanmaDevin/bashscripts/main/neovim_plugins/telescope.lua
+curl https://raw.githubusercontent.com/HanmaDevin/bashscripts/main/neovim_plugins/treesitter.lua
