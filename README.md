@@ -13,7 +13,7 @@ With Vencord you can customize Discord with a bunch of plugins.
 
 ### Neovim
 
-The ***neovim.sh*** script-file helps you to quickly setup an IDE in your terminal.
+The ***neovim.sh*** script-file helps you to quickly setup an IDE-like Text-editor in your terminal.
 The commands to use the IDE are:
 
 * CTRL + P: find files
@@ -23,5 +23,7 @@ The commands to use the IDE are:
 * CTRL + D: go to definition
 * CTRL + L: format
 
-You need to install *stylua*, *rubocop*, *prettier*, *eslint_d*, *black*, *isort* and *lua_language_server* in the Mason plugin within neovim with the ```:Mason``` command. Then search for the package with 
-```/package```, press Enter and then 'i' to install it.
+You need to install *stylua*, *rubocop*, *prettier*, *eslint_d*, *black*, *isort* and *lua_language_server* in the Mason plugin within neovim with the ```:Mason``` command. Then search for the package with ```/package```, press Enter and then 'i' to install it.
+
+If you want a lot more functionality then you will have to read into this stuff a lot more.
+For help check this playlist out [Neovim for Newbs. FREE NEOVIM COURSE](https://www.youtube.com/playlist?list=PLsz00TDipIffreIaUNk64KxTIkQaGguqn)
