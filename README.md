@@ -21,3 +21,6 @@ The commands to use the IDE are:
 * CTRL + N, ENTER: navigate workingtree
 * CTRL + K: get Function overview in popup window
 * CTRL + D: go to definition
+* CTRL + L: format
+
+You need to install *stylua*, *rubocop*, *prettier*, *eslint_d*, *black*, *isort* and ... in the Mason plugin within neovim with the ```:Mason``` command
