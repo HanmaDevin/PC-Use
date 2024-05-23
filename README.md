@@ -19,8 +19,9 @@ The commands to use the IDE are:
 * CTRL + P: find files
 * CTRL + S: find everything
 * CTRL + N, ENTER: navigate workingtree
-* CTRL + K: get Function overview in popup window
+* SHIFT + K: get Function overview in popup window
 * CTRL + D: go to definition
 * CTRL + L: format
 
-You need to install *stylua*, *rubocop*, *prettier*, *eslint_d*, *black*, *isort* and ... in the Mason plugin within neovim with the ```:Mason``` command
+You need to install *stylua*, *rubocop*, *prettier*, *eslint_d*, *black*, *isort* and *lua_language_server* in the Mason plugin within neovim with the ```:Mason``` command. Then search for the package with 
+```/package```, press Enter and then 'i' to install it.
