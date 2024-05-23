@@ -13,4 +13,11 @@ With Vencord you can customize Discord with a bunch of plugins.
 
 ### Neovim
 
-The ***neovim.sh*** script-file helps you to quickly setup an IDE in your terminal. 
+The ***neovim.sh*** script-file helps you to quickly setup an IDE in your terminal.
+The commands to use the IDE are:
+
+* CTRL + P: find files
+* CTRL + S: find everything
+* CTRL + N, ENTER: navigate workingtree
+* CTRL + K: get Function overview in popup window
+* CTRL + D: go to definition
