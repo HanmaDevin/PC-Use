@@ -25,5 +25,7 @@ The commands to use the IDE are:
 
 You need to install *stylua*, *rubocop*, *prettier*, *eslint_d*, *black*, *isort* and *lua_language_server* in the Mason plugin within neovim with the ```:Mason``` command. Then search for the package with ```/package```, press Enter and then 'i' to install it.
 
+Git is now integrated and can be used via the *Command*-Mode in NeoVim. Just hit ```:Git command``` and you can use Git as you would in the terminal.
+
 If you want a lot more functionality then you will have to read into this stuff a lot more.
 For help check this playlist out [Neovim for Newbs. FREE NEOVIM COURSE](https://www.youtube.com/playlist?list=PLsz00TDipIffreIaUNk64KxTIkQaGguqn)
