@@ -18,4 +18,5 @@ With Vencord you can customize Discord with a bunch of plugins.
 - steam
 - lsd
 - ulauncher
+- zsh
 - bat
