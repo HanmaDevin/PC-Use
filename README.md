@@ -11,3 +11,11 @@ First you can install what ever packages you want to install. Then you can setup
 There is also a useful nano and vim configuration which can be added. At the end you can install Vencord, a useful tool for Discord.
 With Vencord you can customize Discord with a bunch of plugins.
 
+## Example Packages to install
+
+- git
+- code
+- steam
+- lsd
+- ulauncher
+- bat
