@@ -168,5 +168,48 @@ if [[ $vencord == "y" ]]; then
     sh -c "$(curl -sS https://raw.githubusercontent.com/Vendicated/VencordInstaller/main/install.sh)"
 fi
 
+echo "Now installing my favorite fonts"
+sleep 1
+
+curl -O https://github.com/HanmaDevin/Linux/blob/main/Fonts/Poppins.zip
+unzip Poppins.zip
+rm Poppins.zip
+
+sudo mv Poppins* /usr/share/fonts
+
+curl -O https://github.com/HanmaDevin/Linux/blob/main/Fonts/Recursive.zip
+unzip Recursive.zip
+rm Recursive.zip
+
+sudo mv Recursive* /usr/share/fonts
+
+echo "installing favorite cursor"
+sleep 1
+
+curl -O https://github.com/HanmaDevin/Linux/blob/main/Cursor/Bibata-Modern-Ice.tar.xz
+tar -xf Bibata-Modern-Ice.tar.xz
+rm Bibata-Modern-Ice.tar.xf
+
+sudo mv Bibata* /usr/share/icons
+
+echo "Getting ulauncher themes"
+
+curl -O https://github.com/HanmaDevin/Linux/blob/main/Ulauncher-Themes/Everforest_Dark.zip
+curl -O https://github.com/HanmaDevin/Linux/blob/main/Ulauncher-Themes/Everforest_Light.zip
+curl -O https://github.com/HanmaDevin/Linux/blob/main/Ulauncher-Themes/Gruvbox_Dark.zip
+curl -O https://github.com/HanmaDevin/Linux/blob/main/Ulauncher-Themes/Gruvbox_Light.zip
+curl -O https://github.com/HanmaDevin/Linux/blob/main/Ulauncher-Themes/Tokyonight_Dark.zip
+curl -O https://github.com/HanmaDevin/Linux/blob/main/Ulauncher-Themes/Tokyonight_Light.zip
+
+unzip *.zip
+rm *.zip
+
+if [ -d ~/.config/ulauncher ]; then
+  mkdir user-themes
+  sudo mv * ~/.config/ulauncher/user-themes
+fi
+
+sleep 1
+
 echo "Thank you for using my script!"
 sleep 1
