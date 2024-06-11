@@ -177,6 +177,8 @@ if [[ $arch == "y" ]]; then
 	sudo pacman -Sy bluez bluez-utils networkmanager font-manager gwenview
 	systemctl enable networkmanager
 	systemctl start networkmanager
+	modprobe btusb
+	systemctl start bluetooth.service
 fi
 
 echo "Thank you for using my script!"
