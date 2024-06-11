@@ -20,3 +20,4 @@ With Vencord you can customize Discord with a bunch of plugins.
 - ulauncher
 - zsh
 - bat
+- neofetch
