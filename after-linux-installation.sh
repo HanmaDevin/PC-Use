@@ -349,10 +349,10 @@ if [[ $arch == "y" ]]; then
 	sudo pacman -Syu
 	cd ~
 	git clone https://aur.archlinux.org/yay.git
-	cd yay-git
+	cd yay
 	makepkg -si
 	sudo pacman -Sy bluez bluez-utils networkmanager font-manager gwenview ufw
-	yay -S visual-studio-code-bin google-chrome xpadneo-dkms-git
+	yay -S google-chrome xpadneo-dkms-git
   systemctl enable networkmanager
 	systemctl start networkmanager
   modprobe btusb
