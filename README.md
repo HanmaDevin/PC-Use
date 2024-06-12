@@ -15,7 +15,8 @@ With Vencord you can customize Discord with a bunch of plugins.
 
 Themes and icons can be installed by unpacking the content and moving the content to the appropiate location in the system.
 themes go to <strong>/usr/share/themes</strong>
-icons and cursors go to <strong>/usr/share/icons</strong>
+icons and cursors go to <strong>/usr/share/icons</strong>. To move files you can use the *mv*-command.
+So just type in your terminal: ```sudo mv <content> destination```
 
 ### GRUB Themes
 
@@ -37,4 +38,4 @@ and to uninstall it do: ```sudo python3 <name of the theme> -u```
 - gvenview
 - gamemode
 - ufw
--
+- tree
