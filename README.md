@@ -20,8 +20,8 @@ So just type in your terminal: ```sudo mv <content> destination```
 
 ### GRUB Themes
 
-The grub-theme can be installed with python: ```sudo python3 <name of the theme> -i```
-and to uninstall it do: ```sudo python3 <name of the theme> -u```
+The grub-theme can be installed with python: ```sudo python3 <name of the theme.py> -i```
+and to uninstall it do: ```sudo python3 <name of the theme.py> -u```
 
 ## Example Packages to install
 
