@@ -5,6 +5,23 @@ source /etc/os-release
 
 echo "Welcome to my after linux gnome installation configurator script"
 
+curl -O https://raw.githubusercontent.com/HanmaDevin/Linux/main/packages.txt 
+
+file="./packages.txt"
+
+while IFS= read -r line
+do
+  if [[ $ID == "fedora" ]]; then
+			sudo dnf install $line
+	elif [[ $ID == "arch" ]]; then
+			sudo pacman -S $line
+	else
+			sudo apt install $line
+	fi
+done < "$file"
+
+
+
 # creating packages array with user input
 read -a packages -p "What packages do you want to install? (Press Enter for no installation)"
 
