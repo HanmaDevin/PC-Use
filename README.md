@@ -17,6 +17,7 @@ Themes and icons can be installed by unpacking the content and moving the conten
 themes go to <strong>/usr/share/themes</strong>
 icons and cursors go to <strong>/usr/share/icons</strong>. To move files you can use the *mv*-command.
 So just type in your terminal: ```sudo mv <content> destination```
+If you want to use the neofetch theme then copy the contents of the txt file to <strong>~/.config/neofetch/config.conf</strong>
 
 ## Ulauncher
 
@@ -27,21 +28,3 @@ Ulauncher is a app quick-launcher. It works like spotlight search on MacOS.
 The grub-theme can be installed with python: ```sudo python3 <name of the theme.py> -i```
 and to uninstall it do: ```sudo python3 <name of the theme.py> -u```
 
-## Example Packages to install
-
-- git
-- code
-- steam
-- lsd
-- btop, system monitor in the terminal
-- ulauncher
-- zsh
-- fzf, fuzzy finder: finds all your files in the working directory
-- bat
-- neofetch
-- Discord
-- grub-customizer
-- gvenview
-- gamemode
-- ufw
-- tree
