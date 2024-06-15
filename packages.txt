@@ -17,4 +17,4 @@ vlc
 tree
 cmatrix
 bluez
-blue-utils
+bluez-utils
