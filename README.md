@@ -18,6 +18,10 @@ themes go to <strong>/usr/share/themes</strong>
 icons and cursors go to <strong>/usr/share/icons</strong>. To move files you can use the *mv*-command.
 So just type in your terminal: ```sudo mv <content> destination```
 
+## Ulauncher
+
+Ulauncher is a app quick-launcher. It works like spotlight search on MacOS.
+
 ### GRUB Themes
 
 The grub-theme can be installed with python: ```sudo python3 <name of the theme.py> -i```
@@ -29,8 +33,10 @@ and to uninstall it do: ```sudo python3 <name of the theme.py> -u```
 - code
 - steam
 - lsd
+- btop, system monitor in the terminal
 - ulauncher
 - zsh
+- fzf, fuzzy finder: finds all your files in the working directory
 - bat
 - neofetch
 - Discord
