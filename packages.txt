@@ -21,3 +21,5 @@ bluez-utils
 ntfs-3g
 fuse
 okular
+wget
+curl
