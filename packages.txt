@@ -18,3 +18,5 @@ tree
 cmatrix
 bluez
 bluez-utils
+ntfs-3g
+fuse
