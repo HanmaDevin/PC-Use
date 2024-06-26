@@ -113,33 +113,9 @@ if [[ $nano == "y" ]]; then
 	if [[ -f "~/.nanorc" ]]; then
 		rm ~/.nanorc
 	fi
-	touch .nanorc
-	echo "set atblanks" >>~/.nanorc
-	echo "set cutfromcursor" >>~/.nanorc
-	echo "set nohelp" >>~/.nanorc
-	echo "set softwrap" >>~/.nanorc
-	echo "set tabsize 4" >>~/.nanorc
-	echo "set tabstospaces" >>~/.nanorc
-	echo "set constantshow" >>~/.nanorc
-	echo "set linenumbers" >>~/.nanorc
-	echo "set casesensitive" >>~/.nanorc
-	echo "set historylog" >>~/.nanorc
-	echo "set positionlog" >>~/.nanorc
-	echo "set zap" >>~/.nanorc
-	echo "set autoindent" >>~/.nanorc
-	echo "set indicator" >>~/.nanorc
-	echo "set minibar" >>~/.nanorc
-	echo "bind ^C copy main" >>~/.nanorc
-	echo "bind ^V paste all" >>~/.nanorc
-	echo "bind ^F whereis all" >>~/.nanorc
-	echo "bind ^S savefile main" >>~/.nanorc
 
-	cd ~
-	mkdir .nano
-	cd .nano
-	git clone https://github.com/scopatz/nanorc.git
-	rm ~/.nano/nanorc/nanorc.nanorc
-	echo 'include "~/.nano/nanorc/*.nanorc"' >>~/.nanorc
+  curl -O https://raw.githubusercontent.com/HanmaDevin/Linux/main/.nanorc 
+
 fi
 
 read -p "Do you have vim installed? (y/n)" vim_installed
@@ -158,20 +134,7 @@ if [[ $vim_installed == "n" ]]; then
 
 	if [[ $vim == "y" ]]; then
 		cd ~
-		mkdir -p ~/.vim/autoload
-		touch ~/.vimrc
-
-		echo -e '" Enable compatibility with vi which can cause unexpected issues\n set nocompatible' >>~/.vimrc
-		echo -e '" Enable file type detection\n filetype on' >>~/.vimrc
-		echo -e '" Enable plugins for file type\n filetype plugin on' >>~/.vimrc
-		echo -e '" File type indentation\n filetype indent on' >>~/.vimrc
-		echo -e '" Add line numbers\n set number' >>~/.vimrc
-		echo -e '" Set tab width to 4\n set tabstop=4' >>~/.vimrc
-		echo -e '" Ignore capital letters with search\n set ignorecase' >>~/.vimrc
-		echo -e '" Enable autocompletion\n set wildmenu' >>~/.vimrc
-		echo -e '" Highlight search\n set hlsearch' >>~/.vimrc
-		echo -e '" Allows to still search in upper case\n set smartcase' >>~/.vimrc
-		echo -e '" Show current mode on last line\n set showmode' >>~/.vimrc
+		curl -O https://raw.githubusercontent.com/HanmaDevin/Linux/main/.vimrc
 
 	fi
 fi
