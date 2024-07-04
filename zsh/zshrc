@@ -99,7 +99,7 @@ alias .4="cd ../../../.."
 alias c="clear"
 alias down="cd ~/Downloads"
 alias doc="~/Documents/"
-alias open="xgd-open"
+alias open="xdg-open"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
