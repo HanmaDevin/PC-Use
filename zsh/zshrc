@@ -89,8 +89,9 @@ source <(fzf --zsh)
 neofetch
 
 alias editzsh="nvim ~/.zshrc"
-alias l="lsd -l"
+alias ll="lsd -l"
 alias ls="lsd"
+alias lt="lsd --tree"
 alias refresh="source ~/.zshrc"
 alias ..="cd .."
 alias ...="cd ../.."
