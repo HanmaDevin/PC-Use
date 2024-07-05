@@ -101,6 +101,9 @@ alias c="clear"
 alias down="cd ~/Downloads"
 alias doc="~/Documents/"
 alias open="xdg-open"
+alias cat='bat --theme "Dracula"' 
+alias bat='bat --theme "Dracula"'    
+
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
