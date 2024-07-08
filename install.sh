@@ -78,10 +78,6 @@ if [[ $zshplugins == "y" ]]; then
   echo "source ~/zsh-plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >>~/.zshrc
 fi
 
-bash ./p10k-theme.sh
-
-cp ./zsh/zshrc "$HOME/.zshrc"
-
 read -p "Do you want to spice up nano? (y/n)" nano
 
 if [[ $nano == "y" ]]; then
@@ -143,6 +139,3 @@ cp ./mc/panels.ini "$HOME/.config/mc/"
 
 cd "$HOME/.local/share/mc/skins/"
 curl -O https://raw.githubusercontent.com/HanmaDevin/Linux/mc/dracula256.ini
-
-# Adding Grub-theme
-bash ./GRUB-Themes/Vimix-4k/install.sh
