@@ -5,7 +5,7 @@ source /etc/os-release
 
 # creating packages array with user input
 echo "Example packages are: "
-echo "git steam discord eza btop zsh neofetch mc ufw neovim unzip fzf"
+echo "git steam discord eza btop zsh neofetch yazi ufw neovim unzip fzf"
 echo "ntfs-3g wget curl okular fuse2 vlc gamemode mangohud zoxide bat"
 read -a packages -p "What packages do you want to install? (Press Enter for no installation)"
 
@@ -131,17 +131,6 @@ fi
 
 # Adding neofetch theme to maschine
 cp ./Neofetch-Theme/ozoz.txt "$HOME/.config/neofetch/config.conf"
-
-# Adding mc theme and config
-if [[ ! -d "$HOME/.local/share/mc/skins/" ]]; then
-  mkdir -p "$HOME/.local/share/mc/skins/"
-fi
-
-cp ./mc/ini "$HOME/.config/mc/"
-cp ./mc/panels.ini "$HOME/.config/mc/"
-
-cd "$HOME/.local/share/mc/skins/"
-cp ./mc/dracula256.ini "$HOME/.local/share/mc/skins/"
 
 bash ./neovim.sh
 
