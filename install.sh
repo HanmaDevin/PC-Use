@@ -145,4 +145,6 @@ cp ./mc/dracula256.ini "$HOME/.local/share/mc/skins/"
 
 bash ./neovim.sh
 
-bash ./p10k-theme.sh
+bash ./p10k-theme
+
+sudo pacman -R firefox
