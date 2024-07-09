@@ -127,7 +127,8 @@ alias open="xdg-open"
 alias cat='bat --theme "Dracula"' 
 alias bat='bat --theme "Dracula"'    
 alias cd="z"
-
+alias yz="yazi"
+alias q="exit"
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
