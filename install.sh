@@ -5,8 +5,8 @@ source /etc/os-release
 
 # creating packages array with user input
 echo "Example packages are: "
-echo "git steam discord lsd btop zsh neofetch mc ufw tree neovim unzip"
-echo "ntfs-3g wget curl okular fuse2 vlc gamemode mangohud"
+echo "git steam discord eza btop zsh neofetch mc ufw neovim unzip fzf"
+echo "ntfs-3g wget curl okular fuse2 vlc gamemode mangohud zoxide bat"
 read -a packages -p "What packages do you want to install? (Press Enter for no installation)"
 
 # variable $ID comes from the os information import
@@ -124,10 +124,13 @@ if [[ ! -d "$HOME/.config/neofetch/" ]]; then
   mkdir -p "$HOME/.config/neofetch/"
 fi
 
+read -p "Want to install google chrome with yay? (y/n)" google
+if [[ "$google" == "y" ]]; then
+  yay -S google-chrome
+fi
+
 # Adding neofetch theme to maschine
-cd "$HOME/.config/neofetch/"
-curl -O https://raw.githubusercontent.com/HanmaDevin/Linux/Neofetch-Theme/ozoz.txt
-mv ozoz.txt config.conf
+cp ./Neofetch-Theme/ozoz.txt "$HOME/.config/neofetch/config.conf"
 
 # Adding mc theme and config
 if [[ ! -d "$HOME/.local/share/mc/skins/" ]]; then
@@ -138,4 +141,8 @@ cp ./mc/ini "$HOME/.config/mc/"
 cp ./mc/panels.ini "$HOME/.config/mc/"
 
 cd "$HOME/.local/share/mc/skins/"
-curl -O https://raw.githubusercontent.com/HanmaDevin/Linux/mc/dracula256.ini
+cp ./mc/dracula256.ini "$HOME/.local/share/mc/skins/"
+
+bash ./neovim.sh
+
+bash ./p10k-theme.sh
