@@ -135,6 +135,10 @@ alias yz="yazi"
 alias q="exit"
 alias v="nvim"
 
+alias get="sudo pacman -S"
+alias remove="sudo pacman -R"
+alias update="sudo pacman -Syu"
+
 
 # git 
 alias gp="git push"
