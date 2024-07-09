@@ -133,6 +133,8 @@ alias bat='bat --theme "Dracula"'
 alias cd="z"
 alias yz="yazi"
 alias q="exit"
+alias v="nvim"
+
 
 # git 
 alias gp="git push"
