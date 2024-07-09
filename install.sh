@@ -124,6 +124,9 @@ if [[ ! -d "$HOME/.config/neofetch/" ]]; then
   mkdir -p "$HOME/.config/neofetch/"
 fi
 
+cp ./dotfiles/default.conf "$HOME/.config/hypr/conf/monitors/default.conf"
+cp ./dotfiles/browser.sh "$HOME/dotfiles/.settings/browser.sh"
+
 read -p "Want to install google chrome with yay? (y/n)" google
 if [[ "$google" == "y" ]]; then
   yay -S google-chrome
