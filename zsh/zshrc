@@ -112,10 +112,14 @@ _fzf_comprun() {
 neofetch
 
 alias editzsh="nvim ~/.zshrc"
+
+# eza
 alias ll="eza -l --icons --git --no-user --no-permissions --no-time"
 alias ls="eza --icons"
 alias lt="eza --tree --icons"
 alias refresh="source ~/.zshrc"
+
+# navigation
 alias ..="z .."
 alias ...="z ../.."
 alias .3="z ../../.."
@@ -129,6 +133,12 @@ alias bat='bat --theme "Dracula"'
 alias cd="z"
 alias yz="yazi"
 alias q="exit"
+
+# git 
+alias gp="git push"
+alias gs="git status"
+alias gc="git commit -m"
+alias gca="git commit -a -m"
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
