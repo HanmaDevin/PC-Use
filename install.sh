@@ -3,7 +3,7 @@
 # import os information location
 source /etc/os-release
 
-packages=("git" "steam" "discord" "eza" "btop" "zsh" "neofetch" "yazi" "neovim" "unzip" "fzf" "ntfs-3g" "fuse2" "wget" "curl" "gamemode" "mangohud" "zoxide" "bat")
+packages=("git" "steam" "discord" "eza" "btop" "zsh" "neofetch" "yazi" "neovim" "unzip" "fzf" "ntfs-3g" "fuse2" "wget" "curl" "gamemode" "mangohud" "zoxide" "bat" "bluez" "bluez-utils")
 
 # variable $ID comes from the os information import
 # check if array is not empty
