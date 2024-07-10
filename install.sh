@@ -75,4 +75,4 @@ cp "$HOME/Linux/dotfiles/zshrc" "$HOME/.zshrc"
 cp "$HOME/Linux/dotfiles/kitty.conf" "$HOME/.config/kitty/kitty.conf"
 
 # remove redundand programs
-sudo pacman -R dolphin code fastfetch vim pokemon-colorscripts-git
+sudo pacman -R dolphin code fastfetch vim pokemon-colorscripts-git firefox
