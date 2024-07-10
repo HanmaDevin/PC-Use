@@ -128,3 +128,7 @@ cp "$HOME/Linux/dotfiles/sddm.conf" "/etc/sddm.conf"
 
 # adding grub theme
 pyhton "$HOME/Linux/GRUB-Themes/darkmatter-theme.py -i"
+
+# adding wofi style
+mkdir -p "$HOME/.config/wofi/"
+cp "$HOME/Linux/dotfiles/wofi/style.css" "$HOME/.config/wofi/"
