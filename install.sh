@@ -54,6 +54,20 @@ if [[ $vencord == "y" ]]; then
   sh -c "$(curl -sS https://raw.githubusercontent.com/Vendicated/VencordInstaller/main/install.sh)"
 fi
 
+# adding wallpapers
+cp -a "$HOME/Linux/wallpaper/." "$HOME/.config/hyde/themes/Rosé Pine/wallpapers/"
+cp -a "$HOME/Linux/wallpaper/." "$HOME/.config/hyde/themes/Synth Wave/wallpapers/"
+cp -a "$HOME/Linux/wallpaper/." "$HOME/.config/hyde/themes/Decay Green/wallpapers/"
+cp -a "$HOME/Linux/wallpaper/." "$HOME/.config/hyde/themes/Edge Runner/wallpapers/"
+cp -a "$HOME/Linux/wallpaper/." "$HOME/.config/hyde/themes/Nordic Blue/wallpapers/"
+cp -a "$HOME/Linux/wallpaper/." "$HOME/.config/hyde/themes/Tokyo Night/wallpapers/"
+cp -a "$HOME/Linux/wallpaper/." "$HOME/.config/hyde/themes/Frosted Glass/wallpapers/"
+cp -a "$HOME/Linux/wallpaper/." "$HOME/.config/hyde/themes/Graphite Mono/wallpapers/"
+cp -a "$HOME/Linux/wallpaper/." "$HOME/.config/hyde/themes/Gruvbox Retro/wallpapers/"
+cp -a "$HOME/Linux/wallpaper/." "$HOME/.config/hyde/themes/Material Sakura/wallpapers/"
+cp -a "$HOME/Linux/wallpaper/." "$HOME/.config/hyde/themes/Catppuccin Latte/wallpapers/"
+cp -a "$HOME/Linux/wallpaper/." "$HOME/.config/hyde/themes/Catppuccin Mocha/wallpapers/"
+
 if [[ ! -d "$HOME/.config/neofetch/" ]]; then
   mkdir -p "$HOME/.config/neofetch/"
 fi
