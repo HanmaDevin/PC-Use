@@ -3,11 +3,7 @@
 # import os information location
 source /etc/os-release
 
-# creating packages array with user input
-echo "Example packages are: "
-echo "git steam discord eza btop zsh neofetch yazi ufw neovim unzip fzf"
-echo "ntfs-3g wget curl okular fuse2 vlc gamemode mangohud zoxide bat"
-read -a packages -p "What packages do you want to install? (Press Enter for no installation)"
+packages=("git" "steam" "discord" "eza" "btop" "zsh" "neofetch" "yazi" "neovim" "unzip" "fzf" "ntfs-3g" "fuse2" "wget" "curl" "gamemode" "mangohud" "zoxide" "bat")
 
 # variable $ID comes from the os information import
 # check if array is not empty
@@ -124,8 +120,14 @@ if [[ ! -d "$HOME/.config/neofetch/" ]]; then
   mkdir -p "$HOME/.config/neofetch/"
 fi
 
-cp ./dotfiles/default.conf "$HOME/.config/hypr/conf/monitors/default.conf"
-cp ./dotfiles/browser.sh "$HOME/dotfiles/.settings/browser.sh"
+cp "$HOME/Linux/dotfiles/default.conf" "$HOME/.config/hypr/conf/monitors/default.conf"
+cp "$HOME/Linux/dotfiles/browser.sh" "$HOME/dotfiles/.settings/browser.sh"
+
+# installing yay
+
+git clone https://aur.archlinux.org/yay.git
+cd "$HOME/yay"
+makepkg -si
 
 read -p "Want to install google chrome with yay? (y/n)" google
 if [[ "$google" == "y" ]]; then
@@ -133,10 +135,10 @@ if [[ "$google" == "y" ]]; then
 fi
 
 # Adding neofetch theme to maschine
-cp ./Neofetch-Theme/ozoz.txt "$HOME/.config/neofetch/config.conf"
+cp "$HOME/Linux/Neofetch-Theme/ozoz.txt" "$HOME/.config/neofetch/config.conf"
 
-bash ./neovim.sh
+bash "$HOME/Linux/neovim.sh"
 
-bash ./p10k-theme
+bash "$HOME/Linux/p10k-theme.sh"
 
 sudo pacman -R firefox
