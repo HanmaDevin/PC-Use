@@ -3,7 +3,7 @@
 # import os information location
 source /etc/os-release
 
-packages=("git" "steam" "discord" "eza" "waybar" "btop" "zsh" "neofetch" "yazi" "neovim" "unzip" "fzf" "ntfs-3g" "fuse2" "wget" "curl" "gamemode" "mangohud" "zoxide" "bat" "bluez" "bluez-utils" "alacritty")
+packages=("git" "steam" "discord" "eza" "waybar" "hyprpaper" "btop" "zsh" "neofetch" "yazi" "neovim" "unzip" "fzf" "ntfs-3g" "fuse2" "wget" "curl" "gamemode" "mangohud" "zoxide" "bat" "bluez" "bluez-utils" "alacritty")
 
 # variable $ID comes from the os information import
 # check if array is not empty
@@ -104,3 +104,12 @@ if [[ ! -d "$HOME/.config/alacritty/" ]]; then
 fi
 
 cp "$HOME/Linux/dotfiles/alacritty.toml" "$HOME/.config/alacritty/alacritty.toml"
+
+if [[ ! -d "$HOME/.config/waybar/" ]]; then
+  mkdir -r "$HOME/.config/waybar/"
+fi
+
+cp "$HOME/Linux/dotfiles/waybar/*" "$HOME/.config/waybar/"
+
+mkdir -p "$HOME/Pictures/wallpaper/"
+cp "$HOME/Linux/wallpaper/*" "$HOME/Pictures/wallpaper/"
