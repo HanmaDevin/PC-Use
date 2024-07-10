@@ -94,5 +94,8 @@ sudo ufw default allow outgoing
 sudo ufw enable
 sudo ufw status
 
+# configure zsh prompt
+p10k configure
+
 # remove redundand programs
 sudo pacman -R dolphin code fastfetch vim pokemon-colorscripts-git firefox
