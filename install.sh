@@ -47,14 +47,8 @@ fi
 
 read -p "Do you want to install oh-my-zsh? (y/n)" ohmyzsh
 
-if [[ $ohmyzsh == "y" ]]; then
-  if [[ $ID == "fedora" ]]; then
-    sudo dnf install zsh
-  elif [[ $ID == "arch" ]]; then
-    sudo pacman -S zsh
-  else
-    sudo apt install zsh
-  fi
+if [[ "$ohmyzsh" == "y" ]]; then
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 fi
 
 read -p "Do you want to install zsh-plugins (y/n)" zshplugins
@@ -74,39 +68,6 @@ if [[ $zshplugins == "y" ]]; then
   echo "source ~/zsh-plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >>~/.zshrc
 fi
 
-read -p "Do you want to spice up nano? (y/n)" nano
-
-if [[ $nano == "y" ]]; then
-  cd ~
-  if [[ -f "~/.nanorc" ]]; then
-    rm ~/.nanorc
-  fi
-
-  curl -O https://raw.githubusercontent.com/HanmaDevin/Linux/main/.nanorc
-
-fi
-
-read -p "Do you have vim installed? (y/n)" vim_installed
-
-if [[ $vim_installed == "n" ]]; then
-
-  if [[ $ID == "fedora" ]]; then
-    sudo dnf install vim
-  elif [[ $ID == "arch" ]]; then
-    sudo pacman -S vim
-  else
-    sudo apt install vim
-  fi
-
-  read -p "Do you want to spice up vim? (y/n)" vim
-
-  if [[ $vim == "y" ]]; then
-    cd ~
-    curl -O https://raw.githubusercontent.com/HanmaDevin/Linux/main/.vimrc
-
-  fi
-fi
-
 read -p "Do you want to install Vencord? (y/n)" vencord
 
 if [[ $vencord == "y" ]]; then
@@ -120,12 +81,9 @@ if [[ ! -d "$HOME/.config/neofetch/" ]]; then
   mkdir -p "$HOME/.config/neofetch/"
 fi
 
-cp "$HOME/Linux/dotfiles/default.conf" "$HOME/.config/hypr/conf/monitors/default.conf"
-cp "$HOME/Linux/dotfiles/browser.sh" "$HOME/dotfiles/.settings/browser.sh"
-
 # installing yay
 
-git clone https://aur.archlinux.org/yay.git
+git clone "https://aur.archlinux.org/yay.git"
 cd "$HOME/yay"
 makepkg -si
 
@@ -141,4 +99,8 @@ bash "$HOME/Linux/neovim.sh"
 
 bash "$HOME/Linux/p10k-theme.sh"
 
-sudo pacman -R firefox
+if [[ ! -d "$HOME/.config/alacritty/" ]]; then
+  mkdir -r "$HOME/.config/alacritty/"
+fi
+
+cp "$HOME/Linux/dotfiles/alacritty.toml" "$HOME/.config/alacritty/alacritty.toml"
