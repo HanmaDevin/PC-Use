@@ -124,4 +124,4 @@ cp "$HOME/Linux/dotfiles/hyprpaper.conf" "$HOME/.config/hypr/hyprpaper.conf"
 # adding sddm theme
 mkdir -p "/usr/share/sddm/themes/"
 cp -a "$HOME/Linux/sddm-themes/sugar-candy/." "/usr/share/sddm/themes/"
-cp "$HOME/Linux/sddm.conf" "/etc/sddm.conf"
+cp "$HOME/Linux/dotfiles/sddm.conf" "/etc/sddm.conf"
