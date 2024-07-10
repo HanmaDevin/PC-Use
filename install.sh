@@ -78,7 +78,7 @@ if [[ "$google" == "y" ]]; then
 fi
 
 # Adding neofetch theme to maschine
-cp "$HOME/Linux/Neofetch-Theme/ozoz.txt" "$HOME/.config/neofetch/config.conf"
+cp "$HOME/Linux/Neofetch-Theme/config.conf" "$HOME/.config/neofetch/config.conf"
 
 bash "$HOME/Linux/neovim.sh"
 
