@@ -140,6 +140,8 @@ alias remove="sudo pacman -R"
 alias update="sudo pacman -Syu"
 
 
+alias mkdir="mkdir -p"
+
 # git 
 alias gp="git push"
 alias gs="git status"
