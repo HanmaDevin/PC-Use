@@ -6,7 +6,7 @@ bash "$HOME/hyprdots/Scripts/install.sh"
 # import os information location
 source /etc/os-release
 
-packages=("git" "steam" "discord" "eza" "btop" "zsh" "neofetch" "yazi" "neovim" "unzip" "zip" "fzf" "ntfs-3g" "fuse2" "wget" "curl" "gamemode" "mangohud" "zoxide" "bat" "bluez" "bluez-utils")
+packages=("git" "steam" "discord" "eza" "btop" "zsh" "neofetch" "ufw" "yazi" "neovim" "unzip" "zip" "fzf" "ntfs-3g" "fuse2" "wget" "curl" "gamemode" "mangohud" "zoxide" "bat" "bluez" "bluez-utils")
 
 # variable $ID comes from the os information import
 # check if array is not empty
@@ -73,6 +73,12 @@ cp "$HOME/Linux/dotfiles/hyprland.conf" "$HOME/.config/hypr/hyprland.conf"
 cp "$HOME/Linux/dotfiles/keybindings.conf" "$HOME/.config/hypr/keybindings.conf"
 cp "$HOME/Linux/dotfiles/zshrc" "$HOME/.zshrc"
 cp "$HOME/Linux/dotfiles/kitty.conf" "$HOME/.config/kitty/kitty.conf"
+
+# configure firewall with ufw
+sudo ufw default deny incoming
+sudo ufw default allow outgoing
+sudo ufw enable
+sudo ufw status
 
 # remove redundand programs
 sudo pacman -R dolphin code fastfetch vim pokemon-colorscripts-git firefox
