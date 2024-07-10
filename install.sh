@@ -125,3 +125,6 @@ cp "$HOME/Linux/dotfiles/hyprpaper.conf" "$HOME/.config/hypr/hyprpaper.conf"
 mkdir -p "/usr/share/sddm/themes/"
 cp -a "$HOME/Linux/sddm-themes/sugar-candy/." "/usr/share/sddm/themes/"
 cp "$HOME/Linux/dotfiles/sddm.conf" "/etc/sddm.conf"
+
+# adding grub theme
+pyhton "$HOME/Linux/GRUB-Themes/darkmatter-theme.py -i"
