@@ -3,7 +3,7 @@
 # import os information location
 source /etc/os-release
 
-packages=("git" "steam" "discord" "eza" "waybar" "hyprpaper" "btop" "zsh" "neofetch" "yazi" "neovim" "unzip" "fzf" "ntfs-3g" "fuse2" "wget" "curl" "gamemode" "mangohud" "zoxide" "bat" "bluez" "bluez-utils" "alacritty")
+packages=("git" "steam" "discord" "eza" "waybar" "hyprpaper" "btop" "zsh" "neofetch" "yazi" "neovim" "unzip" "zip" "fzf" "ntfs-3g" "fuse2" "qt5‑graphicaleffects" "qt5‑quickcontrols2" "qt5‑svg" "wget" "curl" "gamemode" "mangohud" "zoxide" "bat" "bluez" "bluez-utils" "alacritty")
 
 # variable $ID comes from the os information import
 # check if array is not empty
@@ -132,3 +132,6 @@ pyhton "$HOME/Linux/GRUB-Themes/darkmatter-theme.py -i"
 # adding wofi style
 mkdir -p "$HOME/.config/wofi/"
 cp "$HOME/Linux/dotfiles/wofi/style.css" "$HOME/.config/wofi/"
+
+# adding font
+unzip "$HOME/Linux/Fonts/FiraCode.zip" -d "/usr/share/fonts/"
