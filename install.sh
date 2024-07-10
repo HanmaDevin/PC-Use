@@ -3,7 +3,7 @@
 # import os information location
 source /etc/os-release
 
-packages=("git" "steam" "discord" "eza" "waybar" "hyprpaper" "btop" "zsh" "neofetch" "yazi" "neovim" "unzip" "zip" "fzf" "ntfs-3g" "fuse2" "qt5‑graphicaleffects" "qt5‑quickcontrols2" "qt5‑svg" "wget" "curl" "gamemode" "mangohud" "zoxide" "bat" "bluez" "bluez-utils" "alacritty")
+packages=("git" "steam" "discord" "eza" "btop" "zsh" "neofetch" "yazi" "neovim" "unzip" "zip" "fzf" "ntfs-3g" "fuse2" "wget" "curl" "gamemode" "mangohud" "zoxide" "bat" "bluez" "bluez-utils" "alacritty")
 
 # variable $ID comes from the os information import
 # check if array is not empty
@@ -45,47 +45,15 @@ if [[ $sshready == "y" ]]; then
   echo $(cat ~/.ssh/id_ed25519.pub)
 fi
 
-read -p "Do you want to install oh-my-zsh? (y/n)" ohmyzsh
-
-if [[ "$ohmyzsh" == "y" ]]; then
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-fi
-
-read -p "Do you want to install zsh-plugins (y/n)" zshplugins
-
-if [[ $zshplugins == "y" ]]; then
-  if [[ -d "~/zsh-plugins" ]]; then
-    rm -r ~/zsh-plugins
-  fi
-  cd ~
-  mkdir zsh-plugins
-  cd zsh-plugins
-  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
-  sleep 1
-  git clone https://github.com/zsh-users/zsh-autosuggestions.git
-  sleep 1
-  echo "source ~/zsh-plugins/zsh-autosuggestions/zsh-autosuggestions.zsh" >>~/.zshrc
-  echo "source ~/zsh-plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >>~/.zshrc
-fi
-
 read -p "Do you want to install Vencord? (y/n)" vencord
 
 if [[ $vencord == "y" ]]; then
   sh -c "$(curl -sS https://raw.githubusercontent.com/Vendicated/VencordInstaller/main/install.sh)"
 fi
 
-echo "Moving dotfiles to system"
-sleep 1
-
 if [[ ! -d "$HOME/.config/neofetch/" ]]; then
   mkdir -p "$HOME/.config/neofetch/"
 fi
-
-# installing yay
-
-git clone "https://aur.archlinux.org/yay.git"
-cd "$HOME/yay"
-makepkg -si
 
 read -p "Want to install google chrome with yay? (y/n)" google
 if [[ "$google" == "y" ]]; then
@@ -96,42 +64,3 @@ fi
 cp "$HOME/Linux/Neofetch-Theme/ozoz.txt" "$HOME/.config/neofetch/config.conf"
 
 bash "$HOME/Linux/neovim.sh"
-
-bash "$HOME/Linux/p10k-theme.sh"
-
-if [[ ! -d "$HOME/.config/alacritty/" ]]; then
-  mkdir -r "$HOME/.config/alacritty/"
-fi
-
-# adding alacritty
-cp "$HOME/Linux/dotfiles/alacritty.toml" "$HOME/.config/alacritty/alacritty.toml"
-
-# adding waybar
-if [[ ! -d "$HOME/.config/waybar/" ]]; then
-  mkdir -r "$HOME/.config/waybar/"
-fi
-
-cp "$HOME/Linux/dotfiles/waybar/*" "$HOME/.config/waybar/"
-
-# adding wallpaper
-mkdir -p "$HOME/Pictures/wallpaper/"
-cp "$HOME/Linux/wallpaper/*" "$HOME/Pictures/wallpaper/"
-
-# adding hyprland config
-cp "$HOME/Linux/dotfiles/hyprland.conf" "$HOME/.config/hypr/hyprland.conf"
-cp "$HOME/Linux/dotfiles/hyprpaper.conf" "$HOME/.config/hypr/hyprpaper.conf"
-
-# adding sddm theme
-mkdir -p "/usr/share/sddm/themes/"
-cp -a "$HOME/Linux/sddm-themes/sugar-candy/." "/usr/share/sddm/themes/"
-cp "$HOME/Linux/dotfiles/sddm.conf" "/etc/sddm.conf"
-
-# adding grub theme
-pyhton "$HOME/Linux/GRUB-Themes/darkmatter-theme.py -i"
-
-# adding wofi style
-mkdir -p "$HOME/.config/wofi/"
-cp "$HOME/Linux/dotfiles/wofi/style.css" "$HOME/.config/wofi/"
-
-# adding font
-unzip "$HOME/Linux/Fonts/FiraCode.zip" -d "/usr/share/fonts/"
