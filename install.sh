@@ -103,13 +103,20 @@ if [[ ! -d "$HOME/.config/alacritty/" ]]; then
   mkdir -r "$HOME/.config/alacritty/"
 fi
 
+# adding alacritty
 cp "$HOME/Linux/dotfiles/alacritty.toml" "$HOME/.config/alacritty/alacritty.toml"
 
+# adding waybar
 if [[ ! -d "$HOME/.config/waybar/" ]]; then
   mkdir -r "$HOME/.config/waybar/"
 fi
 
 cp "$HOME/Linux/dotfiles/waybar/*" "$HOME/.config/waybar/"
 
+# adding wallpaper
 mkdir -p "$HOME/Pictures/wallpaper/"
 cp "$HOME/Linux/wallpaper/*" "$HOME/Pictures/wallpaper/"
+
+# adding hyprland config
+cp "$HOME/Linux/dotfiles/hyprland.conf" "$HOME/.config/hypr/hyprland.conf"
+cp "$HOME/Linux/dotfiles/hyprpaper.conf" "$HOME/.config/hypr/hyprpaper.conf"
