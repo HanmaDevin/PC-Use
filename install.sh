@@ -120,3 +120,8 @@ cp "$HOME/Linux/wallpaper/*" "$HOME/Pictures/wallpaper/"
 # adding hyprland config
 cp "$HOME/Linux/dotfiles/hyprland.conf" "$HOME/.config/hypr/hyprland.conf"
 cp "$HOME/Linux/dotfiles/hyprpaper.conf" "$HOME/.config/hypr/hyprpaper.conf"
+
+# adding sddm theme
+mkdir -p "/usr/share/sddm/themes/"
+cp -a "$HOME/Linux/sddm-themes/sugar-candy/." "/usr/share/sddm/themes/"
+cp "$HOME/Linux/sddm.conf" "/etc/sddm.conf"
