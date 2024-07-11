@@ -72,10 +72,9 @@ if [[ ! -d "$HOME/.config/neofetch/" ]]; then
   mkdir -p "$HOME/.config/neofetch/"
 fi
 
-read -p "Want to install google chrome with yay? (y/n)" google
-if [[ "$google" == "y" ]]; then
-  yay -S google-chrome
-fi
+# installing software with yay
+yay -S google-chrome
+yay -S heroic-games-launcher-bin
 
 # Adding neofetch theme to maschine
 cp "$HOME/Linux/Neofetch-Theme/config.conf" "$HOME/.config/neofetch/config.conf"
