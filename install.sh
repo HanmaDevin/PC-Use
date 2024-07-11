@@ -94,6 +94,9 @@ sudo ufw default allow outgoing
 sudo ufw enable
 sudo ufw status
 
+# install texlive
+sudo pacman -S texlive
+
 # configure zsh prompt
 p10k configure
 
