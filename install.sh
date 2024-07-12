@@ -84,6 +84,9 @@ cp "$HOME/Linux/dotfiles/keybindings.conf" "$HOME/.config/hypr/keybindings.conf"
 cp "$HOME/Linux/dotfiles/zshrc" "$HOME/.zshrc"
 cp "$HOME/Linux/dotfiles/kitty.conf" "$HOME/.config/kitty/kitty.conf"
 
+# adding neovim plugin
+cp "$HOME/Linux/dotfiles/lazygit.lua" "$HOME/.config/nvim/lua/plugins/"
+
 # configure firewall with ufw
 sudo ufw default deny incoming
 sudo ufw default allow outgoing
