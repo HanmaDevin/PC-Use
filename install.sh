@@ -3,7 +3,7 @@
 # import os information location
 source /etc/os-release
 
-packages=("git" "steam" "discord" "lazygit" "eza" "btop" "zsh" "neofetch" "ufw" "yazi" "neovim" "unzip" "zip" "fzf" "ntfs-3g" "fuse2" "wget" "curl" "gamemode" "mangohud" "zoxide" "bat" "bluez" "bluez-utils")
+packages=("git" "steam" "discord" "lazygit" "eza" "btop" "zsh" "okular" "neofetch" "ufw" "yazi" "neovim" "unzip" "zip" "fzf" "ntfs-3g" "fuse2" "wget" "curl" "gamemode" "mangohud" "zoxide" "bat" "bluez" "bluez-utils")
 
 # variable $ID comes from the os information import
 # check if array is not empty
@@ -86,6 +86,9 @@ cp "$HOME/Linux/dotfiles/kitty.conf" "$HOME/.config/kitty/kitty.conf"
 
 # adding neovim plugin
 cp "$HOME/Linux/dotfiles/lazygit.lua" "$HOME/.config/nvim/lua/plugins/"
+
+# adding yazi config
+cp "$HOME/Linux/dotfiles/yazi.toml" "$HOME/.config/yazi/"
 
 # configure firewall with ufw
 sudo ufw default deny incoming
