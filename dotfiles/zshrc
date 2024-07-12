@@ -130,6 +130,8 @@ alias gs="git status"
 alias gc="git commit -m"
 alias gca="git commit -a -m"
 alias gpull="git pull"
+alias lg="lazygit"
+
 
 # Handy change dir shortcuts
 alias ..='z ..'
