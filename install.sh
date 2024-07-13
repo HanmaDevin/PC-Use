@@ -168,6 +168,15 @@ cp "$HOME/Linux/dotfiles/yazi.toml" "$HOME/.config/yazi/"
 echo "Finished!"
 sleep 2
 
+echo "Adding wallpaper"
+sleep 2
+
+mkdir -p ~/wallpaper/
+cp -a "$HOME/Linux/wallpaper/." "$HOME/wallpaper/"
+
+echo "Finished!"
+sleep 2
+
 # configure firewall with ufw
 echo "configure firewall"
 sleep 2
