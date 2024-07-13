@@ -34,11 +34,14 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
 
-exec_always feh --bg-max $HOME/wallpaper/animegirl.jpg
+exec_always feh --bg-max $HOME/wallpaper/lara-croft-gz.jpg
 
 exec_always --no-startup-id polybar
 
 exec discord
+
+exec --no-startup-id xrandr eDP --off
+exec --no-startup-id xrandr HDMI-A-0 --primary --auto
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -51,6 +54,8 @@ bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioPause exec playerctl play-pause
 bindsym XF86AudioPrev exec playerctl previous
 bindsym XF86AudioNext exec playerctl next
+
+bindsym $mod+mod1+l exec i3lock -c 3b444b
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
