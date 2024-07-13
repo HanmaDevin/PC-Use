@@ -32,13 +32,6 @@ cd "$HOME/yay"
 sleep 2
 makepkg -si
 
-# from AUR: isntalling bumblebee-status
-git clone "https://aur.archlinux.org/bumblebee-status.git"
-sleep 2
-cd bumblebee-status
-sleep 2
-makepkg -sicr
-
 read -p "Want to configure git? (y/n)" gitconfig
 
 if [[ $gitconfig == "y" ]]; then
