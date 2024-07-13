@@ -34,8 +34,7 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
 
-
-exec_always feh --bg-fill $HOME/wallpaper/anime-girl-red-hair-halloween.jpg
+exec_always feh --bg-max $HOME/wallpaper/anime-girl-red-hair-halloween.jpg
 
 exec discord
 
