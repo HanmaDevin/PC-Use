@@ -77,6 +77,15 @@ yay -S heroic-games-launcher-bin
 # Adding neofetch theme to maschine
 cp "$HOME/Linux/Neofetch-Theme/config.conf" "$HOME/.config/neofetch/config.conf"
 
+# adding i3 config
+cp "$HOME/Linux/dotfiles/config" "$HOME/.config/i3/config"
+
+# adding cursor
+sudo cp -r "$HOME/Linux/Cursor/Bibata-Modern-Ice/" "/usr/share/icons/"
+
+# adding fonts
+sudo unzip "$HOME/Linux/Fonts/ProFont.zip" -d "/usr/share/fonts/"
+
 # adding kitty config
 cp "$HOME/Linux/dotfiles/diff.conf" "$HOME/.config/kitty/"
 cp "$HOME/Linux/dotfiles/dracula.conf" "$HOME/.config/kitty/"
