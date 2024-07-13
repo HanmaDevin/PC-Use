@@ -25,14 +25,19 @@ if [[ ${#packages[@]} ]]; then
   fi
 fi
 
-# adding rofi theme
-cp "$HOME/Linux/dotfiles/config1.rasi" "$HOME/.config/rofi/config.rasi"
-
 # installing yay
 git clone "https://aur.archlinux.org/yay.git"
 sleep 2
 cd "$HOME/yay"
+sleep 2
 makepkg -si
+
+# from AUR: isntalling bumblebee-status
+git clone "https://aur.archlinux.org/bumblebee-status.git"
+sleep 2
+cd bumblebee-status
+sleep 2
+makepkg -sicr
 
 read -p "Want to configure git? (y/n)" gitconfig
 
@@ -68,12 +73,15 @@ fi
 yay -S google-chrome
 yay -S heroic-games-launcher-bin
 
+# adding all configs
 # Adding neofetch theme to maschine
 cp "$HOME/Linux/Neofetch-Theme/config.conf" "$HOME/.config/neofetch/config.conf"
 
-bash "$HOME/Linux/neovim.sh"
-
+# adding kitty config
 cp "$HOME/Linux/dotfiles/kitty.conf" "$HOME/.config/kitty/"
+
+# adding rofi theme
+cp "$HOME/Linux/dotfiles/config1.rasi" "$HOME/.config/rofi/config.rasi"
 
 # adding neovim plugin
 cp "$HOME/Linux/dotfiles/lazygit.lua" "$HOME/.config/nvim/lua/plugins/"
@@ -89,3 +97,7 @@ sudo ufw status
 
 # remove redundand programs
 sudo pacman -R dolphin code fastfetch vim pokemon-colorscripts-git firefox nano
+
+# run scripts
+bash "$HOME/Linux/neovim.sh"
+bash "$HOME/Linux/p10k-theme.sh"
