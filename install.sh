@@ -78,6 +78,8 @@ yay -S heroic-games-launcher-bin
 cp "$HOME/Linux/Neofetch-Theme/config.conf" "$HOME/.config/neofetch/config.conf"
 
 # adding kitty config
+cp "$HOME/Linux/dotfiles/diff.conf" "$HOME/.config/kitty/"
+cp "$HOME/Linux/dotfiles/dracula.conf" "$HOME/.config/kitty/"
 cp "$HOME/Linux/dotfiles/kitty.conf" "$HOME/.config/kitty/"
 
 # adding rofi theme
