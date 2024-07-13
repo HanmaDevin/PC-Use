@@ -1,3 +1,5 @@
+#!/bin/bash
+
 echo "Adding zsh plugins"
 sleep 2
 

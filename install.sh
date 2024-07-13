@@ -1,9 +1,9 @@
-#! /bin/bash
+#!/bin/bash
 
 # import os information location
 source /etc/os-release
 
-packages=("git" "steam" "discord" "iw" "python-pipx" "polybar" "pavucontrol" "pulseaudio" "lazygit" "eza" "texlive" "rofi" "btop" "zsh" "okular" "ttf-font-awesome" "neofetch" "feh" "blueman" "" "libreoffice-still" "ufw" "yazi" "neovim" "unzip" "zip" "fzf" "ntfs-3g" "fuse2" "wget" "curl" "gamemode" "mangohud" "zoxide" "bat" "bluez" "bluez-utils" "kitty")
+packages=("git" "steam" "discord" "iw" "python-pipx" "polybar" "pavucontrol" "lightdm-webkit2-greeter" "lazygit" "eza" "texlive" "rofi" "btop" "zsh" "okular" "ttf-font-awesome" "neofetch" "feh" "blueman" "" "libreoffice-still" "ufw" "yazi" "neovim" "unzip" "zip" "fzf" "ntfs-3g" "fuse2" "wget" "curl" "gamemode" "mangohud" "zoxide" "bat" "bluez" "bluez-utils" "kitty")
 
 # variable $ID comes from the os information import
 # check if array is not empty
@@ -24,13 +24,6 @@ if [[ ${#packages[@]} ]]; then
     done
   fi
 fi
-
-# installing yay
-git clone "https://aur.archlinux.org/yay.git"
-sleep 2
-cd "$HOME/yay"
-sleep 2
-makepkg -si
 
 read -p "Want to configure git? (y/n)" gitconfig
 
@@ -61,10 +54,6 @@ fi
 if [[ ! -d "$HOME/.config/neofetch/" ]]; then
   mkdir -p "$HOME/.config/neofetch/"
 fi
-
-# installing software with yay
-yay -S google-chrome
-yay -S heroic-games-launcher-bin
 
 # adding all configs
 # Adding neofetch theme to maschine
@@ -217,7 +206,10 @@ echo "running neovim.sh"
 sleep 2
 
 bash "$HOME/Linux/neovim.sh"
+bash "$HOME/Linux/yay.sh"
+bash "$HOME/Linux/zsh-plugins.sh"
 bash "$HOME/Linux/p10k-theme.sh"
+bash "$HOME/Linux/polybar.sh"
 
 echo "Finished!"
 echo "Good Bye!"
