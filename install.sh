@@ -125,6 +125,15 @@ sudo grub-mkconfig -o /boot/grub/grub.cfg
 echo "Finished!"
 sleep 2
 
+echo "Adding cursor theme and size"
+sleep 2
+
+cp "$HOME/Linux/dotfiles/Xresources" "$HOME/.Xresources"
+xrdb -merge "$HOME/.Xresources"
+
+echo "Finished!"
+sleep 2
+
 # adding sddm theme
 echo "Adding sddm theme"
 sleep 2
