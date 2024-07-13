@@ -75,52 +75,121 @@ yay -S heroic-games-launcher-bin
 
 # adding all configs
 # Adding neofetch theme to maschine
+echo "Adding neofetch config"
+sleep 2
+
 cp "$HOME/Linux/Neofetch-Theme/config.conf" "$HOME/.config/neofetch/config.conf"
 
+echo "Finished!"
+sleep 2
+
 # adding i3 config
+echo "Adding i3 config"
+sleep 2
+
 cp "$HOME/Linux/dotfiles/config" "$HOME/.config/i3/config"
 
+echo "Finished!"
+sleep 2
+
 # adding cursor
+echo "Adding cursor theme"
+sleep 2
+
 mkdir -p "$HOME/.icons/"
 cp -r "$HOME/Linux/Cursor/Bibata-Modern-Ice/" "$HOME/.icons/"
+
+echo "Finished!"
+sleep 2
 
 # adding cursor
 sudo cp -r "$HOME/Linux/Cursor/Bibata-Modern-Ice/" "/usr/share/icons/"
 
 # adding fonts
+echo "Adding fonts"
+sleep 2
+
 sudo unzip "$HOME/Linux/Fonts/ProFont.zip" -d "/usr/share/fonts/"
 
+echo "Finished!"
+sleep 2
+
 # adding grub theme
+echo "Adding Grub-Theme"
+sleep 2
+
 cd "$HOME/Linux/Grub-Theme/"
 sudo python darkmatter-theme.py -i
 
+echo "Finished!"
+sleep 2
+
 # adding sddm theme
+echo "Adding sddm theme"
+sleep 2
+
 sudo tar -xzvf "$HOME/Linux/SDDM-Theme/sddm-chili.tar" -C "/usr/share/sddm/themes/"
 sudo cp "$HOME/Linux/SDDM-Theme/default.conf" "/usr/lib/sddm/sddm.conf.d/default.conf"
 
+echo "Finished!"
+sleep 2
+
 # adding kitty config
+echo "Adding kitty config"
+sleep 2
+
 cp "$HOME/Linux/dotfiles/diff.conf" "$HOME/.config/kitty/"
 cp "$HOME/Linux/dotfiles/dracula.conf" "$HOME/.config/kitty/"
 cp "$HOME/Linux/dotfiles/kitty.conf" "$HOME/.config/kitty/"
 
+echo "Adding rofi theme"
+sleep 2
 # adding rofi theme
 cp "$HOME/Linux/dotfiles/config1.rasi" "$HOME/.config/rofi/config.rasi"
 
+echo "Finished!"
+sleep 2
+
 # adding neovim plugin
+echo "Adding neovim plugin"
+sleep 2
+
 cp "$HOME/Linux/dotfiles/lazygit.lua" "$HOME/.config/nvim/lua/plugins/"
 
+echo "Finished!"
+sleep 2
+
 # adding yazi config
+echo "Adding yazi config"
+sleep 2
+
 cp "$HOME/Linux/dotfiles/yazi.toml" "$HOME/.config/yazi/"
 
+echo "Finished!"
+sleep 2
+
 # configure firewall with ufw
+echo "configure firewall"
+sleep 2
+
 sudo ufw default deny incoming
 sudo ufw default allow outgoing
 sudo ufw enable
 sudo ufw status
 
+echo "Finished!"
+sleep 2
+
 # remove redundand programs
 sudo pacman -R dolphin code fastfetch vim pokemon-colorscripts-git firefox nano
 
 # run scripts
+echo "running neovim.sh"
+sleep 2
+
 bash "$HOME/Linux/neovim.sh"
 bash "$HOME/Linux/p10k-theme.sh"
+
+echo "Finished!"
+echo "Good Bye!"
+sleep 2

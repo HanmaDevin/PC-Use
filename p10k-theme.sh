@@ -2,4 +2,17 @@
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
-echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >>~/.zshrc
+
+echo "Adding zsh plugins"
+sleep 2
+
+git clone "https://github.com/zsh-users/zsh-syntax-highlighting.git"
+git clone "https://github.com/zsh-users/zsh-autosuggestions.git"
+
+echo "Adding zshrc"
+sleep 2
+
+cp "$HOME/Linux/dotfiles/zshrc" "$HOME/.zshrc"
+
+echo "Finished!"
+sleep 2
