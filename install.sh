@@ -90,6 +90,10 @@ sudo cp -r "$HOME/Linux/Cursor/Bibata-Modern-Ice/" "/usr/share/icons/"
 # adding fonts
 sudo unzip "$HOME/Linux/Fonts/ProFont.zip" -d "/usr/share/fonts/"
 
+# adding grub theme
+cd "$HOME/Linux/Grub-Theme/"
+sudo python darkmatter-theme.py -i
+
 # adding kitty config
 cp "$HOME/Linux/dotfiles/diff.conf" "$HOME/.config/kitty/"
 cp "$HOME/Linux/dotfiles/dracula.conf" "$HOME/.config/kitty/"
