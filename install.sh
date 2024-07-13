@@ -81,6 +81,10 @@ cp "$HOME/Linux/Neofetch-Theme/config.conf" "$HOME/.config/neofetch/config.conf"
 cp "$HOME/Linux/dotfiles/config" "$HOME/.config/i3/config"
 
 # adding cursor
+mkdir -p "$HOME/.icons/"
+cp -r "$HOME/Linux/Cursor/Bibata-Modern-Ice/" "$HOME/.icons/"
+
+# adding cursor
 sudo cp -r "$HOME/Linux/Cursor/Bibata-Modern-Ice/" "/usr/share/icons/"
 
 # adding fonts
