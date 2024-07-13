@@ -3,7 +3,7 @@
 # import os information location
 source /etc/os-release
 
-packages=("git" "steam" "discord" "lazygit" "eza" "btop" "zsh" "okular" "neofetch" "libreoffice-still" "ufw" "yazi" "neovim" "unzip" "zip" "fzf" "ntfs-3g" "fuse2" "wget" "curl" "gamemode" "mangohud" "zoxide" "bat" "bluez" "bluez-utils" "kitty")
+packages=("git" "steam" "discord" "lazygit" "eza" "texlive" "btop" "zsh" "okular" "ttf-dejavu-nerd" "neofetch" "feh" "blueman" "" "libreoffice-still" "ufw" "yazi" "neovim" "unzip" "zip" "fzf" "ntfs-3g" "fuse2" "wget" "curl" "gamemode" "mangohud" "zoxide" "bat" "bluez" "bluez-utils" "kitty")
 
 # variable $ID comes from the os information import
 # check if array is not empty
@@ -69,6 +69,8 @@ cp "$HOME/Linux/Neofetch-Theme/config.conf" "$HOME/.config/neofetch/config.conf"
 
 bash "$HOME/Linux/neovim.sh"
 
+cp "$HOME/Linux/dotfiles/kitty.conf" "$HOME/.config/kitty/"
+
 # adding neovim plugin
 cp "$HOME/Linux/dotfiles/lazygit.lua" "$HOME/.config/nvim/lua/plugins/"
 
@@ -81,14 +83,5 @@ sudo ufw default allow outgoing
 sudo ufw enable
 sudo ufw status
 
-# install texlive
-sudo pacman -S texlive
-
-# installing oh-my-zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
-echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >>~/.zshrc
-
 # remove redundand programs
-sudo pacman -R dolphin code fastfetch vim pokemon-colorscripts-git firefox
+sudo pacman -R dolphin code fastfetch vim pokemon-colorscripts-git firefox nano
