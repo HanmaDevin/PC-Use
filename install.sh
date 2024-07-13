@@ -118,8 +118,9 @@ sleep 2
 echo "Adding Grub-Theme"
 sleep 2
 
-cd "$HOME/Linux/Grub-Theme/"
-sudo python darkmatter-theme.py -i
+sudo cp -r "$HOME/Linux/Grub-Theme/dracula/" "/boot/grub/themes/"
+sudo cp "$HOME/Linux/dotfiles/grub" "/etc/default/grub"
+sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 echo "Finished!"
 sleep 2
