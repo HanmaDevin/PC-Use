@@ -3,7 +3,7 @@
 # import os information location
 source /etc/os-release
 
-packages=("git" "steam" "discord" "iw" "python-pipx" "pulseaudio" "lazygit" "eza" "texlive" "rofi" "btop" "zsh" "okular" "ttf-font-awesome" "neofetch" "feh" "blueman" "" "libreoffice-still" "ufw" "yazi" "neovim" "unzip" "zip" "fzf" "ntfs-3g" "fuse2" "wget" "curl" "gamemode" "mangohud" "zoxide" "bat" "bluez" "bluez-utils" "kitty")
+packages=("git" "steam" "discord" "iw" "python-pipx" "polybar" "pavucontrol" "pulseaudio" "lazygit" "eza" "texlive" "rofi" "btop" "zsh" "okular" "ttf-font-awesome" "neofetch" "feh" "blueman" "" "libreoffice-still" "ufw" "yazi" "neovim" "unzip" "zip" "fzf" "ntfs-3g" "fuse2" "wget" "curl" "gamemode" "mangohud" "zoxide" "bat" "bluez" "bluez-utils" "kitty")
 
 # variable $ID comes from the os information import
 # check if array is not empty
@@ -88,6 +88,15 @@ echo "Adding i3 config"
 sleep 2
 
 cp "$HOME/Linux/dotfiles/config" "$HOME/.config/i3/config"
+
+echo "Finished!"
+sleep 2
+
+echo "Adding polybar config"
+sleep 2
+
+mkdir -p "$HOME/.config/polybar/"
+cp "$HOME/Linux/dotfiles/config.ini" "$HOME/.config/polybar/config.ini"
 
 echo "Finished!"
 sleep 2
