@@ -209,7 +209,6 @@ bash "$HOME/Linux/neovim.sh"
 bash "$HOME/Linux/yay.sh"
 bash "$HOME/Linux/zsh-plugins.sh"
 bash "$HOME/Linux/p10k-theme.sh"
-bash "$HOME/Linux/polybar.sh"
 
 echo "Finished!"
 echo "Good Bye!"
