@@ -34,14 +34,14 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
 
+exec --no-startup-id xrandr --output eDP --off
+exec --no-startup-id xrandr --output HDMI-A-0 --primary --preferred
+
 exec_always feh --bg-max $HOME/wallpaper/lara-croft-gz.jpg
 
-exec_always --no-startup-id polybar
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh --shades
 
 exec discord
-
-exec --no-startup-id xrandr eDP --off
-exec --no-startup-id xrandr HDMI-A-0 --primary --auto
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
