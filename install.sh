@@ -94,6 +94,10 @@ sudo unzip "$HOME/Linux/Fonts/ProFont.zip" -d "/usr/share/fonts/"
 cd "$HOME/Linux/Grub-Theme/"
 sudo python darkmatter-theme.py -i
 
+# adding sddm theme
+sudo tar -xzvf "$HOME/Linux/SDDM-Theme/sddm-chili.tar" -C "/usr/share/sddm/themes/"
+sudo cp "$HOME/Linux/SDDM-Theme/default.conf" "/usr/lib/sddm/sddm.conf.d/default.conf"
+
 # adding kitty config
 cp "$HOME/Linux/dotfiles/diff.conf" "$HOME/.config/kitty/"
 cp "$HOME/Linux/dotfiles/dracula.conf" "$HOME/.config/kitty/"
