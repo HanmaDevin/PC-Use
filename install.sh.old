@@ -3,7 +3,7 @@
 # import os information location
 source /etc/os-release
 
-packages=("git" "steam" "discord" "lazygit" "eza" "btop" "zsh" "okular" "neofetch" "libreoffice-still" "ufw" "yazi" "neovim" "unzip" "zip" "fzf" "ntfs-3g" "fuse2" "wget" "curl" "gamemode" "mangohud" "zoxide" "bat" "bluez" "bluez-utils" "kitty")
+packages=("git" "steam" "discord" "lazygit" "eza" "btop" "zsh" "okular" "neofetch" "ufw" "yazi" "neovim" "unzip" "zip" "fzf" "ntfs-3g" "fuse2" "wget" "curl" "gamemode" "mangohud" "zoxide" "bat" "bluez" "bluez-utils")
 
 # variable $ID comes from the os information import
 # check if array is not empty
@@ -24,11 +24,6 @@ if [[ ${#packages[@]} ]]; then
     done
   fi
 fi
-
-# installing yay
-git clone "https://aur.archlinux.org/yay.git"
-cd "$HOME/yay"
-makepkg -si
 
 read -p "Want to configure git? (y/n)" gitconfig
 
@@ -56,6 +51,20 @@ if [[ $vencord == "y" ]]; then
   sh -c "$(curl -sS https://raw.githubusercontent.com/Vendicated/VencordInstaller/main/install.sh)"
 fi
 
+# adding wallpapers
+cp -a "$HOME/Linux/wallpaper/." "$HOME/.config/hyde/themes/Rosé Pine/wallpapers/"
+cp -a "$HOME/Linux/wallpaper/." "$HOME/.config/hyde/themes/Synth Wave/wallpapers/"
+cp -a "$HOME/Linux/wallpaper/." "$HOME/.config/hyde/themes/Decay Green/wallpapers/"
+cp -a "$HOME/Linux/wallpaper/." "$HOME/.config/hyde/themes/Edge Runner/wallpapers/"
+cp -a "$HOME/Linux/wallpaper/." "$HOME/.config/hyde/themes/Nordic Blue/wallpapers/"
+cp -a "$HOME/Linux/wallpaper/." "$HOME/.config/hyde/themes/Tokyo Night/wallpapers/"
+cp -a "$HOME/Linux/wallpaper/." "$HOME/.config/hyde/themes/Frosted Glass/wallpapers/"
+cp -a "$HOME/Linux/wallpaper/." "$HOME/.config/hyde/themes/Graphite Mono/wallpapers/"
+cp -a "$HOME/Linux/wallpaper/." "$HOME/.config/hyde/themes/Gruvbox Retro/wallpapers/"
+cp -a "$HOME/Linux/wallpaper/." "$HOME/.config/hyde/themes/Material Sakura/wallpapers/"
+cp -a "$HOME/Linux/wallpaper/." "$HOME/.config/hyde/themes/Catppuccin Latte/wallpapers/"
+cp -a "$HOME/Linux/wallpaper/." "$HOME/.config/hyde/themes/Catppuccin Mocha/wallpapers/"
+
 if [[ ! -d "$HOME/.config/neofetch/" ]]; then
   mkdir -p "$HOME/.config/neofetch/"
 fi
@@ -68,6 +77,12 @@ yay -S heroic-games-launcher-bin
 cp "$HOME/Linux/Neofetch-Theme/config.conf" "$HOME/.config/neofetch/config.conf"
 
 bash "$HOME/Linux/neovim.sh"
+
+# adding hyprland config
+cp "$HOME/Linux/dotfiles/hyprland.conf" "$HOME/.config/hypr/hyprland.conf"
+cp "$HOME/Linux/dotfiles/keybindings.conf" "$HOME/.config/hypr/keybindings.conf"
+cp "$HOME/Linux/dotfiles/zshrc" "$HOME/.zshrc"
+cp "$HOME/Linux/dotfiles/kitty.conf" "$HOME/.config/kitty/kitty.conf"
 
 # adding neovim plugin
 cp "$HOME/Linux/dotfiles/lazygit.lua" "$HOME/.config/nvim/lua/plugins/"
@@ -84,11 +99,8 @@ sudo ufw status
 # install texlive
 sudo pacman -S texlive
 
-# installing oh-my-zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
-echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >>~/.zshrc
+# configure zsh prompt
+p10k configure
 
 # remove redundand programs
 sudo pacman -R dolphin code fastfetch vim pokemon-colorscripts-git firefox
