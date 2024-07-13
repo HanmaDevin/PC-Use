@@ -116,6 +116,14 @@ sudo unzip "$HOME/Linux/Fonts/ProFont.zip" -d "/usr/share/fonts/"
 echo "Finished!"
 sleep 2
 
+echo "Adding btop config"
+sleep 2
+
+cp "$HOME/Linux/dotfiles/btop.conf" "$HOME/.config/btop/"
+
+echo "Finished!"
+sleep 2
+
 # adding grub theme
 echo "Adding Grub-Theme"
 sleep 2
