@@ -108,6 +108,7 @@ sleep 2
 echo "Adding btop config"
 sleep 2
 
+mkdir -p "$HOME/.config/btop/"
 cp "$HOME/Linux/dotfiles/btop.conf" "$HOME/.config/btop/"
 
 echo "Finished!"
@@ -133,20 +134,11 @@ xrdb -merge "$HOME/.Xresources"
 echo "Finished!"
 sleep 2
 
-# adding sddm theme
-echo "Adding sddm theme"
-sleep 2
-
-sudo tar -xzvf "$HOME/Linux/SDDM-Theme/sddm-chili.tar" -C "/usr/share/sddm/themes/"
-sudo cp "$HOME/Linux/SDDM-Theme/default.conf" "/usr/lib/sddm/sddm.conf.d/default.conf"
-
-echo "Finished!"
-sleep 2
-
 # adding kitty config
 echo "Adding kitty config"
 sleep 2
 
+mkdir -p "$HOME/.config/kitty/"
 cp "$HOME/Linux/dotfiles/diff.conf" "$HOME/.config/kitty/"
 cp "$HOME/Linux/dotfiles/dracula.conf" "$HOME/.config/kitty/"
 cp "$HOME/Linux/dotfiles/kitty.conf" "$HOME/.config/kitty/"
@@ -154,6 +146,7 @@ cp "$HOME/Linux/dotfiles/kitty.conf" "$HOME/.config/kitty/"
 echo "Adding rofi theme"
 sleep 2
 # adding rofi theme
+mkdir -p "$HOME/.config/rofi/"
 cp "$HOME/Linux/dotfiles/config1.rasi" "$HOME/.config/rofi/config.rasi"
 
 echo "Finished!"
@@ -163,6 +156,7 @@ sleep 2
 echo "Adding neovim plugin"
 sleep 2
 
+mkdir -p "$HOME/.config/nvim/lua/plugins/"
 cp "$HOME/Linux/dotfiles/lazygit.lua" "$HOME/.config/nvim/lua/plugins/"
 
 echo "Finished!"
@@ -172,6 +166,7 @@ sleep 2
 echo "Adding yazi config"
 sleep 2
 
+mkdir -p "$HOME/.config/yazi/"
 cp "$HOME/Linux/dotfiles/yazi.toml" "$HOME/.config/yazi/"
 
 echo "Finished!"
@@ -207,7 +202,6 @@ sleep 2
 
 bash "$HOME/Linux/neovim.sh"
 bash "$HOME/Linux/yay.sh"
-bash "$HOME/Linux/zsh-plugins.sh"
 bash "$HOME/Linux/p10k-theme.sh"
 
 echo "Finished!"
