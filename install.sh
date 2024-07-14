@@ -139,8 +139,9 @@ sleep 2
 echo "Adding alacritty config"
 sleep 2
 
-mkdir -p "$HOME/.config/alacritty//"
+mkdir -p "$HOME/.config/alacritty/"
 cp "$HOME/Linux/dotfiles/alacritty.toml" "$HOME/.config/alacritty/"
+cp "$HOME/Linux/dotfiles/dracula.toml" "$HOME/.config/alacritty/"
 
 echo "Finished!"
 sleep 2

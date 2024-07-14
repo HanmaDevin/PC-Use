@@ -1,3 +1,5 @@
+import = ["$HOME/.config/alacritty/dracula.toml"]
+
 [[colors.indexed_colors]]
 color = "#FAB387"
 index = 16
