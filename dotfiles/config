@@ -43,7 +43,6 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 exec discord
 
-
 mode "exit: [l]ogout, [r]eboot, [s]hutdown" {
 
   bindsym l exec i3-msg exit
@@ -92,7 +91,7 @@ floating_modifier $mod
 tiling_drag modifier titlebar
 
 # start a terminal
-bindsym $mod+Return exec kitty
+bindsym $mod+Return exec alacritty
 bindsym $mod+d exec discord
 
 # start google
