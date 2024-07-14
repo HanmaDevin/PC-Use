@@ -72,6 +72,16 @@ bindsym XF86AudioPause exec playerctl play-pause
 bindsym XF86AudioPrev exec playerctl previous
 bindsym XF86AudioNext exec playerctl next
 
+
+## Screenshots
+bindsym $mod+P exec --no-startup-id maim "/home/$USER/Pictures/$(date)"
+bindsym $mod+Shift+P exec --no-startup-id maim --select "/home/$USER/Pictures/$(date)"
+
+## Clipboard Screenshots
+bindsym Ctrl+P exec --no-startup-id maim | xclip -selection clipboard -t image/png
+bindsym Ctrl+Shift+P exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
+
+
 bindsym $mod+BackSpace exec i3lock -c 3b444b
 
 # Use Mouse+$mod to drag floating windows to their wanted position
@@ -230,7 +240,7 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 
 # class                 border  bground text    indicator child_border
-client.focused          #6272A4 #6272A4 #F8F8F2 #6272A4   #6272A4
+client.focused          #9580ff #9580ff #F8F8F2 #9580ff   #9580ff
 client.focused_inactive #44475A #44475A #F8F8F2 #44475A   #44475A
 client.unfocused        #282A36 #282A36 #BFBFBF #282A36   #282A36
 client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
