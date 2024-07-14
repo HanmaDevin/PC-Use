@@ -3,7 +3,7 @@
 # import os information location
 source /etc/os-release
 
-packages=("git" "steam" "discord" "iw" "python-pipx" "polybar" "maim" "xclip" "xdotool" "pavucontrol" "lightdm-webkit2-greeter" "lazygit" "eza" "texlive" "rofi" "btop" "zsh" "okular" "ttf-font-awesome" "neofetch" "feh" "blueman" "" "libreoffice-still" "ufw" "yazi" "neovim" "unzip" "zip" "fzf" "ntfs-3g" "fuse2" "wget" "curl" "gamemode" "mangohud" "zoxide" "bat" "bluez" "bluez-utils" "alacritty")
+packages=("git" "steam" "picom" "discord" "iw" "python-pipx" "polybar" "maim" "xclip" "xdotool" "pavucontrol" "lightdm-webkit2-greeter" "lazygit" "eza" "texlive" "rofi" "btop" "zsh" "okular" "ttf-font-awesome" "neofetch" "feh" "blueman" "" "libreoffice-still" "ufw" "yazi" "neovim" "unzip" "zip" "fzf" "ntfs-3g" "fuse2" "wget" "curl" "gamemode" "mangohud" "zoxide" "bat" "bluez" "bluez-utils" "alacritty")
 
 # variable $ID comes from the os information import
 # check if array is not empty
@@ -70,6 +70,15 @@ echo "Adding i3 config"
 sleep 2
 
 cp "$HOME/Linux/dotfiles/config" "$HOME/.config/i3/config"
+
+echo "Finished!"
+sleep 2
+
+echo "Adding picom config"
+sleep 2
+
+mkdir -p "$HOME/.config/picom/"
+cp "$HOME/Linux/dotfiles/picom.conf" "$HOME/.config/picom/"
 
 echo "Finished!"
 sleep 2
