@@ -79,6 +79,7 @@ sleep 2
 
 mkdir -p "$HOME/.config/polybar/"
 cp "$HOME/Linux/dotfiles/config.ini" "$HOME/.config/polybar/config.ini"
+cp "$HOME/Linux/dotfiles/launch.sh" "$HOME/.config/polybar/"
 
 echo "Finished!"
 sleep 2
