@@ -37,9 +37,9 @@ exec --no-startup-id nm-applet
 exec --no-startup-id xrandr --output eDP --off
 exec --no-startup-id xrandr --output HDMI-A-0 --primary --preferred
 
-exec_always feh --bg-max $HOME/wallpaper/lara-croft-gz.jpg
+exec_always feh --bg-max $HOME/wallpaper/anime-girl-red-hair-halloween.jpg
 
-exec_always --no-startup-id polybar
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 exec discord
 
@@ -72,7 +72,7 @@ bindsym XF86AudioPause exec playerctl play-pause
 bindsym XF86AudioPrev exec playerctl previous
 bindsym XF86AudioNext exec playerctl next
 
-bindsym $mod+mod1+l exec i3lock -c 3b444b
+bindsym $mod+BackSpace exec i3lock -c 3b444b
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
