@@ -3,7 +3,7 @@
 # import os information location
 source /etc/os-release
 
-packages=("git" "steam" "uthash" "pixman" "picom" "discord" "iw" "python-pipx" "polybar" "maim" "xclip" "xdotool" "pavucontrol" "lightdm-webkit2-greeter" "lazygit" "eza" "texlive" "rofi" "btop" "zsh" "okular" "ttf-font-awesome" "neofetch" "feh" "blueman" "libreoffice-still" "ufw" "yazi" "neovim" "unzip" "zip" "fzf" "ntfs-3g" "fuse2" "wget" "curl" "gamemode" "mangohud" "zoxide" "bat" "bluez" "bluez-utils" "alacritty")
+packages=("git" "steam" "uthash" "pixman" "picom" "discord" "iw" "python-pipx" "polybar" "maim" "xclip" "xdotool" "pavucontrol" "lightdm-webkit2-greeter" "lazygit" "eza" "texlive" "rofi" "btop" "zsh" "okular" "ttf-font-awesome" "neofetch" "feh" "blueman" "libreoffice-still" "ufw" "yazi" "neovim" "unzip" "zip" "fzf" "ntfs-3g" "fuse2" "wget" "curl" "gamemode" "mangohud" "zoxide" "bat" "bluez" "bluez-utils" "kitty")
 
 # variable $ID comes from the os information import
 # check if array is not empty
@@ -144,12 +144,14 @@ xrdb -merge "$HOME/.Xresources"
 echo "Finished!"
 sleep 2
 
-# adding alacritty config
-echo "Adding alacritty config"
+# adding kitty config
+echo "Adding kitty config"
 sleep 2
 
-mkdir -p "$HOME/.config/alacritty/"
-cp "$HOME/Linux/dotfiles/alacritty.toml" "$HOME/.config/alacritty/"
+mkdir -p "$HOME/.config/kitty/"
+cp "$HOME/Linux/dotfiles/kitty.conf" "$HOME/.config/kitty/"
+cp "$HOME/Linux/dotfiles/diff.conf" "$HOME/.config/kitty/"
+cp "$HOME/Linux/dotfiles/dracula.conf" "$HOME/.config/kitty/"
 
 echo "Finished!"
 sleep 2
