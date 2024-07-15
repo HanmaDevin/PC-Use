@@ -65,6 +65,18 @@ cp "$HOME/Linux/Neofetch-Theme/config.conf" "$HOME/.config/neofetch/config.conf"
 echo "Finished!"
 sleep 2
 
+echo "Adding ly conf"
+sleep 2
+
+if [[ ! -d "/etc/ly/" ]]; then
+  sudo mkdir -p "/etc/ly/"
+fi
+
+sudo cp "$HOME/Linux/dotfiles/ly.conf" "/etc/ly/config.ini"
+
+echo "Finished!"
+sleep 2
+
 # adding i3 config
 echo "Adding i3 config"
 sleep 2
