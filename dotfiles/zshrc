@@ -5,11 +5,11 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-
 source ~/Linux/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/Linux/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 source ~/powerlevel10k/powerlevel9k.zsh-theme
+
 
 # List of plugins used
 plugins=( git sudo )
@@ -126,6 +126,7 @@ alias v="nvim"
 
 # git 
 alias gp="git push"
+alias ga="git add"
 alias gs="git status"
 alias gc="git commit -m"
 alias gca="git commit -a -m"
