@@ -3,7 +3,7 @@
 # import os information location
 source /etc/os-release
 
-packages=("git" "steam" "uthash" "pixman" "picom" "discord" "iw" "python-pipx" "polybar" "maim" "xclip" "xdotool" "pavucontrol" "lightdm-webkit2-greeter" "lazygit" "eza" "texlive" "rofi" "btop" "zsh" "okular" "ttf-font-awesome" "neofetch" "feh" "blueman" "libreoffice-still" "ufw" "yazi" "neovim" "unzip" "zip" "fzf" "ntfs-3g" "fuse2" "wget" "curl" "gamemode" "mangohud" "zoxide" "bat" "bluez" "bluez-utils" "kitty")
+packages=("git" "steam" "uthash" "pixman" "firefox" "picom" "discord" "iw" "python-pipx" "polybar" "maim" "xclip" "xdotool" "pavucontrol" "lightdm-webkit2-greeter" "lazygit" "eza" "texlive" "rofi" "btop" "zsh" "okular" "ttf-font-awesome" "neofetch" "feh" "blueman" "libreoffice-still" "ufw" "yazi" "neovim" "unzip" "zip" "fzf" "ntfs-3g" "fuse2" "wget" "curl" "gamemode" "mangohud" "zoxide" "bat" "bluez" "bluez-utils" "kitty")
 
 # variable $ID comes from the os information import
 # check if array is not empty
@@ -206,6 +206,16 @@ cp -a "$HOME/Linux/wallpaper/." "$HOME/wallpaper/"
 echo "Finished!"
 sleep 2
 
+echo "config firefox"
+sleep 2
+
+mkdir -p "$HOME/$(find .mozilla/firefox/*.default-release -maxdepth 0)/chrome"
+cp -a "$HOME/Linux/firefox/." "$HOME/$(find .mozilla/firefox/*.default-release -maxdepth 0)/chrome"
+mv "$HOME/$(find .mozilla/firefox/*.default-release -maxdepth 0)/chrome/user.js" "$HOME/$(find .mozilla/firefox/*.default-release -maxdepth 0)"
+
+echo "Finished!"
+sleep 2
+
 # configure firewall with ufw
 echo "configure firewall"
 sleep 2
@@ -219,7 +229,7 @@ echo "Finished!"
 sleep 2
 
 # remove redundand programs
-sudo pacman -R dolphin code fastfetch vim pokemon-colorscripts-git firefox nano
+sudo pacman -R dolphin code fastfetch vim pokemon-colorscripts-git nano vim xterm
 
 # run scripts
 echo "running neovim.sh"
