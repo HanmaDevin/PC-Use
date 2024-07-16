@@ -8,6 +8,4 @@ sleep 2
 makepkg -si
 
 # installing software with yay
-yay -S google-chrome
 yay -S heroic-games-launcher-bin
-yay -S lightdm-settings
