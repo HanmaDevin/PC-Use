@@ -1,27 +1,27 @@
-# Bash Scripts
+# Bash
 
 ## About
 
 I am learning bash scripting and in here i want to graduatly add usefull scripts for myself and anybody else.
 
-## Scripts
+## Installation
 
-The after linux installation script walks you through a few steps to get your system with basic developer tools running.
-First you can install what ever packages you want to install. Then you can setup git and create a beautiful terminal.
-There is also a useful nano and vim configuration which can be added. At the end you can install Vencord, a useful tool for Discord.
+The install.sh script installs a full desktop environment with i3. It sets firefox with a theme, 
+polybar, picom, i3lock-color, 
+wallpapers with feh, oh-my-zsh with helpful commands. It first only works with a monitor because the 
+internal display is disabled. 
 With Vencord you can customize Discord with a bunch of plugins.
 
-## Themes, Icons and Cursors
+### How to install
 
-Themes and icons can be installed by unpacking the content and moving the content to the appropiate location in the system.
-themes go to <strong>/usr/share/themes</strong>
-icons and cursors go to <strong>/usr/share/icons</strong>. To move files you can use the *mv*-command.
-So just type in your terminal: ```sudo mv <content> destination```
-If you want to use the neofetch theme then copy the contents of the txt file to <strong>~/.config/neofetch/config.conf</strong>
+Just run the install.sh script in your terminal after cloning this Repo.
+Or just paste this in your terminal:
+```shell 
+git clone https://github.com/HanmaDevin/Linux.git
+cd Linux 
+./install.sh
+```
 
-## Ulauncher
-
-Ulauncher is a app quick-launcher. It works like spotlight search on MacOS.
 
 ### GRUB Themes
 
