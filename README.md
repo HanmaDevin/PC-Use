@@ -31,6 +31,7 @@ and to uninstall it do: ```sudo python3 <name of the theme.py> -u```
 ## NeoVim
 
 The ***neovim.sh*** script-file helps you to quickly setup an IDE-like Text-editor in your terminal. We will use the LazyVim starter Repo to accomplish this.
+To apply plugins run ```:Mason``` in neovim and install everything you need.
 
 For more information about LazyVim visit the Homepage [LazyVim](https://www.lazyvim.org/)
 
