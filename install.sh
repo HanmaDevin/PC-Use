@@ -216,6 +216,17 @@ mv "$HOME/$(find .mozilla/firefox/*.default-release -maxdepth 0)/chrome/user.js"
 echo "Finished!"
 sleep 2
 
+echo "Adding i3-lock customization"
+sleep 2
+
+mkdir -p "$HOME/.config/i3-lock/"
+cp -r "$HOME/Linux/i3lock-color/" "$HOME/"
+bash "$HOME/i3lock-color/install-i3lock-color.sh"
+cp "$HOME/Linux/dotfiles/lock.sh" "$HOME/.config/i3-lock/lock.sh"
+
+echo "Finished!"
+sleep 2
+
 # configure firewall with ufw
 echo "configure firewall"
 sleep 2
