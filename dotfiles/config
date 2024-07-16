@@ -82,7 +82,10 @@ bindsym Ctrl+P exec --no-startup-id maim | xclip -selection clipboard -t image/p
 bindsym Ctrl+Shift+P exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
 
 
-bindsym $mod+BackSpace exec i3lock -c 3b444b
+bindsym Control+Shift+Escape exec kitty -e btop
+bindsym $mod+e exec kitty -e yazi
+
+bindsym $mod+BackSpace exec $HOME/.config/i3-lock/lock.sh 
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -96,7 +99,7 @@ bindsym $mod+Return exec kitty
 bindsym $mod+d exec discord
 
 # start google
-bindsym $mod+b exec google-chrome-stable
+bindsym $mod+b exec firefox
 
 # kill focused window
 bindsym $mod+q kill
