@@ -72,7 +72,7 @@ if [[ ! -d "/etc/ly/" ]]; then
   sudo mkdir -p "/etc/ly/"
 fi
 
-sudo cp "$HOME/Linux/dotfiles/ly.conf" "/etc/ly/config.ini"
+sudo cp "$HOME/Linux/ly/ly.conf" "/etc/ly/config.ini"
 
 echo "Finished!"
 sleep 2
@@ -81,7 +81,7 @@ sleep 2
 echo "Adding i3 config"
 sleep 2
 
-cp "$HOME/Linux/dotfiles/config" "$HOME/.config/i3/config"
+cp "$HOME/Linux/i3-dotfiles/config" "$HOME/.config/i3/config"
 
 echo "Finished!"
 sleep 2
@@ -99,8 +99,8 @@ echo "Adding polybar config"
 sleep 2
 
 mkdir -p "$HOME/.config/polybar/"
-cp "$HOME/Linux/dotfiles/config.ini" "$HOME/.config/polybar/config.ini"
-cp "$HOME/Linux/dotfiles/launch.sh" "$HOME/.config/polybar/"
+cp "$HOME/Linux/i3-dotfiles/config.ini" "$HOME/.config/polybar/config.ini"
+cp "$HOME/Linux/i3-dotfiles/launch.sh" "$HOME/.config/polybar/"
 
 echo "Finished!"
 sleep 2
@@ -115,9 +115,6 @@ cp -r "$HOME/Linux/Cursor/Bibata-Modern-Ice/" "$HOME/.icons/"
 echo "Finished!"
 sleep 2
 
-# adding cursor
-sudo cp -r "$HOME/Linux/Cursor/Bibata-Modern-Ice/" "/usr/share/icons/"
-
 # adding fonts
 echo "Adding fonts"
 sleep 2
@@ -131,7 +128,7 @@ echo "Adding btop config"
 sleep 2
 
 mkdir -p "$HOME/.config/btop/"
-cp "$HOME/Linux/dotfiles/btop.conf" "$HOME/.config/btop/"
+cp "$HOME/Linux/btop/btop.conf" "$HOME/.config/btop/"
 
 echo "Finished!"
 sleep 2
@@ -141,7 +138,7 @@ echo "Adding Grub-Theme"
 sleep 2
 
 sudo cp -r "$HOME/Linux/Grub-Theme/dracula/" "/boot/grub/themes/"
-sudo cp "$HOME/Linux/dotfiles/grub" "/etc/default/grub"
+sudo cp "$HOME/Linux/Grub-Theme/grub" "/etc/default/grub"
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 echo "Finished!"
@@ -150,7 +147,7 @@ sleep 2
 echo "Adding cursor theme and size"
 sleep 2
 
-cp "$HOME/Linux/dotfiles/Xresources" "$HOME/.Xresources"
+cp "$HOME/Linux/i3-dotfiles/Xresources" "$HOME/.Xresources"
 xrdb -merge "$HOME/.Xresources"
 
 echo "Finished!"
@@ -161,18 +158,9 @@ echo "Adding kitty config"
 sleep 2
 
 mkdir -p "$HOME/.config/kitty/"
-cp "$HOME/Linux/dotfiles/kitty.conf" "$HOME/.config/kitty/"
-cp "$HOME/Linux/dotfiles/diff.conf" "$HOME/.config/kitty/"
-cp "$HOME/Linux/dotfiles/dracula.conf" "$HOME/.config/kitty/"
-
-echo "Finished!"
-sleep 2
-
-echo "Adding rofi theme"
-sleep 2
-# adding rofi theme
-mkdir -p "$HOME/.config/rofi/"
-cp "$HOME/Linux/dotfiles/config1.rasi" "$HOME/.config/rofi/config.rasi"
+cp "$HOME/Linux/kitty/kitty.conf" "$HOME/.config/kitty/"
+cp "$HOME/Linux/kitty/diff.conf" "$HOME/.config/kitty/"
+cp "$HOME/Linux/i3-dotfiles/config1.rasi" "$HOME/.config/rofi/config.rasi"
 
 echo "Finished!"
 sleep 2
@@ -182,7 +170,7 @@ echo "Adding neovim plugin"
 sleep 2
 
 mkdir -p "$HOME/.config/nvim/lua/plugins/"
-cp "$HOME/Linux/dotfiles/lazygit.lua" "$HOME/.config/nvim/lua/plugins/"
+cp "$HOME/Linux/neovim/lazygit.lua" "$HOME/.config/nvim/lua/plugins/"
 
 echo "Finished!"
 sleep 2
@@ -192,7 +180,7 @@ echo "Adding yazi config"
 sleep 2
 
 mkdir -p "$HOME/.config/yazi/"
-cp "$HOME/Linux/dotfiles/yazi.toml" "$HOME/.config/yazi/"
+cp "$HOME/Linux/yazi/yazi.toml" "$HOME/.config/yazi/"
 
 echo "Finished!"
 sleep 2
@@ -222,7 +210,7 @@ sleep 2
 mkdir -p "$HOME/.config/i3-lock/"
 cp -r "$HOME/Linux/i3lock-color/" "$HOME/"
 bash "$HOME/i3lock-color/install-i3lock-color.sh"
-cp "$HOME/Linux/dotfiles/lock.sh" "$HOME/.config/i3-lock/lock.sh"
+cp "$HOME/Linux/i3-dotfiles/lock.sh" "$HOME/.config/i3-lock/lock.sh"
 
 echo "Finished!"
 sleep 2
@@ -246,8 +234,8 @@ sudo pacman -R dolphin code fastfetch vim pokemon-colorscripts-git nano vim xter
 echo "running scripts"
 sleep 2
 
-bash "$HOME/Linux/neovim.sh"
-bash "$HOME/Linux/p10k-theme.sh"
+bash "$HOME/Linux/scripts/neovim.sh"
+bash "$HOME/Linux/scripts/p10k-theme.sh"
 
 echo "Finished!"
 echo "Good Bye!"

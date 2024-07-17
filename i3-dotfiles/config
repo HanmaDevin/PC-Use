@@ -115,10 +115,6 @@ bindsym $mod+q kill
 bindsym $mod+space exec --no-startup-id rofi -show drun
 
 
-# set gaps
-gaps inner 10
-gaps outer 5
-
 # change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
