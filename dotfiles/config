@@ -84,6 +84,7 @@ bindsym Ctrl+Shift+P exec --no-startup-id maim --select | xclip -selection clipb
 
 bindsym Control+Shift+Escape exec kitty -e btop
 bindsym $mod+e exec kitty -e yazi
+bindsym $mod+s exec pavucontrol
 
 bindsym $mod+BackSpace exec $HOME/.config/i3-lock/lock.sh 
 
