@@ -6,7 +6,7 @@ sleep 5
 # import os information location
 source /etc/os-release
 
-packages=("uthash" "pixman" "picom" "iw" "python-pipx" "polybar" "maim" "xclip" "xdotool" "pavucontrol" "rofi" "okular" "feh" "blueman" "bluez" "bluez-utils")
+packages=("uthash" "pixman" "picom" "iw" "xrandr" "arandr" "UXterm" "Xterm" "rofi-theme-selector" "python-pipx" "polybar" "maim" "xclip" "xdotool" "pavucontrol" "rofi" "okular" "feh" "blueman" "bluez" "bluez-utils")
 
 # variable $ID comes from the os information import
 # check if array is not empty
