@@ -3,7 +3,10 @@
 # import os information location
 source /etc/os-release
 
-packages=("git" "steam" "uthash" "pixman" "firefox" "picom" "discord" "iw" "python-pipx" "polybar" "maim" "xclip" "xdotool" "pavucontrol" "lazygit" "eza" "texlive" "rofi" "btop" "zsh" "okular" "ttf-font-awesome" "neofetch" "feh" "blueman" "libreoffice-still" "ufw" "yazi" "neovim" "unzip" "zip" "fzf" "ntfs-3g" "fuse2" "wget" "curl" "gamemode" "mangohud" "zoxide" "bat" "bluez" "bluez-utils" "kitty")
+packages=("git" "steam" "uthash" "pixman" "firefox" "picom" "discord" "iw" "python-pipx" "polybar" \
+"maim" "xclip" "xdotool" "pavucontrol" "lazygit" "eza" "texlive" "rofi" "btop" "zsh" "okular" "ttf-font-awesome" \
+"neofetch" "feh" "blueman" "libreoffice-still" "ufw" "yazi" "neovim" "unzip" "zip" "fzf" "ntfs-3g" "fuse2" "wget" "curl" \
+"gamemode" "mangohud" "zoxide" "bat" "bluez" "bluez-utils" "kitty")
 
 # variable $ID comes from the os information import
 # check if array is not empty
