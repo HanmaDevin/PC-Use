@@ -11,16 +11,16 @@ if [[ ${#packages[@]} ]]; then
   # check for linux distro
   if [[ $ID == "fedora" ]]; then
     # loop through array
-    for package in ${packages[@]}; do
-      sudo dnf install $package
+    for package in "${packages[@]}"; do
+      sudo dnf install "$package"
     done
   elif [[ $ID == "arch" ]]; then
-    for package in ${packages[@]}; do
-      sudo pacman -S $package
+    for package in "${packages[@]}"; do
+      sudo pacman -S "$package"
     done
   else
-    for package in ${packages[@]}; do
-      sudo apt install $package
+    for package in "${packages[@]}"; do
+      sudo apt install "$package"
     done
   fi
 fi
