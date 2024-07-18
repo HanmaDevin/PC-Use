@@ -45,7 +45,7 @@ if [[ $sshready == "y" ]]; then
   ssh-keygen -t ed25519 -C $email
   ssh-add ~/.ssh/id_ed25519
   echo "Paste the following content in your ssh-key section in Github"
-  echo $(cat ~/.ssh/id_ed25519.pub)
+  cat ~/.ssh/id_ed25519.pub
 fi
 
 read -p "Do you want to install Vencord? (y/n)" vencord
