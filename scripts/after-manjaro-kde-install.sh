@@ -65,6 +65,15 @@ cp "$HOME/Linux/neovim/lazygit.lua" "$HOME/.config/nvim/lua/plugins/"
 echo "Finished!"
 sleep 2
 
+echo "adding yazi config"
+sleep 2
+
+mkdir -p "$HOME/.config/yazi/"
+cp "$HOME/Linux/yazi/yazi.toml" "$HOME/.config/yazi/"
+
+echo "Finished!"
+sleep 2
+
 echo "adding zshrc"
 sleep 2
 
