@@ -1,6 +1,6 @@
 #!/bin/bash
 
-packages=("neovim" "discord" "steam" "lazygit" "eza" "texlive" "btop" "ufw" "yazi" "gamemode" "mangohud" "zoxide" "gcc" "fzf" "bat" "kitty" "zip" "unzip" "wget" "curl")
+packages=("neovim" "discord" "steam" "lazygit" "eza" "texlive" "btop" "ufw" "yazi" "gamemode" "mangohud" "zoxide" "gcc" "fzf" "bat" "kitty" "zip" "unzip" "wget" "curl" "xrandr" "arandr")
 
 for package in "${packages[@]}"; do
   sudo pacman -S "$package"
