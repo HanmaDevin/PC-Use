@@ -15,6 +15,8 @@ if [[ $gitconfig == "y" ]]; then
   git config --global user.email "$useremail"
 fi
 
+yay -S picom autolining
+
 read -p "Ready to add ssh-key? (y/n)" sshready
 
 if [[ $sshready == "y" ]]; then
