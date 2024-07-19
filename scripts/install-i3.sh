@@ -3,10 +3,10 @@
 # import os information location
 source /etc/os-release
 
-packages=("git" "steam" "uthash" "pixman" "firefox" "picom" "discord" "iw" "python-pipx" "polybar" \
-"maim" "xclip" "xdotool" "pavucontrol" "lazygit" "eza" "texlive" "rofi" "btop" "zsh" "okular" "ttf-font-awesome" \
-"neofetch" "feh" "blueman" "libreoffice-still" "ufw" "yazi" "neovim" "unzip" "zip" "fzf" "ntfs-3g" "fuse2" "wget" "curl" \
-"gamemode" "mangohud" "zoxide" "bat" "bluez" "bluez-utils" "kitty")
+packages=("git" "steam" "uthash" "pixman" "firefox" "picom" "discord" "iw" "python-pipx" "polybar"
+  "maim" "xclip" "xdotool" "pavucontrol" "lazygit" "eza" "texlive" "rofi" "btop" "zsh" "okular" "ttf-font-awesome"
+  "neofetch" "feh" "blueman" "libreoffice-still" "ufw" "yazi" "neovim" "unzip" "zip" "fzf" "ntfs-3g" "fuse2" "wget" "curl"
+  "gamemode" "mangohud" "zoxide" "bat" "bluez" "bluez-utils" "kitty")
 
 # variable $ID comes from the os information import
 # check if array is not empty
@@ -15,15 +15,15 @@ if [[ ${#packages[@]} ]]; then
   if [[ $ID == "fedora" ]]; then
     # loop through array
     for package in "${packages[@]}"; do
-      sudo dnf install "$package"
+      sudo dnf install -y "$package"
     done
   elif [[ $ID == "arch" ]]; then
     for package in "${packages[@]}"; do
-      sudo pacman -S "$package"
+      sudo pacman -S --noconfirm "$package"
     done
   else
     for package in "${packages[@]}"; do
-      sudo apt install "$package"
+      sudo apt install -y "$package"
     done
   fi
 fi
