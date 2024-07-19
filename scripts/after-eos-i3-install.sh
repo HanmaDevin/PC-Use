@@ -1,6 +1,6 @@
 #!/bin/bash
 
-packages=("zip" "unzip" "kitty" "wget" "zsh" "neovim" "discord" "steam" "lazygit" "eza" "btop" "yazi" "gamemode" "mangohud" "zoxide" "fzf" "bat")
+packages=("zip" "unzip" "kitty" "wget" "zsh" "neovim" "discord" "steam" "bluez" "bluez-utils" "lazygit" "eza" "btop" "yazi" "gamemode" "mangohud" "zoxide" "fzf" "bat")
 
 for package in "${packages[@]}"; do
   sudo pacman -S --noconfirm "$package"
@@ -37,6 +37,9 @@ fi
 if [[ ! -d "$HOME/.config/neofetch/" ]]; then
   mkdir -p "$HOME/.config/neofetch/"
 fi
+
+sudo systemctl enable bluetooth.service
+sudo systemctl start bluetooth.service
 
 # adding all configs
 # Adding neofetch theme to maschine

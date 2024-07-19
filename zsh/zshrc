@@ -106,8 +106,8 @@ alias cd="z"
 alias refresh="source ~/.zshrc"
 
 # pacman
-alias get="sudo pacman -S"
-alias remove="sudo pacman -R"
+alias get="sudo pacman -S --noconfirm"
+alias remove="sudo pacman -Rsc"
 alias update="sudo pacman -Syu"
 
 alias editzsh="nvim ~/.zshrc"
