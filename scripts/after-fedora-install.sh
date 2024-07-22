@@ -76,6 +76,12 @@ cp -a "$HOME/Linux/wallpaper/." "$HOME/Pictures/wallpaper/"
 echo "Finished!"
 sleep 2
 
+echo "Adding font and cursor"
+sleep 2
+
+sudo cp "$HOME/Linux/Fonts/MesloLGS NF Regular.ttf" "/usr/share/fonts/"
+sudo cp -r "$HOME/Linux/Cursor/Bibata-Modern-Ice/" "/usr/share/icons/"
+
 echo "installing discord and steam"
 sleep 2
 
