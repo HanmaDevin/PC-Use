@@ -5,11 +5,8 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-source ~/Linux/zsh-autosuggestions/zsh-autosuggestions.zsh
-source ~/Linux/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-source ~/powerlevel10k/powerlevel9k.zsh-theme
-
+source ~/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # List of plugins used
 plugins=( git sudo )
@@ -110,19 +107,12 @@ alias get="sudo pacman -S --noconfirm"
 alias remove="sudo pacman -Rsc"
 alias update="sudo pacman -Syu"
 
-alias editzsh="nvim ~/.zshrc"
-alias editi3="nvim ~/.config/i3/config"
-
-# bluetooth & wifi
-alias bt="bluetoothctl"
-alias wifi="nmtui"
-
+alias editzsh="nano ~/.zshrc"
 # visual
 alias open="xdg-open"
 alias cat='bat --theme "Dracula"' 
 alias bat='bat --theme "Dracula"' 
 alias q="exit"
-alias v="nvim"
 
 # git 
 alias gp="git push"
