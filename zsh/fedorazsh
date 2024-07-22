@@ -68,7 +68,7 @@ alias get="sudo dnf install -y"
 alias remove="sudo dnf autoremove"
 alias update="sudo dnf upgrade"
 
-alias editzsh="nano ~/.zshrc"
+alias editzsh="nvim ~/.zshrc"
 
 # visual
 alias open="xdg-open"
