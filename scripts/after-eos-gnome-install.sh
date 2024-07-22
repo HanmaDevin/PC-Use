@@ -94,3 +94,7 @@ cp -a "$HOME/Linux/kitty/." "$HOME/.config/kitty"
 
 echo "Finished!"
 sleep 2
+
+echo "Install Ulauncher thats a good app"
+sleep 3
+
