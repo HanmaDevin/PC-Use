@@ -6,19 +6,17 @@ I am learning bash scripting and in here i want to graduatly add usefull scripts
 
 ## Installation
 
-The install.sh script installs a full desktop environment with i3. It sets firefox with a theme, 
-polybar, picom, i3lock-color, 
-wallpapers with feh, oh-my-zsh with helpful commands. It first only works with a monitor because the 
-internal display is disabled. 
-With Vencord you can customize Discord with a bunch of plugins.
+The install.sh script installs a bunch of usefull programs for the terminal
+for the 3 major package managers. It adds wallpapers and a fue configs for
+the installed programms.
 
 ### How to install
 
 Just run the install.sh script in your terminal after cloning this Repo.
 Or just paste this in your terminal:
-```shell 
-git clone https://github.com/HanmaDevin/Linux.git
-cd Linux 
+```shell
+git clone https://github.com/HanmaDevin/Linux.git $HOME
+cd Linux
 ./install.sh
 ```
 
@@ -44,4 +42,3 @@ Useful Commands are easily findable with the 'Space'-key.
 *Commands are used in Normal-mode*
 
 [Official Keymaps](https://www.lazyvim.org/keymaps)
-
