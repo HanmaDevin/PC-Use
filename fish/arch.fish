@@ -4,13 +4,15 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 end
 
+set fish_greeting
+
 zoxide init fish | source
 
 fastfetch
 
 # Helpful aliases
-alias  c='clear' # clear terminal
-alias  l='eza -lh  --icons=auto' # long list
+alias c='clear' # clear terminal
+alias l='eza -lh  --icons=auto' # long list
 alias ls='eza -1   --icons=auto' # short list
 alias ll='eza -lha --icons=auto --sort=name --group-directories-first' # long list all
 alias ld='eza -lhD --icons=auto' # long list dirs
@@ -49,11 +51,11 @@ alias .4='z ../../../..'
 alias .5='z ../../../../..'
 
 # exit terminal
-bind \cd 'exit'
+bind \cd exit
 
 bind \co 'nvim $(fzf)'
-bind \ce 'yazi'
-bind \cg 'lazygit'
+bind \ce yazi
+bind \cg lazygit
 
 # Always mkdir a path (this doesn't inhibit functionality to make a single dir)
 alias mkdir='mkdir -p'
