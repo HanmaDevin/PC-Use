@@ -1,4 +1,4 @@
-#!/bin/bash
+#! /bin/sh
 
 echo "Deleting i3 completely"
 sleep 5

@@ -1,4 +1,4 @@
-#!/bin/bash
+#! /bin/sh
 
 echo "What package manager do you use?"
 echo "(1) apt"
@@ -9,7 +9,7 @@ read answer
 
 case $answer in
 1)
-  packages=("zip" "unzip" "wget" "curl" "neovim" "lazygit" "eza" "fastfetch" "btop" "gamemode" "mangohud" "zoxide" "fzf" "bat")
+  packages=("zip" "unzip" "wget" "curl" "neovim" "lazygit" "eza" "fastfetch" "btop" "gamemode" "mangohud" "zoxide" "fzf" "bat" "kitty")
 
   for package in "${packages[@]}"; do
     sudo apt install -y "$package"
@@ -47,6 +47,38 @@ case $answer in
   echo "Finished!"
   sleep 2
 
+  echo "Adding kitty config"
+  sleep 2
+
+  if [[ ! -d "$HOME/.config/kitty/" ]]; then
+    mkdir -p "$HOME/.config/kitty/"
+  fi
+
+  cp -a "$HOME/Linux/kitty/." "$HOME/.config/kitty"
+
+  echo "Finished!"
+  sleep 2
+
+  read -p "Use (1) fish or (2) zsh? " shell
+  if [[ "$shell" -eq 2 ]]; then
+    echo "adding zshrc"
+    sleep 2
+
+    bash "$HOME/Linux/scripts/p10k-theme.sh"
+    cp "$HOME/Linux/zsh/debianzshrc" "$HOME/.zshrc"
+
+    echo "Finished!"
+    sleep 2
+  elif [[ "$shell" -eq 1 ]]; then
+    echo "adding fish config"
+    sleep 2
+
+    cp "$HOME/Linux/fish/debian.fish" "$HOME/.config/fish/config.fish"
+
+    echo "Finished!"
+    sleep2
+  fi
+
   # adding neovim plugin
   echo "Adding neovim plugin"
   sleep 2
@@ -61,14 +93,6 @@ case $answer in
   fi
 
   cp "$HOME/Linux/neovim/lazygit.lua" "$HOME/.config/nvim/lua/plugins/"
-
-  echo "Finished!"
-  sleep 2
-
-  echo "adding zshrc"
-  sleep 2
-
-  cp "$HOME/Linux/zsh/debianzshrc" "$HOME/.zshrc"
 
   echo "Finished!"
   sleep 2
@@ -93,12 +117,10 @@ case $answer in
 
   echo "Finished!"
   sleep 2
-
-  bash "$HOME/Linux/scripts/p10k-theme.sh"
   ;;
 
 2)
-  packages=("zip" "unzip" "wget" "curl" "neovim" "lazygit" "eza" "fastfetch" "btop" "gamemode" "mangohud" "zoxide" "fzf" "bat")
+  packages=("zip" "unzip" "wget" "curl" "neovim" "lazygit" "eza" "fastfetch" "btop" "gamemode" "mangohud" "zoxide" "fzf" "bat" "kitty")
 
   for package in "${packages[@]}"; do
     sudo dnf install -y "$package"
@@ -137,6 +159,38 @@ case $answer in
 
   echo "Finished!"
   sleep 2
+
+  echo "Adding kitty config"
+  sleep 2
+
+  if [[ ! -d "$HOME/.config/kitty/" ]]; then
+    mkdir -p "$HOME/.config/kitty/"
+  fi
+
+  cp -a "$HOME/Linux/kitty/." "$HOME/.config/kitty"
+
+  echo "Finished!"
+  sleep 2
+
+  read -p "Use (1) fish or (2) zsh? " shell
+  if [[ "$shell" -eq 2 ]]; then
+    echo "adding zshrc"
+    sleep 2
+
+    bash "$HOME/Linux/scripts/p10k-theme.sh"
+    cp "$HOME/Linux/zsh/fedorazshrc" "$HOME/.zshrc"
+
+    echo "Finished!"
+    sleep 2
+  elif [[ "$shell" -eq 1 ]]; then
+    echo "adding fish config"
+    sleep 2
+
+    cp "$HOME/Linux/fish/fedora.fish" "$HOME/.config/fish/config.fish"
+
+    echo "Finished!"
+    sleep2
+  fi
 
   echo "Adding btop config"
   sleep 2
@@ -195,12 +249,10 @@ case $answer in
 
   echo "Finished!"
   sleep 2
-
-  bash "$HOME/Linux/scripts/p10k-theme.sh"
   ;;
 
 3)
-  packages=("zip" "gcc" "unzip" "wget" "curl" "neovim" "lazygit" "eza" "fastfetch" "btop" "gamemode" "mangohud" "zoxide" "fzf" "bat" "discord" "steam")
+  packages=("zip" "gcc" "unzip" "wget" "curl" "neovim" "lazygit" "eza" "fastfetch" "btop" "gamemode" "mangohud" "zoxide" "fzf" "bat" "discord" "steam" "kitty")
 
   for package in "${packages[@]}"; do
     sudo pacman -S --noconfirm "$package"
@@ -239,6 +291,38 @@ case $answer in
 
   echo "Finished!"
   sleep 2
+
+  echo "Adding kitty config"
+  sleep 2
+
+  if [[ ! -d "$HOME/.config/kitty/" ]]; then
+    mkdir -p "$HOME/.config/kitty/"
+  fi
+
+  cp -a "$HOME/Linux/kitty/." "$HOME/.config/kitty"
+
+  echo "Finished!"
+  sleep 2
+
+  read -p "Use (1) fish or (2) zsh? " shell
+  if [[ "$shell" -eq 2 ]]; then
+    echo "adding zshrc"
+    sleep 2
+
+    bash "$HOME/Linux/scripts/p10k-theme.sh"
+    cp "$HOME/Linux/zsh/archzshrc" "$HOME/.zshrc"
+
+    echo "Finished!"
+    sleep 2
+  elif [[ "$shell" -eq 1 ]]; then
+    echo "adding fish config"
+    sleep 2
+
+    cp "$HOME/Linux/fish/arch.fish" "$HOME/.config/fish/config.fish"
+
+    echo "Finished!"
+    sleep2
+  fi
 
   echo "Adding btop config"
   sleep 2
@@ -303,8 +387,6 @@ case $answer in
 
   echo "Finished!"
   sleep 2
-
-  bash "$HOME/Linux/scripts/p10k-theme.sh"
   ;;
 
 *)

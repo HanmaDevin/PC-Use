@@ -1,4 +1,4 @@
-#!/bin/bash
+#! /bin/sh
 
 # import os information location
 source /etc/os-release
