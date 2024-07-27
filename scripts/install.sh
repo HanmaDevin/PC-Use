@@ -9,8 +9,7 @@ read answer
 
 case $answer in
     1)
-        packages=("zip" "unzip" "wget" "curl" "neovim" "lazygit" "eza" \
-        "btop" "gamemode" "mangohud" "zoxide" "fzf" "bat")
+        packages=("zip" "unzip" "wget" "curl" "neovim" "lazygit" "eza" "fastfetch" "btop" "gamemode" "mangohud" "zoxide" "fzf" "bat")
 
         for package in "${packages[@]}"; do
         sudo apt install -y "$package"
@@ -37,19 +36,6 @@ case $answer in
         fi
 
         # adding all configs
-        # Adding neofetch theme to maschine
-        echo "Adding neofetch config"
-        sleep 2
-
-        if [[ ! -d "$HOME/.config/neofetch/" ]]; then
-        mkdir -p "$HOME/.config/neofetch/"
-        fi
-
-        cp "$HOME/Linux/Neofetch-Theme/config.conf" "$HOME/.config/neofetch/config.conf"
-
-        echo "Finished!"
-        sleep 2
-
         echo "Adding btop config"
         sleep 2
 
@@ -65,6 +51,11 @@ case $answer in
         echo "Adding neovim plugin"
         sleep 2
 
+        echo "Runnung neovim script"
+        sleep 2
+
+        bash  "$HOME/Linux/scripts/neovim.sh"
+
         if [[ ! -d "$HOME/.config/nvim/lua/plugins/" ]]; then
             mkdir -p "$HOME/.config/nvim/lua/plugins/"
         fi
@@ -77,7 +68,7 @@ case $answer in
         echo "adding zshrc"
         sleep 2
 
-        cp "$HOME/Linux/zsh/debianzsh" "$HOME/.zshrc"
+        cp "$HOME/Linux/zsh/debianzshrc" "$HOME/.zshrc"
 
         echo "Finished!"
         sleep 2
@@ -102,15 +93,10 @@ case $answer in
 
         echo "Finished!"
         sleep 2
-
-        echo "Runnung neovim script"
-
-        bash  "$HOME/Linux/scripts/neovim.sh"
         ;;
 
     2)
-        packages=("zip" "unzip" "wget" "curl" "neovim" "lazygit" "eza" \
-        "btop" "gamemode" "mangohud" "zoxide" "fzf" "bat")
+        packages=("zip" "unzip" "wget" "curl" "neovim" "lazygit" "eza" "fastfetch" "btop" "gamemode" "mangohud" "zoxide" "fzf" "bat")
 
         for package in "${packages[@]}"; do
         sudo dnf install -y "$package"
@@ -165,6 +151,11 @@ case $answer in
         echo "Adding neovim plugin"
         sleep 2
 
+        echo "Runnung neovim script"
+        sleep 2
+
+        bash  "$HOME/Linux/scripts/neovim.sh"
+
         if [[ ! -d "$HOME/.config/nvim/lua/plugins/" ]]; then
             mkdir -p "$HOME/.config/nvim/lua/plugins/"
         fi
@@ -177,7 +168,7 @@ case $answer in
         echo "adding zshrc"
         sleep 2
 
-        cp "$HOME/Linux/zsh/fedorazsh" "$HOME/.zshrc"
+        cp "$HOME/Linux/zsh/fedorazshrc" "$HOME/.zshrc"
 
         echo "Finished!"
         sleep 2
@@ -201,16 +192,11 @@ case $answer in
         sudo cp -r "$HOME/Linux/Cursor/Bibata-Modern-Ice/" "/usr/share/icons/"
 
         echo "Finished!"
-        sleep 2
-
-        echo "Runnung neovim script"
-
-        bash  "$HOME/Linux/scripts/neovim.sh"
+        sleep 2       
         ;;
 
     3)
-        packages=("zip" "unzip" "wget" "curl" "neovim" "lazygit" "eza" \
-        "btop" "gamemode" "mangohud" "zoxide" "fzf" "bat")
+        packages=("zip" "unzip" "wget" "curl" "neovim" "lazygit" "eza" "fastfetch" "btop" "gamemode" "mangohud" "zoxide" "fzf" "bat")
 
         for package in "${packages[@]}"; do
         sudo pacman -S --noconfirm "$package"
@@ -265,6 +251,11 @@ case $answer in
         echo "Adding neovim plugin"
         sleep 2
 
+        echo "Runnung neovim script"
+        sleep 2
+
+        bash  "$HOME/Linux/scripts/neovim.sh"
+
         if [[ ! -d "$HOME/.config/nvim/lua/plugins/" ]]; then
             mkdir -p "$HOME/.config/nvim/lua/plugins/"
         fi
@@ -277,7 +268,13 @@ case $answer in
         echo "adding zshrc"
         sleep 2
 
-        cp "$HOME/Linux/zsh/archzsh" "$HOME/.zshrc"
+        read -p "Are you using manjaro? (y/n)" manjaro
+
+        if [[ "$manjaro" == "y" ]]; then
+            cp "$HOME/Linux/zsh/manjaro-zshrc" "$HOME/.zshrc"
+        else
+            cp "$HOME/Linux/zsh/archzshrc" "$HOME/.zshrc"
+        fi
 
         echo "Finished!"
         sleep 2
@@ -302,10 +299,6 @@ case $answer in
 
         echo "Finished!"
         sleep 2
-
-        echo "Runnung neovim script"
-
-        bash  "$HOME/Linux/scripts/neovim.sh"
         ;;
 
     *)

@@ -16,6 +16,8 @@ fi
 source <(fzf --zsh)
 eval "$(zoxide init zsh)"
 
+export PATH=$HOME/.local/bin:$PATH
+
 export FZF_CTRL_T_OPTS="--preview 'bat -n --color=always --line-range :500 {}'"
 export FZF_CTRL_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
 
@@ -24,7 +26,7 @@ export FZF_DEFAULT_OPTS='--color=fg:#f8f8f2,bg:#282a36,hl:#bd93f9 --color=fg+:#f
 
 export EDITOR=nvim
 
-neofetch
+fastfetch
 
 _fzf_comprun() {
   local command=$1
@@ -60,7 +62,7 @@ alias get="sudo pacman -S --noconfirm"
 alias remove="sudo pacman -Rsc"
 alias update="sudo pacman -Syu"
 
-alias editzsh="nvim ~/.zshrc"
+alias editzsh="code ~/.zshrc"
 
 # visual
 alias open="xdg-open"

@@ -39,7 +39,7 @@ export FZF_CTRL_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
 
 export FZF_DEFAULT_OPTS='--color=fg:#f8f8f2,bg:#282a36,hl:#bd93f9 --color=fg+:#f8f8f2,bg+:#44475a,hl+:#bd93f9 --color=info:#ffb86c,prompt:#50fa7b,pointer:#ff79c6 --color=marker:#ff79c6,spinner:#ffb86c,header:#6272a4'
 
-neofetch
+fastfetch
 
 _fzf_comprun() {
   local command=$1
@@ -63,10 +63,10 @@ alias lt='eza --icons=auto --tree' # list folder as tree
 alias cd="z"
 alias refresh="source ~/.zshrc"
 
-# dnf
-alias get="sudo dnf install -y"
-alias remove="sudo dnf autoremove"
-alias update="sudo dnf upgrade"
+# pacman
+alias get="sudo pacman -S --noconfirm"
+alias remove="sudo pacman -Rsc"
+alias update="sudo pacman -Syu"
 
 alias editzsh="nvim ~/.zshrc"
 
