@@ -9,7 +9,7 @@ read answer
 
 case $answer in
 1)
-  packages=("zip" "unzip" "wget" "curl" "neovim" "lazygit" "eza" "fastfetch" "btop" "gamemode" "mangohud" "zoxide" "fzf" "bat" "kitty")
+  packages=("zip" "fish" "unzip" "wget" "curl" "neovim" "lazygit" "eza" "fastfetch" "btop" "gamemode" "mangohud" "zoxide" "fzf" "bat" "kitty")
 
   for package in "${packages[@]}"; do
     sudo apt install -y "$package"
@@ -120,7 +120,7 @@ case $answer in
   ;;
 
 2)
-  packages=("zip" "unzip" "wget" "curl" "neovim" "lazygit" "eza" "fastfetch" "btop" "gamemode" "mangohud" "zoxide" "fzf" "bat" "kitty")
+  packages=("zip" "fish" "unzip" "wget" "curl" "neovim" "lazygit" "eza" "fastfetch" "btop" "gamemode" "mangohud" "zoxide" "fzf" "bat" "kitty")
 
   for package in "${packages[@]}"; do
     sudo dnf install -y "$package"
@@ -221,13 +221,29 @@ case $answer in
   echo "Finished!"
   sleep 2
 
-  echo "adding zshrc"
-  sleep 2
+  read -p "Use (1) fish or (2) zsh? " shell
+  if [[ "$shell" -eq 2 ]]; then
+    echo "adding zshrc"
+    sleep 2
 
-  cp "$HOME/Linux/zsh/fedorazshrc" "$HOME/.zshrc"
+    bash "$HOME/Linux/scripts/p10k-theme.sh"
+    cp "$HOME/Linux/zsh/fedorazshrc" "$HOME/.zshrc"
+  
+    sudo chsh -s /usr/bin/zsh
 
-  echo "Finished!"
-  sleep 2
+    echo "Finished!"
+    sleep 2
+  elif [[ "$shell" -eq 1 ]]; then
+    echo "adding fish config"
+    sleep 2
+
+    cp "$HOME/Linux/fish/fedora.fish" "$HOME/.config/fish/config.fish"
+
+    sudo chsh -s /usr/bin/fish
+
+    echo "Finished!"
+    sleep2
+  fi
 
   echo "Adding wallpaper"
   sleep 2
@@ -252,7 +268,7 @@ case $answer in
   ;;
 
 3)
-  packages=("zip" "gcc" "unzip" "wget" "curl" "neovim" "lazygit" "eza" "fastfetch" "btop" "gamemode" "mangohud" "zoxide" "fzf" "bat" "discord" "steam" "kitty")
+  packages=("zip" "fish" "gcc" "unzip" "wget" "curl" "neovim" "lazygit" "eza" "fastfetch" "btop" "gamemode" "mangohud" "zoxide" "fzf" "bat" "discord" "steam" "kitty")
 
   for package in "${packages[@]}"; do
     sudo pacman -S --noconfirm "$package"
@@ -311,6 +327,8 @@ case $answer in
 
     bash "$HOME/Linux/scripts/p10k-theme.sh"
     cp "$HOME/Linux/zsh/archzshrc" "$HOME/.zshrc"
+  
+    sudo chsh -s /usr/bin/zsh
 
     echo "Finished!"
     sleep 2
@@ -319,6 +337,8 @@ case $answer in
     sleep 2
 
     cp "$HOME/Linux/fish/arch.fish" "$HOME/.config/fish/config.fish"
+
+    sudo chsh -s /usr/bin/fish
 
     echo "Finished!"
     sleep2
@@ -356,7 +376,7 @@ case $answer in
   echo "adding zshrc"
   sleep 2
 
-  read -p "Are you using manjaro? (y/n)" manjaro
+  read -p "Are you using manjaro-kde? (y/n)" manjaro
 
   if [[ "$manjaro" == "y" ]]; then
     cp "$HOME/Linux/zsh/manjaro-zshrc" "$HOME/.zshrc"
