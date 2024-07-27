@@ -8,301 +8,301 @@ echo "(3) pacman"
 read answer
 
 case $answer in
-    1)
-        packages=("zip" "unzip" "wget" "curl" "neovim" "lazygit" "eza" "fastfetch" "btop" "gamemode" "mangohud" "zoxide" "fzf" "bat")
+1)
+  packages=("zip" "unzip" "wget" "curl" "neovim" "lazygit" "eza" "fastfetch" "btop" "gamemode" "mangohud" "zoxide" "fzf" "bat")
 
-        for package in "${packages[@]}"; do
-        sudo apt install -y "$package"
-        done
+  for package in "${packages[@]}"; do
+    sudo apt install -y "$package"
+  done
 
-        read -p "Want to configure git? (y/n)" gitconfig
+  read -p "Want to configure git? (y/n)" gitconfig
 
-        if [[ $gitconfig == "y" ]]; then
-        read -p "What is your Github username?" username
-        git config --global user.name "$username"
-        read -p "What is your email?" useremail
-        git config --global user.email "$useremail"
-        fi
+  if [[ $gitconfig == "y" ]]; then
+    read -p "What is your Github username?" username
+    git config --global user.name "$username"
+    read -p "What is your email?" useremail
+    git config --global user.email "$useremail"
+  fi
 
-        read -p "Ready to add ssh-key? (y/n)" sshready
+  read -p "Ready to add ssh-key? (y/n)" sshready
 
-        if [[ $sshready == "y" ]]; then
-        echo "Do not change de default file location and name in the following!!!"
-        read -p "what is your email account?" email
-        ssh-keygen -t ed25519 -C $email
-        ssh-add ~/.ssh/id_ed25519
-        echo "Paste the following content in your ssh-key section in Github"
-        echo $(cat ~/.ssh/id_ed25519.pub)
-        fi
+  if [[ $sshready == "y" ]]; then
+    echo "Do not change de default file location and name in the following!!!"
+    read -p "what is your email account?" email
+    ssh-keygen -t ed25519 -C $email
+    ssh-add ~/.ssh/id_ed25519
+    echo "Paste the following content in your ssh-key section in Github"
+    echo $(cat ~/.ssh/id_ed25519.pub)
+  fi
 
-        # adding all configs
-        echo "Adding btop config"
-        sleep 2
+  # adding all configs
+  echo "Adding btop config"
+  sleep 2
 
-        if [[ ! -d "$HOME/.config/btop/" ]]; then
-            mkdir -p "$HOME/.config/btop/"
-        fi
-        cp "$HOME/Linux/btop/btop.conf" "$HOME/.config/btop/"
+  if [[ ! -d "$HOME/.config/btop/" ]]; then
+    mkdir -p "$HOME/.config/btop/"
+  fi
+  cp "$HOME/Linux/btop/btop.conf" "$HOME/.config/btop/"
 
-        echo "Finished!"
-        sleep 2
+  echo "Finished!"
+  sleep 2
 
-        # adding neovim plugin
-        echo "Adding neovim plugin"
-        sleep 2
+  # adding neovim plugin
+  echo "Adding neovim plugin"
+  sleep 2
 
-        echo "Runnung neovim script"
-        sleep 2
+  echo "Runnung neovim script"
+  sleep 2
 
-        bash  "$HOME/Linux/scripts/neovim.sh"
+  bash "$HOME/Linux/scripts/neovim.sh"
 
-        if [[ ! -d "$HOME/.config/nvim/lua/plugins/" ]]; then
-            mkdir -p "$HOME/.config/nvim/lua/plugins/"
-        fi
+  if [[ ! -d "$HOME/.config/nvim/lua/plugins/" ]]; then
+    mkdir -p "$HOME/.config/nvim/lua/plugins/"
+  fi
 
-        cp "$HOME/Linux/neovim/lazygit.lua" "$HOME/.config/nvim/lua/plugins/"
+  cp "$HOME/Linux/neovim/lazygit.lua" "$HOME/.config/nvim/lua/plugins/"
 
-        echo "Finished!"
-        sleep 2
+  echo "Finished!"
+  sleep 2
 
-        echo "adding zshrc"
-        sleep 2
+  echo "adding zshrc"
+  sleep 2
 
-        cp "$HOME/Linux/zsh/debianzshrc" "$HOME/.zshrc"
+  cp "$HOME/Linux/zsh/debianzshrc" "$HOME/.zshrc"
 
-        echo "Finished!"
-        sleep 2
+  echo "Finished!"
+  sleep 2
 
-        echo "Adding wallpaper"
-        sleep 2
+  echo "Adding wallpaper"
+  sleep 2
 
-        if [[ ! -d "$HOME/Pictures/wallpaper" ]]; then
-            mkdir -p "$HOME/Pictures/wallpaper"
-        fi
+  if [[ ! -d "$HOME/Pictures/wallpaper" ]]; then
+    mkdir -p "$HOME/Pictures/wallpaper"
+  fi
 
-        cp -a "$HOME/Linux/wallpaper/." "$HOME/Pictures/wallpaper/"
+  cp -a "$HOME/Linux/wallpaper/." "$HOME/Pictures/wallpaper/"
 
-        echo "Finished!"
-        sleep 2
+  echo "Finished!"
+  sleep 2
 
-        echo "Adding font and cursor"
-        sleep 2
+  echo "Adding font and cursor"
+  sleep 2
 
-        sudo cp "$HOME/Linux/Fonts/MesloLGS NF Regular.ttf" "/usr/share/fonts/"
-        sudo cp -r "$HOME/Linux/Cursor/Bibata-Modern-Ice/" "/usr/share/icons/"
+  sudo cp "$HOME/Linux/Fonts/MesloLGS NF Regular.ttf" "/usr/share/fonts/"
+  sudo cp -r "$HOME/Linux/Cursor/Bibata-Modern-Ice/" "/usr/share/icons/"
 
-        echo "Finished!"
-        sleep 2
-        ;;
+  echo "Finished!"
+  sleep 2
+  ;;
 
-    2)
-        packages=("zip" "unzip" "wget" "curl" "neovim" "lazygit" "eza" "fastfetch" "btop" "gamemode" "mangohud" "zoxide" "fzf" "bat")
+2)
+  packages=("zip" "unzip" "wget" "curl" "neovim" "lazygit" "eza" "fastfetch" "btop" "gamemode" "mangohud" "zoxide" "fzf" "bat")
 
-        for package in "${packages[@]}"; do
-        sudo dnf install -y "$package"
-        done
+  for package in "${packages[@]}"; do
+    sudo dnf install -y "$package"
+  done
 
-        read -p "Want to configure git? (y/n)" gitconfig
+  read -p "Want to configure git? (y/n)" gitconfig
 
-        if [[ $gitconfig == "y" ]]; then
-        read -p "What is your Github username?" username
-        git config --global user.name "$username"
-        read -p "What is your email?" useremail
-        git config --global user.email "$useremail"
-        fi
+  if [[ $gitconfig == "y" ]]; then
+    read -p "What is your Github username?" username
+    git config --global user.name "$username"
+    read -p "What is your email?" useremail
+    git config --global user.email "$useremail"
+  fi
 
-        read -p "Ready to add ssh-key? (y/n)" sshready
+  read -p "Ready to add ssh-key? (y/n)" sshready
 
-        if [[ $sshready == "y" ]]; then
-        echo "Do not change de default file location and name in the following!!!"
-        read -p "what is your email account?" email
-        ssh-keygen -t ed25519 -C $email
-        ssh-add ~/.ssh/id_ed25519
-        echo "Paste the following content in your ssh-key section in Github"
-        echo $(cat ~/.ssh/id_ed25519.pub)
-        fi
+  if [[ $sshready == "y" ]]; then
+    echo "Do not change de default file location and name in the following!!!"
+    read -p "what is your email account?" email
+    ssh-keygen -t ed25519 -C $email
+    ssh-add ~/.ssh/id_ed25519
+    echo "Paste the following content in your ssh-key section in Github"
+    echo $(cat ~/.ssh/id_ed25519.pub)
+  fi
 
-        # adding all configs
-        # Adding neofetch theme to maschine
-        echo "Adding neofetch config"
-        sleep 2
+  # adding all configs
+  # Adding neofetch theme to maschine
+  echo "Adding neofetch config"
+  sleep 2
 
-        if [[ ! -d "$HOME/.config/neofetch/" ]]; then
-        mkdir -p "$HOME/.config/neofetch/"
-        fi
+  if [[ ! -d "$HOME/.config/neofetch/" ]]; then
+    mkdir -p "$HOME/.config/neofetch/"
+  fi
 
-        cp "$HOME/Linux/Neofetch-Theme/config.conf" "$HOME/.config/neofetch/config.conf"
+  cp "$HOME/Linux/Neofetch-Theme/config.conf" "$HOME/.config/neofetch/config.conf"
 
-        echo "Finished!"
-        sleep 2
+  echo "Finished!"
+  sleep 2
 
-        echo "Adding btop config"
-        sleep 2
+  echo "Adding btop config"
+  sleep 2
 
-        if [[ ! -d "$HOME/.config/btop/" ]]; then
-            mkdir -p "$HOME/.config/btop/"
-        fi
-        cp "$HOME/Linux/btop/btop.conf" "$HOME/.config/btop/"
+  if [[ ! -d "$HOME/.config/btop/" ]]; then
+    mkdir -p "$HOME/.config/btop/"
+  fi
+  cp "$HOME/Linux/btop/btop.conf" "$HOME/.config/btop/"
 
-        echo "Finished!"
-        sleep 2
+  echo "Finished!"
+  sleep 2
 
-        # adding neovim plugin
-        echo "Adding neovim plugin"
-        sleep 2
+  # adding neovim plugin
+  echo "Adding neovim plugin"
+  sleep 2
 
-        echo "Runnung neovim script"
-        sleep 2
+  echo "Runnung neovim script"
+  sleep 2
 
-        bash  "$HOME/Linux/scripts/neovim.sh"
+  bash "$HOME/Linux/scripts/neovim.sh"
 
-        if [[ ! -d "$HOME/.config/nvim/lua/plugins/" ]]; then
-            mkdir -p "$HOME/.config/nvim/lua/plugins/"
-        fi
+  if [[ ! -d "$HOME/.config/nvim/lua/plugins/" ]]; then
+    mkdir -p "$HOME/.config/nvim/lua/plugins/"
+  fi
 
-        cp "$HOME/Linux/neovim/lazygit.lua" "$HOME/.config/nvim/lua/plugins/"
+  cp "$HOME/Linux/neovim/lazygit.lua" "$HOME/.config/nvim/lua/plugins/"
 
-        echo "Finished!"
-        sleep 2
+  echo "Finished!"
+  sleep 2
 
-        echo "adding zshrc"
-        sleep 2
+  echo "adding zshrc"
+  sleep 2
 
-        cp "$HOME/Linux/zsh/fedorazshrc" "$HOME/.zshrc"
+  cp "$HOME/Linux/zsh/fedorazshrc" "$HOME/.zshrc"
 
-        echo "Finished!"
-        sleep 2
+  echo "Finished!"
+  sleep 2
 
-        echo "Adding wallpaper"
-        sleep 2
+  echo "Adding wallpaper"
+  sleep 2
 
-        if [[ ! -d "$HOME/Pictures/wallpaper" ]]; then
-            mkdir -p "$HOME/Pictures/wallpaper"
-        fi
+  if [[ ! -d "$HOME/Pictures/wallpaper" ]]; then
+    mkdir -p "$HOME/Pictures/wallpaper"
+  fi
 
-        cp -a "$HOME/Linux/wallpaper/." "$HOME/Pictures/wallpaper/"
+  cp -a "$HOME/Linux/wallpaper/." "$HOME/Pictures/wallpaper/"
 
-        echo "Finished!"
-        sleep 2
+  echo "Finished!"
+  sleep 2
 
-        echo "Adding font and cursor"
-        sleep 2
+  echo "Adding font and cursor"
+  sleep 2
 
-        sudo cp "$HOME/Linux/Fonts/MesloLGS NF Regular.ttf" "/usr/share/fonts/"
-        sudo cp -r "$HOME/Linux/Cursor/Bibata-Modern-Ice/" "/usr/share/icons/"
+  sudo cp "$HOME/Linux/Fonts/MesloLGS NF Regular.ttf" "/usr/share/fonts/"
+  sudo cp -r "$HOME/Linux/Cursor/Bibata-Modern-Ice/" "/usr/share/icons/"
 
-        echo "Finished!"
-        sleep 2       
-        ;;
+  echo "Finished!"
+  sleep 2
+  ;;
 
-    3)
-        packages=("zip" "unzip" "wget" "curl" "neovim" "lazygit" "eza" "fastfetch" "btop" "gamemode" "mangohud" "zoxide" "fzf" "bat")
+3)
+  packages=("zip" "gcc" "unzip" "wget" "curl" "neovim" "lazygit" "eza" "fastfetch" "btop" "gamemode" "mangohud" "zoxide" "fzf" "bat" "discord" "steam")
 
-        for package in "${packages[@]}"; do
-        sudo pacman -S --noconfirm "$package"
-        done
+  for package in "${packages[@]}"; do
+    sudo pacman -S --noconfirm "$package"
+  done
 
-        read -p "Want to configure git? (y/n)" gitconfig
+  read -p "Want to configure git? (y/n)" gitconfig
 
-        if [[ $gitconfig == "y" ]]; then
-        read -p "What is your Github username?" username
-        git config --global user.name "$username"
-        read -p "What is your email?" useremail
-        git config --global user.email "$useremail"
-        fi
+  if [[ $gitconfig == "y" ]]; then
+    read -p "What is your Github username?" username
+    git config --global user.name "$username"
+    read -p "What is your email?" useremail
+    git config --global user.email "$useremail"
+  fi
 
-        read -p "Ready to add ssh-key? (y/n)" sshready
+  read -p "Ready to add ssh-key? (y/n)" sshready
 
-        if [[ $sshready == "y" ]]; then
-        echo "Do not change de default file location and name in the following!!!"
-        read -p "what is your email account?" email
-        ssh-keygen -t ed25519 -C $email
-        ssh-add ~/.ssh/id_ed25519
-        echo "Paste the following content in your ssh-key section in Github"
-        echo $(cat ~/.ssh/id_ed25519.pub)
-        fi
+  if [[ $sshready == "y" ]]; then
+    echo "Do not change de default file location and name in the following!!!"
+    read -p "what is your email account?" email
+    ssh-keygen -t ed25519 -C $email
+    ssh-add ~/.ssh/id_ed25519
+    echo "Paste the following content in your ssh-key section in Github"
+    echo $(cat ~/.ssh/id_ed25519.pub)
+  fi
 
-        # adding all configs
-        # Adding neofetch theme to maschine
-        echo "Adding neofetch config"
-        sleep 2
+  # adding all configs
+  # Adding neofetch theme to maschine
+  echo "Adding neofetch config"
+  sleep 2
 
-        if [[ ! -d "$HOME/.config/neofetch/" ]]; then
-        mkdir -p "$HOME/.config/neofetch/"
-        fi
+  if [[ ! -d "$HOME/.config/neofetch/" ]]; then
+    mkdir -p "$HOME/.config/neofetch/"
+  fi
 
-        cp "$HOME/Linux/Neofetch-Theme/config.conf" "$HOME/.config/neofetch/config.conf"
+  cp "$HOME/Linux/Neofetch-Theme/config.conf" "$HOME/.config/neofetch/config.conf"
 
-        echo "Finished!"
-        sleep 2
+  echo "Finished!"
+  sleep 2
 
-        echo "Adding btop config"
-        sleep 2
+  echo "Adding btop config"
+  sleep 2
 
-        if [[ ! -d "$HOME/.config/btop/" ]]; then
-            mkdir -p "$HOME/.config/btop/"
-        fi
-        cp "$HOME/Linux/btop/btop.conf" "$HOME/.config/btop/"
+  if [[ ! -d "$HOME/.config/btop/" ]]; then
+    mkdir -p "$HOME/.config/btop/"
+  fi
+  cp "$HOME/Linux/btop/btop.conf" "$HOME/.config/btop/"
 
-        echo "Finished!"
-        sleep 2
+  echo "Finished!"
+  sleep 2
 
-        # adding neovim plugin
-        echo "Adding neovim plugin"
-        sleep 2
+  # adding neovim plugin
+  echo "Adding neovim plugin"
+  sleep 2
 
-        echo "Runnung neovim script"
-        sleep 2
+  echo "Runnung neovim script"
+  sleep 2
 
-        bash  "$HOME/Linux/scripts/neovim.sh"
+  bash "$HOME/Linux/scripts/neovim.sh"
 
-        if [[ ! -d "$HOME/.config/nvim/lua/plugins/" ]]; then
-            mkdir -p "$HOME/.config/nvim/lua/plugins/"
-        fi
+  if [[ ! -d "$HOME/.config/nvim/lua/plugins/" ]]; then
+    mkdir -p "$HOME/.config/nvim/lua/plugins/"
+  fi
 
-        cp "$HOME/Linux/neovim/lazygit.lua" "$HOME/.config/nvim/lua/plugins/"
+  cp "$HOME/Linux/neovim/lazygit.lua" "$HOME/.config/nvim/lua/plugins/"
 
-        echo "Finished!"
-        sleep 2
+  echo "Finished!"
+  sleep 2
 
-        echo "adding zshrc"
-        sleep 2
+  echo "adding zshrc"
+  sleep 2
 
-        read -p "Are you using manjaro? (y/n)" manjaro
+  read -p "Are you using manjaro? (y/n)" manjaro
 
-        if [[ "$manjaro" == "y" ]]; then
-            cp "$HOME/Linux/zsh/manjaro-zshrc" "$HOME/.zshrc"
-        else
-            cp "$HOME/Linux/zsh/archzshrc" "$HOME/.zshrc"
-        fi
+  if [[ "$manjaro" == "y" ]]; then
+    cp "$HOME/Linux/zsh/manjaro-zshrc" "$HOME/.zshrc"
+  else
+    cp "$HOME/Linux/zsh/archzshrc" "$HOME/.zshrc"
+  fi
 
-        echo "Finished!"
-        sleep 2
+  echo "Finished!"
+  sleep 2
 
-        echo "Adding wallpaper"
-        sleep 2
+  echo "Adding wallpaper"
+  sleep 2
 
-        if [[ ! -d "$HOME/Pictures/wallpaper" ]]; then
-            mkdir -p "$HOME/Pictures/wallpaper"
-        fi
+  if [[ ! -d "$HOME/Pictures/wallpaper" ]]; then
+    mkdir -p "$HOME/Pictures/wallpaper"
+  fi
 
-        cp -a "$HOME/Linux/wallpaper/." "$HOME/Pictures/wallpaper/"
+  cp -a "$HOME/Linux/wallpaper/." "$HOME/Pictures/wallpaper/"
 
-        echo "Finished!"
-        sleep 2
+  echo "Finished!"
+  sleep 2
 
-        echo "Adding font and cursor"
-        sleep 2
+  echo "Adding font and cursor"
+  sleep 2
 
-        sudo cp "$HOME/Linux/Fonts/MesloLGS NF Regular.ttf" "/usr/share/fonts/"
-        sudo cp -r "$HOME/Linux/Cursor/Bibata-Modern-Ice/" "/usr/share/icons/"
+  sudo cp "$HOME/Linux/Fonts/MesloLGS NF Regular.ttf" "/usr/share/fonts/"
+  sudo cp -r "$HOME/Linux/Cursor/Bibata-Modern-Ice/" "/usr/share/icons/"
 
-        echo "Finished!"
-        sleep 2
-        ;;
+  echo "Finished!"
+  sleep 2
+  ;;
 
-    *)
-        echo "Do not know what to do, Bye!!"
-        exit 223
-        ;;
+*)
+  echo "Do not know what to do, Bye!!"
+  exit 223
+  ;;
 esac
