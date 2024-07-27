@@ -93,6 +93,8 @@ case $answer in
 
   echo "Finished!"
   sleep 2
+
+  bash "$HOME/Linux/scripts/p10k-theme.sh"
   ;;
 
 2)
@@ -193,6 +195,8 @@ case $answer in
 
   echo "Finished!"
   sleep 2
+
+  bash "$HOME/Linux/scripts/p10k-theme.sh"
   ;;
 
 3)
@@ -299,6 +303,8 @@ case $answer in
 
   echo "Finished!"
   sleep 2
+
+  bash "$HOME/Linux/scripts/p10k-theme.sh"
   ;;
 
 *)
