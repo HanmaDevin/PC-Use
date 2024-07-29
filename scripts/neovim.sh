@@ -16,11 +16,10 @@ if [[ $neovim == "y" ]]; then
   fi
 fi
 
-cd ~/.config/
-mkdir nvim
+mkdir -p $HOME/.config/nvim/
 
 echo "Cloning into LazyVim"
 sleep 1
 
-git clone https://github.com/LazyVim/starter ~/.config/nvim
+git clone https://github.com/NvChad/starter ~/.config/nvim
 rm -rf ~/.config/nvim/.git
