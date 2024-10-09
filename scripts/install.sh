@@ -9,7 +9,7 @@ read answer
 
 case $answer in
   1)  
-    packages=("zip" “zsh" "openrgb" "fish" "unzip" "wget" "curl" "neovim" "lazygit" "eza" "fastfetch" "btop" "gamemode" "mangohud" "zoxide" "fzf" "bat" "kitty")
+    packages=("zip" “zsh" "openrgb" "fish" "unzip" "wget" "curl" "neovim" "lazygit" "eza" "neofetch" "btop" "gamemode" "mangohud" "zoxide" "fzf" "bat" "kitty")
 
     for package in "${packages[@]}"; do
       sudo apt install -y "$package"
@@ -120,7 +120,7 @@ case $answer in
     ;;
 
   2)
-    packages=("zip" "zsh" "openrgb" "fish" "unzip" "wget" "curl" "neovim" "lazygit" "eza" "fastfetch" "btop" "gamemode" "mangohud" "zoxide" "fzf" "bat" "kitty")
+    packages=("zip" "zsh" "openrgb" "fish" "unzip" "wget" "curl" "neovim" "lazygit" "eza" "neofetch" "btop" "gamemode" "mangohud" "zoxide" "fzf" "bat" "kitty")
 
     for package in "${packages[@]}"; do
       sudo dnf install -y "$package"
