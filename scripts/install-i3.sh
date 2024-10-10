@@ -1,245 +1,134 @@
 #! /bin/sh
 
-# import os information location
+# Import OS information
 source /etc/os-release
+
+# Logging function
+log() {
+  echo "$(date +"%Y-%m-%d %H:%M:%S") - $1" >> ~/setup.log
+}
+
+log "Starting setup script"
 
 packages=("git" "steam" "uthash" "pixman" "firefox" "picom" "discord" "iw" "python-pipx" "polybar"
   "maim" "xclip" "xdotool" "pavucontrol" "lazygit" "eza" "texlive" "rofi" "btop" "zsh" "okular" "ttf-font-awesome"
   "neofetch" "feh" "blueman" "libreoffice-still" "ufw" "yazi" "neovim" "unzip" "zip" "fzf" "ntfs-3g" "fuse2" "wget" "curl"
   "gamemode" "mangohud" "zoxide" "bat" "bluez" "bluez-utils" "kitty")
 
-# variable $ID comes from the os information import
-# check if array is not empty
-if [[ ${#packages[@]} ]]; then
-  # check for linux distro
-  if [[ $ID == "fedora" ]]; then
-    # loop through array
-    for package in "${packages[@]}"; do
-      sudo dnf install -y "$package"
-    done
-  elif [[ $ID == "arch" ]]; then
-    for package in "${packages[@]}"; do
-      sudo pacman -S --noconfirm "$package"
-    done
-  else
-    for package in "${packages[@]}"; do
-      sudo apt install -y "$package"
-    done
+# Check if array is not empty
+if [[ ${#packages[@]} -gt 0 ]]; then
+  # Check for Linux distro and install packages
+  log "Detected OS: $ID"
+  case $ID in
+    "fedora")
+      for package in "${packages[@]}"; do
+        sudo dnf install -y "$package" || log "Failed to install $package"
+      done
+      ;;
+    "arch")
+      for package in "${packages[@]}"; do
+        sudo pacman -S --noconfirm "$package" || log "Failed to install $package"
+      done
+      ;;
+    *)
+      for package in "${packages[@]}"; do
+        sudo apt install -y "$package" || log "Failed to install $package"
+      done
+      ;;
+  esac
+else
+  log "No packages to install"
+fi
+
+# Function to configure Git
+configure_git() {
+  read -p "Want to configure git? (y/n) " gitconfig
+  if [[ $gitconfig == "y" ]]; then
+    read -p "What is your GitHub username? " username
+    git config --global user.name "$username"
+    read -p "What is your email? " useremail
+    git config --global user.email "$useremail"
+    log "Configured Git with username: $username"
   fi
-fi
+}
 
-read -p "Want to configure git? (y/n)" gitconfig
+# Function to add SSH key
+add_ssh_key() {
+  read -p "Ready to add ssh-key? (y/n) " sshready
+  if [[ $sshready == "y" ]]; then
+    echo "Do not change the default file location and name!"
+    read -p "What is your email account? " email
+    ssh-keygen -t ed25519 -C "$email"
+    ssh-add ~/.ssh/id_ed25519
+    log "SSH key generated for $email"
+    echo "Paste the following content in your ssh-key section in GitHub:"
+    cat ~/.ssh/id_ed25519.pub
+  fi
+}
 
-if [[ $gitconfig == "y" ]]; then
-  read -p "What is your Github username?" username
-  git config --global user.name "$username"
-  read -p "What is your email?" useremail
-  git config --global user.email "$useremail"
-fi
+# Function to install Vencord
+install_vencord() {
+  read -p "Do you want to install Vencord? (y/n) " vencord
+  if [[ $vencord == "y" ]]; then
+    sh -c "$(curl -sS https://raw.githubusercontent.com/Vendicated/VencordInstaller/main/install.sh)" || log "Failed to install Vencord"
+  fi
+}
 
-read -p "Ready to add ssh-key? (y/n)" sshready
+# Function to create directories and back up existing configs
+copy_config() {
+  local config_path="$1"
+  local source_path="$2"
+  
+  if [[ -d "$config_path" ]]; then
+    mv "$config_path" "${config_path}.bak" && log "Backed up existing config at $config_path"
+  fi
+  mkdir -p "$(dirname "$config_path")"
+  cp -r "$source_path" "$config_path" && log "Copied config from $source_path to $config_path"
+}
 
-if [[ $sshready == "y" ]]; then
-  echo "Do not change de default file location and name in the following!!!"
-  read -p "what is your email account?" email
-  ssh-keygen -t ed25519 -C $email
-  ssh-add ~/.ssh/id_ed25519
-  echo "Paste the following content in your ssh-key section in Github"
-  cat ~/.ssh/id_ed25519.pub
-fi
+# Configurations
+log "Setting up configurations"
 
-read -p "Do you want to install Vencord? (y/n)" vencord
+copy_config "$HOME/.config/neofetch/config.conf" "$HOME/Linux/Neofetch-Theme/config.conf"
+copy_config "/etc/ly/config.ini" "$HOME/Linux/ly/ly.conf"
+copy_config "$HOME/.config/i3/config" "$HOME/Linux/i3-dotfiles/config"
+copy_config "$HOME/.config/picom/picom.conf" "$HOME/Linux/dotfiles/picom.conf"
+copy_config "$HOME/.config/polybar/config.ini" "$HOME/Linux/i3-dotfiles/config.ini"
+copy_config "$HOME/.config/polybar/launch.sh" "$HOME/Linux/i3-dotfiles/launch.sh"
+copy_config "$HOME/.icons/Bibata-Modern-Ice" "$HOME/Linux/Cursor/Bibata-Modern-Ice"
 
-if [[ $vencord == "y" ]]; then
-  sh -c "$(curl -sS https://raw.githubusercontent.com/Vendicated/VencordInstaller/main/install.sh)"
-fi
+# install fonts
+sudo unzip -o "$HOME/Linux/Fonts/FiraCode.zip" -d "/usr/share/fonts/" && log "Installed fonts"
 
-if [[ ! -d "$HOME/.config/neofetch/" ]]; then
-  mkdir -p "$HOME/.config/neofetch/"
-fi
-
-# adding all configs
-# Adding neofetch theme to maschine
-echo "Adding neofetch config"
-sleep 2
-
-cp "$HOME/Linux/Neofetch-Theme/config.conf" "$HOME/.config/neofetch/config.conf"
-
-echo "Finished!"
-sleep 2
-
-echo "Adding ly conf"
-sleep 2
-
-if [[ ! -d "/etc/ly/" ]]; then
-  sudo mkdir -p "/etc/ly/"
-fi
-
-sudo cp "$HOME/Linux/ly/ly.conf" "/etc/ly/config.ini"
-
-echo "Finished!"
-sleep 2
-
-# adding i3 config
-echo "Adding i3 config"
-sleep 2
-
-cp "$HOME/Linux/i3-dotfiles/config" "$HOME/.config/i3/config"
-
-echo "Finished!"
-sleep 2
-
-echo "Adding picom config"
-sleep 2
-
-mkdir -p "$HOME/.config/picom/"
-cp "$HOME/Linux/dotfiles/picom.conf" "$HOME/.config/picom/"
-
-echo "Finished!"
-sleep 2
-
-echo "Adding polybar config"
-sleep 2
-
-mkdir -p "$HOME/.config/polybar/"
-cp "$HOME/Linux/i3-dotfiles/config.ini" "$HOME/.config/polybar/config.ini"
-cp "$HOME/Linux/i3-dotfiles/launch.sh" "$HOME/.config/polybar/"
-
-echo "Finished!"
-sleep 2
-
-# adding cursor
-echo "Adding cursor theme"
-sleep 2
-
-mkdir -p "$HOME/.icons/"
-cp -r "$HOME/Linux/Cursor/Bibata-Modern-Ice/" "$HOME/.icons/"
-
-echo "Finished!"
-sleep 2
-
-# adding fonts
-echo "Adding fonts"
-sleep 2
-
-sudo unzip "$HOME/Linux/Fonts/FiraCode.zip" -d "/usr/share/fonts/"
-
-echo "Finished!"
-sleep 2
-
-echo "Adding btop config"
-sleep 2
-
-mkdir -p "$HOME/.config/btop/"
-cp "$HOME/Linux/btop/btop.conf" "$HOME/.config/btop/"
-
-echo "Finished!"
-sleep 2
-
-# adding grub theme
-echo "Adding Grub-Theme"
-sleep 2
-
-sudo cp -r "$HOME/Linux/Grub-Theme/dracula/" "/boot/grub/themes/"
+copy_config "$HOME/.config/btop/btop.conf" "$HOME/Linux/btop/btop.conf"
+copy_config "/boot/grub/themes/dracula" "$HOME/Linux/Grub-Theme/dracula"
 sudo cp "$HOME/Linux/Grub-Theme/grub" "/etc/default/grub"
-sudo grub-mkconfig -o /boot/grub/grub.cfg
+sudo grub-mkconfig -o /boot/grub/grub.cfg && log "Updated GRUB config"
+copy_config "$HOME/.Xresources" "$HOME/Linux/i3-dotfiles/Xresources"
+copy_config "$HOME/.config/kitty/kitty.conf" "$HOME/Linux/kitty/kitty.conf"
+copy_config "$HOME/.config/nvim/lua/plugins/lazygit.lua" "$HOME/Linux/neovim/lazygit.lua"
+copy_config "$HOME/.config/yazi/yazi.toml" "$HOME/Linux/yazi/yazi.toml"
+mkdir -p ~/wallpaper/ && cp -a "$HOME/Linux/wallpaper/." "$HOME/wallpaper/"
 
-echo "Finished!"
-sleep 2
+# i3-lock customization
+copy_config "$HOME/.config/i3-lock/lock.sh" "$HOME/Linux/i3-dotfiles/lock.sh"
+bash "$HOME/i3lock-color/install-i3lock-color.sh" && log "Installed i3lock color"
 
-echo "Adding cursor theme and size"
-sleep 2
+install_vencord
+configure_git
+add_ssh_key
 
-cp "$HOME/Linux/i3-dotfiles/Xresources" "$HOME/.Xresources"
-xrdb -merge "$HOME/.Xresources"
-
-echo "Finished!"
-sleep 2
-
-# adding kitty config
-echo "Adding kitty config"
-sleep 2
-
-mkdir -p "$HOME/.config/kitty/"
-cp "$HOME/Linux/kitty/kitty.conf" "$HOME/.config/kitty/"
-cp "$HOME/Linux/kitty/diff.conf" "$HOME/.config/kitty/"
-cp "$HOME/Linux/i3-dotfiles/config1.rasi" "$HOME/.config/rofi/config.rasi"
-
-echo "Finished!"
-sleep 2
-
-# adding neovim plugin
-echo "Adding neovim plugin"
-sleep 2
-
-mkdir -p "$HOME/.config/nvim/lua/plugins/"
-cp "$HOME/Linux/neovim/lazygit.lua" "$HOME/.config/nvim/lua/plugins/"
-
-echo "Finished!"
-sleep 2
-
-# adding yazi config
-echo "Adding yazi config"
-sleep 2
-
-mkdir -p "$HOME/.config/yazi/"
-cp "$HOME/Linux/yazi/yazi.toml" "$HOME/.config/yazi/"
-
-echo "Finished!"
-sleep 2
-
-echo "Adding wallpaper"
-sleep 2
-
-mkdir -p ~/wallpaper/
-cp -a "$HOME/Linux/wallpaper/." "$HOME/wallpaper/"
-
-echo "Finished!"
-sleep 2
-
-echo "config firefox"
-sleep 2
-
-mkdir -p "$HOME/$(find .mozilla/firefox/*.default-release -maxdepth 0)/chrome"
-cp -a "$HOME/Linux/firefox/." "$HOME/$(find .mozilla/firefox/*.default-release -maxdepth 0)/chrome"
-mv "$HOME/$(find .mozilla/firefox/*.default-release -maxdepth 0)/chrome/user.js" "$HOME/$(find .mozilla/firefox/*.default-release -maxdepth 0)"
-
-echo "Finished!"
-sleep 2
-
-echo "Adding i3-lock customization"
-sleep 2
-
-mkdir -p "$HOME/.config/i3-lock/"
-cp -r "$HOME/Linux/i3lock-color/" "$HOME/"
-bash "$HOME/i3lock-color/install-i3lock-color.sh"
-cp "$HOME/Linux/i3-dotfiles/lock.sh" "$HOME/.config/i3-lock/lock.sh"
-
-echo "Finished!"
-sleep 2
-
-# configure firewall with ufw
-echo "configure firewall"
-sleep 2
-
+# Configure firewall with UFW
+log "Configuring firewall with UFW"
 sudo ufw default deny incoming
 sudo ufw default allow outgoing
 sudo ufw enable
-sudo ufw status
+sudo ufw status && log "Firewall configured"
 
-echo "Finished!"
-sleep 2
+# Run scripts
+log "Running additional scripts"
+bash "$HOME/Linux/scripts/neovim.sh" || log "Failed to run neovim setup script"
+bash "$HOME/Linux/scripts/p10k-theme.sh" || log "Failed to run p10k setup script"
 
-# remove redundand programs
-sudo pacman -R dolphin code fastfetch vim pokemon-colorscripts-git nano vim xterm
-
-# run scripts
-echo "running scripts"
-sleep 2
-
-bash "$HOME/Linux/scripts/neovim.sh"
-bash "$HOME/Linux/scripts/p10k-theme.sh"
-
-echo "Finished!"
-echo "Good Bye!"
-sleep 2
+log "Setup completed successfully!"
+echo "Setup finished! Check ~/setup.log for details."
