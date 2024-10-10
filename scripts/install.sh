@@ -68,23 +68,6 @@ case $answer in
 
     echo "Finished!"
 
-    read -p "Use (1) fish or (2) zsh? " shell
-    if [[ "$shell" -eq 2 ]]; then
-      echo "adding zshrc"
-
-      bash "$HOME/Linux/scripts/p10k-theme.sh"
-      cp "$HOME/Linux/zsh/debianzshrc" "$HOME/.zshrc"
-
-      echo "Finished!"
-
-    elif [[ "$shell" -eq 1 ]]; then
-      echo "adding fish config"
-
-      cp "$HOME/Linux/fish/debian.fish" "$HOME/.config/fish/config.fish"
-
-      echo "Finished!"
-    fi
-
     # adding neovim plugin
     echo "Adding neovim plugin"
     echo "Running neovim script"
@@ -107,6 +90,23 @@ case $answer in
     sudo cp -r "$HOME/Linux/Cursor/Bibata-Modern-Ice/" "/usr/share/icons/"
 
     echo "Finished!"
+
+    read -p "Use (1) fish or (2) zsh? " shell
+    if [[ "$shell" -eq 2 ]]; then
+      echo "adding zshrc"
+
+      bash "$HOME/Linux/scripts/p10k-theme.sh"
+      cp "$HOME/Linux/zsh/debianzshrc" "$HOME/.zshrc"
+
+      echo "Finished!"
+
+    elif [[ "$shell" -eq 1 ]]; then
+      echo "adding fish config"
+
+      cp "$HOME/Linux/fish/debian.fish" "$HOME/.config/fish/config.fish"
+
+      echo "Finished!"
+    fi
     ;;
   2)
     install_packages "dnf" "zip" "zsh" "openrgb" "fish" "unzip" "wget" "curl" "neovim" "eza" "neofetch" "btop" "gamemode" "mangohud" "zoxide" "fzf" "bat" "kitty"
@@ -133,23 +133,6 @@ case $answer in
 
     echo "Finished!"
 
-    read -p "Use (1) fish or (2) zsh? " shell
-    if [[ "$shell" -eq 2 ]]; then
-      echo "adding zshrc"
-
-      bash "$HOME/Linux/scripts/p10k-theme.sh"
-      cp "$HOME/Linux/zsh/fedorazshrc" "$HOME/.zshrc"
-
-      echo "Finished!"
-
-    elif [[ "$shell" -eq 1 ]]; then
-      echo "adding fish config"
-
-      cp "$HOME/Linux/fish/fedora.fish" "$HOME/.config/fish/config.fish"
-
-      echo "Finished!"
-    fi
-
     # adding neovim plugin
     echo "Adding neovim plugin"
     echo "Running neovim script"
@@ -172,6 +155,23 @@ case $answer in
     sudo cp -r "$HOME/Linux/Cursor/Bibata-Modern-Ice/" "/usr/share/icons/"
 
     echo "Finished!"
+
+    read -p "Use (1) fish or (2) zsh? " shell
+    if [[ "$shell" -eq 2 ]]; then
+      echo "adding zshrc"
+
+      bash "$HOME/Linux/scripts/p10k-theme.sh"
+      cp "$HOME/Linux/zsh/fedorazshrc" "$HOME/.zshrc"
+
+      echo "Finished!"
+
+    elif [[ "$shell" -eq 1 ]]; then
+      echo "adding fish config"
+
+      cp "$HOME/Linux/fish/fedora.fish" "$HOME/.config/fish/config.fish"
+
+      echo "Finished!"
+    fi
     ;;
   *)
     echo "Do not know what to do, Bye!!"
