@@ -44,7 +44,7 @@ add_wallpaper() {
 
 case $answer in
   1)
-    install_packages "apt" "zip" "zsh" "openrgb" "fish" "unzip" "wget" "curl" "neovim" "lazygit" "eza" "neofetch" "btop" "gamemode" "mangohud" "zoxide" "fzf" "bat" "kitty"
+    install_packages "apt" "zip" "zsh" "fish" "unzip" "wget" "curl" "neovim" "eza" "neofetch" "btop" "gamemode" "mangohud" "zoxide" "fzf" "bat" "kitty"
     configure_git
     add_ssh_key
     
