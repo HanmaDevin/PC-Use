@@ -1,2 +1,2 @@
-New-Item -Path "C:\$USER\Bilder" -Name "wallpaper" -ItemType "directory"
-Copy-Item -Path "C:\$USER\Linux\wallpaper\*" -Destination "C:\$USER\Bilder\wallpaper"
+New-Item -Path "$HOME\Pictures" -Name "wallpaper" -ItemType "directory"
+Copy-Item -Path "$HOME\Linux\wallpaper\*" -Destination "$HOME\Pictures\wallpaper"
