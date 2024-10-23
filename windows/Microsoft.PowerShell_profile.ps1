@@ -3,13 +3,17 @@ oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\gruvbox.omp.json" | Invoke-
 function admin {
   if($args.Count -gt 0) {
     $argList = "& '" + $args + "'"
-    Start-Process "$psHome\powershell.exe" -Verb runAs -ArgumentList $argList
+    Start-Process "$psHome\pwsh.exe" -Verb runAs -ArgumentList $argList
   } else {
-    Start-Process "$psHome\powershell.exe" -Verb runAs
+    Start-Process "$psHome\pwsh.exe" -Verb runAs
   }
 }
 
 Set-Alias -Name sudo -Value admin
+Set-Alias -Name gc -Value "git commit -m"
+
+
+function lg { lazygit }
 
 function cd... { cd ..\.. }
 function cd.... { cd ..\..\.. }
@@ -17,14 +21,13 @@ function cd.... { cd ..\..\.. }
 function ll { Get-ChildItem -Path $pwd -File }
 
 function togit { cd C:\Users\devin\Documents\Github }
+function gs { git status }
+function ga { git add . }
+function gp { git push }
 
-function editposh {
-  nvim $profile
-}
+function editposh { nvim $profile }
 
-function refresh {
-  & $profile
-}
+function refresh { . $profile }
 
 function find-file ($name) {
   ls -recurse -filter "*${name}*" -ErrorAction SilentContinue | foreach {
@@ -33,10 +36,10 @@ function find-file ($name) {
   }
 }
 
-function unzip ($file) {
-  echo("Extracting", $file, "to", $pwd)
-  $fullFile = Get-ChildItem -Path $pwd -Filter .\cove.zip | ForEach-Object{$_.FullName}
-  Expand-Archive -Path $fullFile -DestinationPath $pwd
+function unzip ($file, $des=$pwd) {
+  echo("Extracting", $file, "to", $des)
+  $fullFile = Get-ChildItem -Path $pwd -Filter .\$file | ForEach-Object{$_.FullName}
+  Expand-Archive -Path $fullFile -DestinationPath $des
 }
 
 function grep ($regex, $dir) {
