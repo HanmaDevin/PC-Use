@@ -10,24 +10,34 @@ function admin {
 }
 
 Set-Alias -Name sudo -Value admin
-Set-Alias -Name gc -Value "git commit -m"
-
 
 function lg { lazygit }
 
-function cd... { cd ..\.. }
-function cd.... { cd ..\..\.. }
-
+function c { clear }
 function ll { Get-ChildItem -Path $pwd -File }
+function q { exit }
+
+neofetch
+
+function .. { cd .. }
+function ... { cd ..\.. }
+function .3 { cd ..\..\.. }
+function .4 { cd ..\..\..\.. }
+function .5 { cd ..\..\..\..\.. }
 
 function togit { cd C:\Users\devin\Documents\Github }
 function gs { git status }
 function ga { git add . }
 function gp { git push }
 
-function editposh { nvim $profile }
+function editposh { code $profile }
 
-function refresh { . $profile }
+function deac { deactivate }
+function startenv { .\bin\Activate.ps1 }
+function createnv ($envPath) {
+  python -m venv $pwd\$envPath
+  cd $envPath
+}
 
 function find-file ($name) {
   ls -recurse -filter "*${name}*" -ErrorAction SilentContinue | foreach {
