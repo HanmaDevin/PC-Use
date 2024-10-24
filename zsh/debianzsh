@@ -68,7 +68,7 @@ alias remove="sudo apt autoremove"
 alias update="sudo apt update & sudo apt upgrade"
 alias findapp="sudo apt-cache search"
 
-alias editzsh="nvim ~/.zshrc"
+alias editzsh="code ~/.zshrc"
 
 # visual
 alias open="xdg-open"
@@ -92,7 +92,7 @@ alias .4='z ../../../..'
 alias .5='z ../../../../..'
 
 # you may also use the following one
-bindkey -s '^o' 'nvim $(fzf)\n'
+bindkey -s '^o' 'code $(fzf)\n'
 
 
 # Always mkdir a path (this doesn't inhibit functionality to make a single dir)
