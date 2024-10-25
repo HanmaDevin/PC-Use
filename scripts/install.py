@@ -1,13 +1,87 @@
 import os
 import subprocess
+import shutil
 
-def install_packages(package_manager, packages):
+def install_packages(package_manager):
+    packages = ["zip" "zsh" "openrgb" "fish" "unzip" "wget" "curl" "neovim" "eza" "neofetch" "btop" "gamemode" "mangohud" "zoxide" "fzf" "bat" "kitty"]
     for package in packages:
         try:
+            if package_manager == 'pacman':
+                subprocess.run(['sudo', 'pacman', '-S', '--no-confirm', package], check=True)
             subprocess.run([package_manager, 'install', '-y', package], check=True)
         except subprocess.CalledProcessError:
             print(f"Failed to install {package}")
             exit(1)
+
+def copy_dotfiles():
+    print("Adding btop config")
+
+    btop_config_dir = os.path.expanduser('~/.config/btop')
+    if not os.path.exists(btop_config_dir):
+        os.makedirs(btop_config_dir)
+
+    btop_config_src = os.path.expanduser('~/Linux/btop/btop.conf')
+    shutil.copy(btop_config_src, btop_config_dir)
+
+    print("Finished!")
+
+    print("Adding kitty config")
+
+    kitty_config_dir = os.path.expanduser('~/.config/kitty')
+    if not os.path.exists(kitty_config_dir):
+        os.makedirs(kitty_config_dir)
+
+    kitty_config_src = os.path.expanduser('~/Linux/kitty/')
+    shutil.copytree(kitty_config_src, kitty_config_dir, dirs_exist_ok=True)
+
+    print("Finished!")
+
+    # Adding neovim plugin
+    print("Adding neovim plugin")
+    print("Running neovim script")
+
+    neovim_script = os.path.expanduser('~/Linux/scripts/neovim.sh')
+    subprocess.run(['bash', neovim_script])
+
+    nvim_plugin_dir = os.path.expanduser('~/.config/nvim/lua/plugins/')
+    if not os.path.exists(nvim_plugin_dir):
+        os.makedirs(nvim_plugin_dir)
+
+    print("Finished!")
+
+    print("Adding font and cursor")
+
+    # Copy font
+    font_src = os.path.expanduser('~/Linux/Fonts/MesloLGS NF Regular.ttf')
+    font_dest = '/usr/share/fonts/'
+    shutil.copy(font_src, font_dest)
+
+    # Copy cursor
+    cursor_src = os.path.expanduser('~/Linux/Cursor/Bibata-Modern-Ice/')
+    cursor_dest = '/usr/share/icons/'
+    shutil.copytree(cursor_src, cursor_dest, dirs_exist_ok=True)
+
+    print("Finished!")
+
+    shell = input("Use (1) fish or (2) zsh? ")
+    if shell == '2':
+        print("Adding zshrc")
+
+        subprocess.run(['bash', os.path.expanduser('~/Linux/scripts/p10k-theme.sh')])
+        zshrc_src = os.path.expanduser('~/Linux/zsh/fedorazshrc')
+        zshrc_dest = os.path.expanduser('~/.zshrc')
+        shutil.copy(zshrc_src, zshrc_dest)
+
+        print("Finished!")
+
+    elif shell == '1':
+        print("Adding fish config")
+
+        fish_config_src = os.path.expanduser('~/Linux/fish/fedora.fish')
+        fish_config_dest = os.path.expanduser('~/.config/fish/config.fish')
+        shutil.copy(fish_config_src, fish_config_dest)
+
+        print("Finished!")
 
 def configure_git():
     gitconfig = input("Want to configure git? (y/n): ")
@@ -32,78 +106,18 @@ def add_wallpaper():
     wallpaper_dir = os.path.expanduser('~/Pictures/wallpaper')
     if not os.path.exists(wallpaper_dir):
         os.makedirs(wallpaper_dir)
-    src = os.path.expanduser('~/Linux/wallpaper/')
-    try:
-        for item in os.listdir(src):
-            subprocess.run(['cp', '-a', os.path.join(src, item), wallpaper_dir])
-        print("Finished adding wallpapers!")
-    except Exception as e:
-        print(f"Failed to add wallpapers: {e}")
-
-def setup_configurations(shell_type):
-    config_map = {
-        'btop': 'btop.conf',
-        'fish': f'fedora.fish' if shell_type == 'fedora' else 'debian.fish',
-        'zsh': f'fedorazshrc' if shell_type == 'fedora' else 'debianzshrc',
-    }
-    
-    for app, config_file in config_map.items():
-        config_path = os.path.expanduser(f'~/.config/{app}')
-        if not os.path.exists(config_path):
-            os.makedirs(config_path)
-        
-        if config_file:
-            subprocess.run(['cp', os.path.expanduser(f'~/Linux/{app}/{config_file}'), config_path])
-        else:
-            src = os.path.expanduser(f'~/Linux/{app}/.')
-            subprocess.run(['cp', '-a', src, config_path])
-        
-        print(f"Finished adding {app} config!")
+    wallpaper_url = input("Enter the URL of the wallpaper: ")
+    wallpaper_path = os.path.join(wallpaper_dir, 'wallpaper.jpg')
+    subprocess.run(['wget', wallpaper_url, '-O', wallpaper_path])
+    subprocess.run(['gsettings', 'set', 'org.gnome.desktop.background', 'picture-uri', f'file://{wallpaper_path}'])
 
 def main():
-    package_managers = {
-        '1': ('apt', 'debian'),
-        '2': ('dnf', 'fedora'),
-    }
-    
-    print("What package manager do you use?")
-    print("(1) apt (Debian)")
-    print("(2) dnf (Fedora)")
-
-    answer = input("Select an option: ")
-    package_manager, shell_type = package_managers.get(answer, (None, None))
-
-    if not package_manager:
-        print("Do not know what to do, Bye!!")
-        exit(223)
-
-    packages = ["zip", "zsh", "openrgb", "fish", "unzip", "wget", "curl",
-                "neovim", "eza", "neofetch", "btop", "gamemode", "mangohud",
-                "zoxide", "fzf", "bat", "kitty"]
-
-    install_packages(package_manager, packages)
+    package_manager = input("Enter your package manager (e.g., apt, dnf, zypper, pacman): ")
+    install_packages(package_manager)
     configure_git()
     add_ssh_key()
-    setup_configurations(shell_type)
-
-    print("Adding kitty config")
-    kitty_path = os.path.expanduser(f'~/.config/kitty')
-    if not os.path.exists(kitty_path):
-        os.makedirs(kitty_path)
-
-    subprocess.run(['cp', '-a', os.path.expanduser(f'~/Linux/kitty/.'), kitty_path])
-
-    print("Finished!")
-    
     add_wallpaper()
-
-    print("Adding font and cursor")
-    try:
-        subprocess.run(['sudo', 'cp', os.path.expanduser('~/Linux/Fonts/MesloLGS NF Regular.ttf'), '/usr/share/fonts/'])
-        subprocess.run(['sudo', 'cp', '-r', os.path.expanduser('~/Linux/Cursor/Bibata-Modern-Ice/'), '/usr/share/icons/'])
-        print("Finished!")
-    except Exception as e:
-        print(f"Failed to add font and cursor: {e}")
+    copy_dotfiles()
 
 if __name__ == "__main__":
     main()
