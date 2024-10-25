@@ -38,6 +38,8 @@ export FZF_CTRL_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
 
 export FZF_DEFAULT_OPTS='--color=fg:#f8f8f2,bg:#282a36,hl:#bd93f9 --color=fg+:#f8f8f2,bg+:#44475a,hl+:#bd93f9 --color=info:#ffb86c,prompt:#50fa7b,pointer:#ff79c6 --color=marker:#ff79c6,spinner:#ffb86c,header:#6272a4'
 
+export PATH="$PATH:/opt/nvim-linux64/bin"
+
 neofetch
 
 _fzf_comprun() {
@@ -55,7 +57,7 @@ _fzf_comprun() {
 # Helpful aliases
 alias  c='clear' # clear terminal
 alias  l='eza -lh  --icons=auto' # long list
-alias ls='eza -1   --icons=auto' # short list
+alias ls='eza -lha --icons=auto --sort=name --group-directories-first'  # short list
 alias ll='eza -lha --icons=auto --sort=name --group-directories-first' # long list all
 alias ld='eza -lhD --icons=auto' # long list dirs
 alias lt='eza --icons=auto --tree' # list folder as tree
@@ -64,9 +66,8 @@ alias refresh="source ~/.zshrc"
 
 # dnf
 alias get="sudo apt-get install -y"
-alias remove="sudo apt autoremove"
-alias update="sudo apt update & sudo apt upgrade"
-alias findapp="sudo apt-cache search"
+alias remove="sudo apt-get autoremove"
+alias update="sudo apt update && apt upgrade"
 
 alias editzsh="code ~/.zshrc"
 
@@ -94,6 +95,14 @@ alias .5='z ../../../../..'
 # you may also use the following one
 bindkey -s '^o' 'code $(fzf)\n'
 
+# python environments
+alias startenv="source '$PWD/bin/activate'"
+alias deac="deactivate"
+function createnv() {
+  envpath=$1
+  python3 -m venv "$PWD/$envpath"
+  cd "$PWD/$envpath"
+}
 
 # Always mkdir a path (this doesn't inhibit functionality to make a single dir)
 alias mkdir='mkdir -p'
@@ -101,3 +110,13 @@ alias mkdir='mkdir -p'
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 source ~/powerlevel10k/powerlevel10k.zsh-theme
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# Source the Lazyman shell initialization for aliases and nvims selector
+# shellcheck source=.config/nvim-Lazyman/.lazymanrc
+[ -f ~/.config/nvim-Lazyman/.lazymanrc ] && source ~/.config/nvim-Lazyman/.lazymanrc
+# Source the Lazyman .nvimsbind for nvims key binding
+# shellcheck source=.config/nvim-Lazyman/.nvimsbind
+[ -f ~/.config/nvim-Lazyman/.nvimsbind ] && source ~/.config/nvim-Lazyman/.nvimsbind
