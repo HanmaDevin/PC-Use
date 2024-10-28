@@ -1,5 +1,10 @@
 [ActivityManager][Global Shortcuts]
+switch-to-activity-8d2526ab-8d53-4cf8-8536-a258d93476d3=
 switch-to-activity-be14d41a-e103-48d2-8322-6151d35877ab=
+
+[Custom Commands][net.local.konsole.desktop]
+Exec=konsole -e btop
+Name=btop
 
 [KDE Keyboard Layout Switcher][Global Shortcuts]
 Switch to Last-Used Keyboard Layout=Meta+Alt+L
@@ -9,7 +14,7 @@ Switch to Next Keyboard Layout=Meta+Alt+K
 AboutApp=
 AboutKDE=
 Activate Next Tab=Ctrl+]; Ctrl+PgDown
-Activate Previous Tab=Ctrl+[; Ctrl+PgUp
+Activate Previous Tab=Ctrl+PgUp; Ctrl+[
 ActualSize=Ctrl+0
 AddBookmark=Ctrl+B
 Back=Back; Alt+Left
@@ -20,9 +25,9 @@ Clear=
 Close=Ctrl+Esc; Ctrl+W
 ConfigureNotifications=
 ConfigureToolbars=
-Copy=Ctrl+C; Ctrl+Ins
+Copy=Ctrl+Ins; Ctrl+C
 CreateFolder=Ctrl+Shift+N
-Cut=Ctrl+X; Shift+Del
+Cut=Shift+Del; Ctrl+X
 DeleteFile=Shift+Del
 DeleteWordBack=Ctrl+Backspace
 DeleteWordForward=Ctrl+Del
@@ -39,14 +44,14 @@ FindPrev=Shift+F3
 FitToHeight=
 FitToPage=
 FitToWidth=
-Forward=Forward; Alt+Right
+Forward=Alt+Right; Forward
 ForwardWord=Ctrl+Right
 FullScreen=Ctrl+Shift+F
 Goto=
 GotoLine=Ctrl+G
 GotoPage=
 Help=F1
-Home=Alt+Home; Home Page
+Home=Home Page; Alt+Home
 KeyBindings=Ctrl+Alt+,
 Mail=
 MoveToTrash=Del
@@ -54,7 +59,7 @@ New=Ctrl+N
 Next=PgDown
 NextCompletion=Ctrl+Down
 Open=Ctrl+O
-OpenContextMenu=Menu; Shift+F10
+OpenContextMenu=Shift+F10; Menu
 OpenMainMenu=F10
 OpenRecent=
 Paste=Shift+Ins; Ctrl+V
@@ -88,11 +93,15 @@ Undo=Ctrl+Z
 Up=Alt+Up
 WhatsThis=Shift+F1
 Zoom=
-ZoomIn=Ctrl++; Ctrl+=
+ZoomIn=Ctrl+=; Ctrl++
 ZoomOut=Ctrl+-
 
 [btop.desktop][Global Shortcuts]
 _launch=Meta+Esc
+
+[code.desktop][Global Shortcuts]
+_launch=Meta+C
+new-empty-window=
 
 [discord.desktop][Global Shortcuts]
 _launch=Meta+D
@@ -102,6 +111,11 @@ _launch=Meta+F
 new-private-window=
 new-window=
 profile-manager-window=
+
+[google-chrome.desktop][Global Shortcuts]
+_launch=Meta+F
+new-private-window=
+new-window=
 
 [kaccess][Global Shortcuts]
 Toggle Screen Reader On and Off=Meta+Alt+S
@@ -126,9 +140,10 @@ Halt Without Confirmation=
 Lock Session=Meta+L; Screensaver
 Log Out=Ctrl+Alt+Del
 Log Out Without Confirmation=
+LogOut=
 Reboot=
 Reboot Without Confirmation=
-Shut Down=
+Shut Down=Meta+Ctrl+Alt+S
 
 [kwin][Global Shortcuts]
 Activate Window Demanding Attention=Meta+Ctrl+A
@@ -137,7 +152,7 @@ Cycle Overview Opposite=
 Decrease Opacity=
 Edit Tiles=Meta+T
 Expose=Ctrl+F9
-ExposeAll=Launch (C); Ctrl+F10
+ExposeAll=Ctrl+F10; Launch (C)
 ExposeClass=Ctrl+F7
 ExposeClassCurrentDesktop=
 Grid View=Meta+G
@@ -151,7 +166,7 @@ MoveZoomRight=
 MoveZoomUp=
 Overview=Meta+W
 Setup Window Shortcut=
-Show Desktop=
+Show Desktop=Meta+D
 Suspend Compositing=Alt+Shift+F12
 Switch One Desktop Down=Meta+Ctrl+Down
 Switch One Desktop Up=Meta+Ctrl+Up
@@ -281,7 +296,7 @@ Window to Screen 5=
 Window to Screen 6=
 Window to Screen 7=
 view_actual_size=Meta+0
-view_zoom_in=Meta+=; Meta++
+view_zoom_in=Meta++; Meta+=
 view_zoom_out=Meta+-
 
 [mediacontrol][Global Shortcuts]
@@ -294,8 +309,11 @@ playpausemedia=Media Play
 previousmedia=Media Previous
 stopmedia=Media Stop
 
+[net.local.konsole.desktop][Global Shortcuts]
+_launch=Ctrl+Shift+Esc
+
 [org.kde.dolphin.desktop][Global Shortcuts]
-_launch=
+_launch=Meta+E
 
 [org.kde.kcalc.desktop][Global Shortcuts]
 _launch=Calculator
@@ -307,13 +325,13 @@ _launch=Ctrl+Alt+T; Meta+Return
 
 [org.kde.krunner.desktop][Global Shortcuts]
 RunClipboard=Alt+Shift+F2
-_launch=Alt+F2; Search; Alt+Space
+_launch=Alt+Space; Alt+F2; Search
 
 [org.kde.kscreen.desktop][Global Shortcuts]
-ShowOSD=Display; Meta+P
+ShowOSD=Meta+P; Display
 
 [org.kde.plasma-systemmonitor.desktop][Global Shortcuts]
-_launch=
+_launch=Meta+Esc
 
 [org.kde.plasma.emojier.desktop][Global Shortcuts]
 _launch=Meta+.; Meta+Ctrl+Alt+Shift+Space
@@ -346,6 +364,7 @@ Turn Off Screen=
 powerProfile=Battery; Meta+B
 
 [plasmashell][Global Shortcuts]
+activate application launcher=Alt+F1; Meta
 activate task manager entry 1=Meta+1
 activate task manager entry 10=
 activate task manager entry 2=Meta+2
@@ -375,12 +394,22 @@ switch to previous activity=
 toggle do not disturb=
 
 [systemsettings.desktop][Global Shortcuts]
-_launch=Tools; Meta+I
+_launch=Meta+I
 kcm-kscreen=
 kcm-lookandfeel=
 kcm-powerdevilprofilesconfig=
 kcm-screenlocker=
 kcm-users=
+
+[wacomtablet][Global Shortcuts]
+Map to fullscreen=Meta+Ctrl+F
+Map to screen 1=Meta+Ctrl+1
+Map to screen 2=Meta+Ctrl+2
+Next Profile=Meta+Ctrl+N
+Previous Profile=Meta+Ctrl+P
+Toggle screen map selection=Meta+Ctrl+M
+Toggle stylus mode=Meta+Ctrl+S
+Toggle touch tool=Meta+Ctrl+T
 
 [yazi.desktop][Global Shortcuts]
 _launch=Meta+E
