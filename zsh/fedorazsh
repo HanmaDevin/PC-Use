@@ -66,8 +66,8 @@ alias refresh="source ~/.zshrc"
 
 # dnf
 alias get="sudo dnf install -y"
-alias remove="sudo dnf autoremove"
-alias update="sudo dnf update"
+alias remove="sudo dnf autoremove -y"
+alias update="sudo dnf update -y"
 
 alias editzsh="nano ~/.zshrc"
 
