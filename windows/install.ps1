@@ -1,7 +1,5 @@
-$packages = "WhatsApp","Debian","neofetch","VisualStudioCode","python","direnv","okular","ohmyposh","Bitwarden","steam","chrome","oracle.jdk.23","lazarus","git","7-zip"
+$packages = "WhatsApp","Debian.Debian","GNU.Nano","lazygit","python","direnv","KDE.okular","ohmyposh","Valve.steam","Google.chrome","oracle.jdk.23","7-zip"
 
 foreach ($element in $packages) {
     winget install $element
 }
-
-.\windows\get-wallpaper.ps1
