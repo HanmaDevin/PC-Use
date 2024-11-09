@@ -1,4 +1,4 @@
-oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\gruvbox.omp.json" | Invoke-Expression
+oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\bubbles.omp.json" | Invoke-Expression
 
 function admin {
   if($args.Count -gt 0) {
@@ -13,48 +13,55 @@ Set-Alias -Name sudo -Value admin
 
 function lg { lazygit }
 
-function c { clear }
+function c { Clear-Host }
 function ll { Get-ChildItem -Path $pwd -File }
 function q { exit }
 
-neofetch
+Set-Alias -Name z -Value zoxide.exe
 
-function .. { cd .. }
-function ... { cd ..\.. }
-function .3 { cd ..\..\.. }
-function .4 { cd ..\..\..\.. }
-function .5 { cd ..\..\..\..\.. }
+function HHU { Set-Location D:\HHU }
 
-function togit { cd C:\Users\devin\Documents\Github }
+function .. { Set-Location .. }
+function ... { Set-Location ..\.. }
+function .3 { Set-Location ..\..\.. }
+function .4 { Set-Location ..\..\..\.. }
+function .5 { Set-Location ..\..\..\..\.. }
+
+function refresh { . $profile}
+
+function get ($package) { winget install $package }
+function remove ($package) { winget uninstall $package }
+
+function github { Set-Location D:\Github }
 function gs { git status }
 function ga { git add . }
 function gp { git push }
 
-function editposh { code $profile }
+function editposh { vim $profile }
 
 function deac { deactivate }
 function startenv { .\bin\Activate.ps1 }
 function createnv ($envPath) {
   python -m venv $pwd\$envPath
-  cd $envPath
+  Set-Location $envPath
 }
 
 function find-file ($name) {
-  ls -recurse -filter "*${name}*" -ErrorAction SilentContinue | foreach {
+  Get-ChildItem -recurse -filter "*${name}*" -ErrorAction SilentContinue | ForEach-Object {
     $place_path = $_.directory
-    echo "${place_path}\${_}"
+    Write-Output "${place_path}\${_}"
   }
 }
 
 function unzip ($file, $des=$pwd) {
-  echo("Extracting", $file, "to", $des)
+  Write-Output("Extracting", $file, "to", $des)
   $fullFile = Get-ChildItem -Path $pwd -Filter .\$file | ForEach-Object{$_.FullName}
   Expand-Archive -Path $fullFile -DestinationPath $des
 }
 
 function grep ($regex, $dir) {
   if ($dir) {
-    ls $dir | select-string $regex
+    Get-ChildItem $dir | select-string $regex
     return
   }
   $input | select-string $regex
@@ -69,5 +76,7 @@ function which ($name) {
 }
 
 function pkill ($name) {
-  ps $name -ErrorAction SilentContinue | kill
+  Get-Process $name -ErrorAction SilentContinue | Stop-Process
 }
+
+Invoke-Expression (& { (zoxide init powershell | Out-String) })
