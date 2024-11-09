@@ -1,4 +1,4 @@
-oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\bubbles.omp.json" | Invoke-Expression
+oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\rudolfs-light.omp.json" | Invoke-Expression
 
 function admin {
   if($args.Count -gt 0) {
@@ -17,15 +17,13 @@ function c { Clear-Host }
 function ll { Get-ChildItem -Path $pwd -File }
 function q { exit }
 
-Set-Alias -Name z -Value zoxide.exe
-
 function HHU { Set-Location D:\HHU }
 
-function .. { Set-Location .. }
-function ... { Set-Location ..\.. }
-function .3 { Set-Location ..\..\.. }
-function .4 { Set-Location ..\..\..\.. }
-function .5 { Set-Location ..\..\..\..\.. }
+function .. { z .. }
+function ... { z ..\.. }
+function .3 { z ..\..\.. }
+function .4 { z ..\..\..\.. }
+function .5 { z ..\..\..\..\.. }
 
 function refresh { . $profile}
 
