@@ -9,6 +9,8 @@ function admin {
   }
 }
 
+Import-Module PSColor
+
 Set-Alias -Name sudo -Value admin
 
 function lg { lazygit }

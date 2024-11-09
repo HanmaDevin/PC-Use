@@ -3,3 +3,5 @@ $packages = "ajeetdsouza.zoxide","WhatsApp","Debian.Debian","GNU.Nano","lazygit"
 foreach ($element in $packages) {
     winget install $element
 }
+
+Install-Module PSColor -Scope CurrentUser
